@@ -1,0 +1,115 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFF+qBtyKM79qY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Main",
+					"defaultDiagram": true,
+					"ownedViews": [
+						{
+							"_type": "RectangleView",
+							"_id": "AAAAAAF8jvnfzudGTTA=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 344,
+							"top": 96,
+							"width": 265,
+							"height": 433
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAF8jvs42OdOzTQ=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 40,
+							"top": 264,
+							"width": 62,
+							"height": 25,
+							"text": "UTENTE"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAF8jvtxlOdTteQ=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 184,
+							"top": 200,
+							"width": 78.3896484375,
+							"height": 25,
+							"text": "ELETTORE"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAF8jvujMudYG00=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 184,
+							"top": 336,
+							"width": 73.33056640625,
+							"height": 25,
+							"text": "GESTORE"
+						},
+						{
+							"_type": "FreelineEdgeView",
+							"_id": "AAAAAAF8jvzF6udlM0g=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"lineStyle": 1,
+							"points": "176:336;106:290",
+							"headEndStyle": 2
+						},
+						{
+							"_type": "FreelineEdgeView",
+							"_id": "AAAAAAF8jv0OOOdsYXE=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"lineStyle": 1,
+							"points": "176:208;106:255",
+							"headEndStyle": 2
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAF8jv1hR+dzM+c=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 352,
+							"top": 104,
+							"width": 249,
+							"height": 77,
+							"text": "SISTEMA DI VOTO E SCRUTINIO ELETTRONICO",
+							"horzAlign": 2
+						}
+					]
+				}
+			]
+		}
+	]
+}
