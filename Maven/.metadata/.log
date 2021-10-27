@@ -1,0 +1,107 @@
+!SESSION 2021-10-27 13:51:09.955 -----------------------------------------------
+eclipse.buildId=4.21.0.I20210906-0500
+java.version=11.0.8
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.jface 2 0 2021-10-27 13:51:56.969
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-10-27 13:51:56.969
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2f75a9b1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@556aed22,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-10-27 13:52:07.503
+!MESSAGE An internal error occurred during: "Loading available Gradle versions".
+!STACK 0
+java.lang.ExceptionInInitializerError
+	at java.base/javax.crypto.Cipher.getInstance(Cipher.java:540)
+	at java.base/sun.security.ssl.JsseJce.getCipher(JsseJce.java:185)
+	at java.base/sun.security.ssl.SSLCipher.isTransformationAvailable(SSLCipher.java:483)
+	at java.base/sun.security.ssl.SSLCipher.<init>(SSLCipher.java:472)
+	at java.base/sun.security.ssl.SSLCipher.<clinit>(SSLCipher.java:81)
+	at java.base/sun.security.ssl.CipherSuite.<clinit>(CipherSuite.java:67)
+	at java.base/sun.security.ssl.SSLContextImpl.getApplicableSupportedCipherSuites(SSLContextImpl.java:348)
+	at java.base/sun.security.ssl.SSLContextImpl$AbstractTLSContext.<clinit>(SSLContextImpl.java:580)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at java.base/java.security.Provider$Service.getImplClass(Provider.java:1915)
+	at java.base/java.security.Provider$Service.newInstance(Provider.java:1891)
+	at java.base/sun.security.jca.GetInstance.getInstance(GetInstance.java:236)
+	at java.base/sun.security.jca.GetInstance.getInstance(GetInstance.java:164)
+	at java.base/javax.net.ssl.SSLContext.getInstance(SSLContext.java:168)
+	at java.base/javax.net.ssl.SSLContext.getDefault(SSLContext.java:99)
+	at java.base/javax.net.ssl.SSLSocketFactory.getDefault(SSLSocketFactory.java:123)
+	at java.base/javax.net.ssl.HttpsURLConnection.getDefaultSSLSocketFactory(HttpsURLConnection.java:335)
+	at java.base/javax.net.ssl.HttpsURLConnection.<init>(HttpsURLConnection.java:292)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.<init>(HttpsURLConnectionImpl.java:100)
+	at java.base/sun.net.www.protocol.https.Handler.openConnection(Handler.java:62)
+	at java.base/sun.net.www.protocol.https.Handler.openConnection(Handler.java:57)
+	at java.base/java.net.URL.openConnection(URL.java:1074)
+	at org.eclipse.buildship.core.internal.util.gradle.PublishedGradleVersions.downloadVersionInformation(PublishedGradleVersions.java:159)
+	at org.eclipse.buildship.core.internal.util.gradle.PublishedGradleVersions.tryToDownloadAndCacheVersions(PublishedGradleVersions.java:149)
+	at org.eclipse.buildship.core.internal.util.gradle.PublishedGradleVersions.create(PublishedGradleVersions.java:109)
+	at org.eclipse.buildship.core.internal.util.gradle.PublishedGradleVersionsWrapper$LoadVersionsJob.run(PublishedGradleVersionsWrapper.java:60)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.SecurityException: Can not initialize cryptographic mechanism
+	at java.base/javax.crypto.JceSecurity.<clinit>(JceSecurity.java:120)
+	... 28 more
+Caused by: java.lang.SecurityException: Couldn't parse jurisdiction policy files in: unlimited
+	at java.base/javax.crypto.JceSecurity.setupJurisdictionPolicies(JceSecurity.java:357)
+	at java.base/javax.crypto.JceSecurity$1.run(JceSecurity.java:111)
+	at java.base/javax.crypto.JceSecurity$1.run(JceSecurity.java:108)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.crypto.JceSecurity.<clinit>(JceSecurity.java:107)
+	... 28 more
+
+!ENTRY org.eclipse.oomph.ui 4 0 2021-10-27 13:52:17.155
+!MESSAGE Could not initialize class sun.security.ssl.SSLContextImpl$DefaultSSLContext
+!STACK 0
+java.lang.NoClassDefFoundError: Could not initialize class sun.security.ssl.SSLContextImpl$DefaultSSLContext
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at java.base/java.security.Provider$Service.getImplClass(Provider.java:1915)
+	at java.base/java.security.Provider$Service.newInstance(Provider.java:1891)
+	at java.base/sun.security.jca.GetInstance.getInstance(GetInstance.java:236)
+	at java.base/sun.security.jca.GetInstance.getInstance(GetInstance.java:164)
+	at java.base/javax.net.ssl.SSLContext.getInstance(SSLContext.java:168)
+	at java.base/javax.net.ssl.SSLContext.getDefault(SSLContext.java:99)
+	at java.base/javax.net.ssl.SSLSocketFactory.getDefault(SSLSocketFactory.java:123)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient45.ECFHttpClientFactory.configureSSLSocketFactory(ECFHttpClientFactory.java:192)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient45.ECFHttpClientFactory.newClient(ECFHttpClientFactory.java:85)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient45.Activator.registerHttpClient(Activator.java:289)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient45.Activator.getRetrieveHttpClient(Activator.java:280)
+	at org.eclipse.ecf.provider.filetransfer.httpclient45.HttpClientRetrieveFileTransferFactory.newInstance(HttpClientRetrieveFileTransferFactory.java:25)
+	at org.eclipse.ecf.internal.provider.filetransfer.Activator.getFileTransfer(Activator.java:614)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:94)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl$InputStreamConnectionHandler.sendConnectionRequest(ECFURIHandlerImpl.java:1950)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl$ConnectionHandler.process(ECFURIHandlerImpl.java:1649)
+	at org.eclipse.oomph.setup.internal.core.util.ECFURIHandlerImpl.createInputStream(ECFURIHandlerImpl.java:323)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:358)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.handleArchiveRedirection(SetupCoreUtil.java:700)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.configureResourceSet(SetupCoreUtil.java:478)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.configureResourceSet(SetupCoreUtil.java:272)
+	at org.eclipse.oomph.setup.internal.core.util.SetupCoreUtil.createResourceSet(SetupCoreUtil.java:266)
+	at org.eclipse.oomph.setup.ui.recorder.RecorderManager.<clinit>(RecorderManager.java:121)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:216)
+	at org.eclipse.oomph.setup.ui.EarlyStartup.earlyStartup(EarlyStartup.java:22)
+	at org.eclipse.oomph.internal.ui.EarlyStart.run(EarlyStart.java:118)
+	at org.eclipse.oomph.internal.ui.EarlyStart$1.run(EarlyStart.java:97)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
