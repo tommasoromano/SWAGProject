@@ -1,12 +1,14 @@
 
 public class Elettore extends Utente {
 
-	private String tesseraElettorale;
+	//@ public invariant tesseraEletorale != null;
+	private /*@ spec_public @*/ String tesseraElettorale;
 	
-	public Elettore(String nome, String cognome, String codifeFiscale, Documento documentoIdentificativo,
+	//@ requires tesseraElettorale != null;
+	public Elettore(String nome, String cognome, String codiceFiscale, Documento documentoIdentificativo,
 			String tesseraElettorale) 
 	{
-		super(nome, cognome, codifeFiscale, documentoIdentificativo);
+		super(nome, cognome, codiceFiscale, documentoIdentificativo);
 		this.tesseraElettorale = tesseraElettorale;
 	}
 

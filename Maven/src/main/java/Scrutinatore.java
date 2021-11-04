@@ -1,8 +1,10 @@
 
 public class Scrutinatore extends Utente {
 
-	private String codiceGestore;
+	//@ public invariant codiceGestore != null;
+	private /*@ spec_public @*/ String codiceGestore;
 	
+	//@ requires codiceGestore != null;
 	public Scrutinatore(String nome, String cognome, String codifeFiscale, Documento documentoIdentificativo,
 			String codiceGestore) 
 	{
