@@ -1,6 +1,8 @@
 
 public class Elettore extends Utente {
 
+	private boolean voto;
+	
 	//@ public invariant tesseraEletorale != null;
 	private /*@ spec_public @*/ String tesseraElettorale;
 	
@@ -10,6 +12,10 @@ public class Elettore extends Utente {
 	{
 		super(nome, cognome, codiceFiscale, documentoIdentificativo);
 		this.tesseraElettorale = tesseraElettorale;
+	}
+	
+	public void EsprimiVoto() {
+		
 	}
 
 }

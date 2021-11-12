@@ -7,19 +7,23 @@ public abstract class Utente {
 	//@ public invariant cognome != null;
 	private /*@ spec_public @*/ String cognome;
 	
+	private Data dataNascite;
+	
+	private Comune comuneNascita;
+	
+	private Nazione nazioneNascita;
+	
+	private Sesso sesso;
+	
 	//@ public invariant codiceFiscale != null;
-	private /*@ spec_public @*/ String codiceFiscale;
+	private /*@ spec_public @*/ CodiceFiscale codiceFiscale;
 	
-	//@ public invariant documentoIdentificativo != null;
-	private /*@ spec_public @*/ Documento documentoIdentificativo;
-	
-	//@ requires nome != null && cognome != null && codiceFiscale != null && documentoIdentificativo != null;
-	public Utente(String nome, String cognome, String codifeFiscale, Documento documentoIdentificativo) 
+	//@ requires nome != null && cognome != null && codiceFiscale != null
+	public Utente(String nome, String cognome, CodiceFiscale codifeFiscale) 
 	{
 		this.nome = nome;
 		this.cognome = cognome;
 		this.codiceFiscale = codiceFiscale;
-		this.documentoIdentificativo = documentoIdentificativo;
 	}
 	
 }

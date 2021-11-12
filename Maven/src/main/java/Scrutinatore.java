@@ -5,10 +5,10 @@ public class Scrutinatore extends Utente {
 	private /*@ spec_public @*/ String codiceGestore;
 	
 	//@ requires codiceGestore != null;
-	public Scrutinatore(String nome, String cognome, String codifeFiscale, Documento documentoIdentificativo,
+	public Scrutinatore(String nome, String cognome, String codifeFiscale,
 			String codiceGestore) 
 	{
-		super(nome, cognome, codifeFiscale, documentoIdentificativo);
+		super(nome, cognome, codifeFiscale);
 		this.codiceGestore = codiceGestore;
 	}
 }
