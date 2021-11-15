@@ -6,6 +6,8 @@ public abstract class Utente {
 	
 	//@ public invariant cognome != null;
 	private /*@ spec_public @*/ String cognome;
+
+	private Sesso sesso;
 	
 	private Data dataNascite;
 	
@@ -13,16 +15,20 @@ public abstract class Utente {
 	
 	private Nazione nazioneNascita;
 	
-	private Sesso sesso;
-	
 	//@ public invariant codiceFiscale != null;
 	private /*@ spec_public @*/ CodiceFiscale codiceFiscale;
 	
 	//@ requires nome != null && cognome != null && codiceFiscale != null
-	public Utente(String nome, String cognome, CodiceFiscale codifeFiscale) 
+	public Utente(String nome, String cognome, Sesso sesso, 
+			Data dataNascita, Comune comuneNascita, Nazione nazioneNascita, 
+			CodiceFiscale codiceFiscale) 
 	{
 		this.nome = nome;
 		this.cognome = cognome;
+		this.sesso = sesso;
+		this.dataNascite = dataNascita;
+		this.comuneNascita = comuneNascita;
+		this.nazioneNascita = nazioneNascita;
 		this.codiceFiscale = codiceFiscale;
 	}
 	

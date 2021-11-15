@@ -7,10 +7,12 @@ public class Elettore extends Utente {
 	private /*@ spec_public @*/ String tesseraElettorale;
 	
 	//@ requires tesseraElettorale != null;
-	public Elettore(String nome, String cognome, String codiceFiscale, Documento documentoIdentificativo,
+	public Elettore(String nome, String cognome, Sesso sesso, 
+			Data dataNascita, Comune comuneNascita, Nazione nazioneNascita, 
+			CodiceFiscale codiceFiscale, 
 			String tesseraElettorale) 
 	{
-		super(nome, cognome, codiceFiscale, documentoIdentificativo);
+		super(nome, cognome, sesso, dataNascita, comuneNascita, nazioneNascita, codiceFiscale);
 		this.tesseraElettorale = tesseraElettorale;
 	}
 	
