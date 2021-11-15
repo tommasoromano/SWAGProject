@@ -7,13 +7,17 @@ public abstract class Utente {
 	//@ public invariant cognome != null;
 	private /*@ spec_public @*/ String cognome;
 
-	private Sesso sesso;
+	//@ public invariant sesso != null;
+	private /*@ spec_public @*/ Sesso sesso;
 	
-	private Data dataNascite;
+	//@ public invariant  dataNascita != null;
+	private /*@ spec_public @*/ Data dataNascite;
 	
-	private Comune comuneNascita;
+	//@ public invariant comuneNascita != null;
+	private /*@ spec_public @*/ Comune comuneNascita;
 	
-	private Nazione nazioneNascita;
+	//@ public invariant nazioneNascita != null;
+	private /*@ spec_public @*/ Nazione nazioneNascita;
 	
 	//@ public invariant codiceFiscale != null;
 	private /*@ spec_public @*/ CodiceFiscale codiceFiscale;

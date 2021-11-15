@@ -1,266 +1,72 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 public class Nazione {
 	
-	public enum ISO3 {
-		AFG,
-		ALA,
-		ALB,
-		DZA,
-		ASM,
-		AND,
-		AGO,
-		AIA,
-		ATA,
-		ATG,
-		ARG,
-		ARM,
-		ABW,
-		AUS,
-		AUT,
-		AZE,
-		BHS,
-		BHR,
-		BGD,
-		BRB,
-		BLR,
-		BEL,
-		BLZ,
-		BEN,
-		BMU,
-		BTN,
-		BOL,
-		BES,
-		BIH,
-		BWA,
-		BVT,
-		BRA,
-		IOT,
-		BRN,
-		BGR,
-		BFA,
-		BDI,
-		KHM,
-		CMR,
-		CAN,
-		CPV,
-		CYM,
-		CAF,
-		TCD,
-		CHL,
-		CHN,
-		CXR,
-		CCK,
-		COL,
-		COM,
-		COG,
-		COD,
-		COK,
-		CRI,
-		CIV,
-		HRV,
-		CUB,
-		CUW,
-		CYP,
-		CZE,
-		DNK,
-		DJI,
-		DMA,
-		DOM,
-		ECU,
-		EGY,
-		SLV,
-		GNQ,
-		ERI,
-		EST,
-		ETH,
-		FLK,
-		FRO,
-		FJI,
-		FIN,
-		FRA,
-		GUF,
-		PYF,
-		ATF,
-		GAB,
-		GMB,
-		GEO,
-		DEU,
-		GHA,
-		GIB,
-		GRC,
-		GRL,
-		GRD,
-		GLP,
-		GUM,
-		GTM,
-		GGY,
-		GIN,
-		GNB,
-		GUY,
-		HTI,
-		HMD,
-		VAT,
-		HND,
-		HKG,
-		HUN,
-		ISL,
-		IND,
-		IDN,
-		IRN,
-		IRQ,
-		IRL,
-		IMN,
-		ISR,
-		ITA,
-		JAM,
-		JPN,
-		JEY,
-		JOR,
-		KAZ,
-		KEN,
-		KIR,
-		PRK,
-		KOR,
-		XKX,
-		KWT,
-		KGZ,
-		LAO,
-		LVA,
-		LBN,
-		LSO,
-		LBR,
-		LBY,
-		LIE,
-		LTU,
-		LUX,
-		MAC,
-		MKD,
-		MDG,
-		MWI,
-		MYS,
-		MDV,
-		MLI,
-		MLT,
-		MHL,
-		MTQ,
-		MRT,
-		MUS,
-		MYT,
-		MEX,
-		FSM,
-		MDA,
-		MCO,
-		MNG,
-		MNE,
-		MSR,
-		MAR,
-		MOZ,
-		MMR,
-		NAM,
-		NRU,
-		NPL,
-		NLD,
-		NCL,
-		NZL,
-		NIC,
-		NER,
-		NGA,
-		NIU,
-		NFK,
-		MNP,
-		NOR,
-		OMN,
-		PAK,
-		PLW,
-		PSE,
-		PAN,
-		PNG,
-		PRY,
-		PER,
-		PHL,
-		PCN,
-		POL,
-		PRT,
-		PRI,
-		QAT,
-		SRB,
-		REU,
-		ROU,
-		RUS,
-		RWA,
-		BLM,
-		SHN,
-		KNA,
-		LCA,
-		MAF,
-		SPM,
-		VCT,
-		WSM,
-		SMR,
-		STP,
-		SAU,
-		SEN,
-		SYC,
-		SLE,
-		SGP,
-		SXM,
-		SVK,
-		SVN,
-		SLB,
-		SOM,
-		ZAF,
-		SGS,
-		SSD,
-		ESP,
-		LKA,
-		SDN,
-		SUR,
-		SJM,
-		SWZ,
-		SWE,
-		CHE,
-		SYR,
-		TWN,
-		TJK,
-		TZA,
-		THA,
-		TLS,
-		TGO,
-		TKL,
-		TON,
-		TTO,
-		TUN,
-		TUR,
-		XTX,
-		TKM,
-		TCA,
-		TUV,
-		UGA,
-		UKR,
-		ARE,
-		GBR,
-		USA,
-		UMI,
-		URY,
-		UZB,
-		VUT,
-		VEN,
-		VNM,
-		VGB,
-		VIR,
-		WLF,
-		ESH,
-		YEM,
-		ZMB,
-		ZWE
+	//@ public invariant nazione != null
+	private /*@ spec_public @*/ String iso3;
+	
+	private String numeric;
+	
+	public Nazione(String iso3) {
+		
+		this.iso3 = iso3;
+		this.numeric = GetNumericFrmoIso3();
 	}
 	
-	public ISO3 nazione;
+	public static String[] GetAllIso3() {
+		
+		File myObj = new File(FilePath());
+		Scanner myReader = null;
+		try {
+			myReader = new Scanner(myObj);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String iso3 = "";
+		while (myReader.hasNextLine()) {
+			String line = myReader.nextLine();
+			String[] attr = line.split(",");
+			iso3 = iso3 + "," + attr[2];
+		}
+		
+		return iso3.split(",");
+	}
 	
-	public Nazione(ISO3 nazione) {
+	public String GetIso3() {
+		return this.iso3;
+	}
+	
+	private String GetNumericFrmoIso3() {
 		
-		this.nazione = nazione;
+		File myObj = new File(FilePath());
+		Scanner myReader = null;
+		try {
+			myReader = new Scanner(myObj);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		while (myReader.hasNextLine()) {
+			String line = myReader.nextLine();
+			String[] attr = line.split(",");
+			if (attr[2].equals(this.iso3)) {
+				return attr[3];
+			}
+		}
 		
+		return null;
+	}
+	
+	public String GetNumeric() {
+		return this.numeric;
+	}
+	
+	private static String FilePath() {
+		return FileSystems.getDefault().getPath("").toAbsolutePath().toString()
+				+ "/src/main/java/iso-country-codes.csv";
 	}
 	
 }
