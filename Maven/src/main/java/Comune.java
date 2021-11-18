@@ -114,7 +114,7 @@ public class Comune {
 		
 	}
 	
-	public String[] getComuniByChar(char[] search) {
+	public String[] searchComune(String search) {
 		
 		File myObj = new File(FilePath());
 		Scanner myReader = null;
@@ -124,19 +124,16 @@ public class Comune {
 			e.printStackTrace();
 		}
 		String comuni = "";
-		String last = "";
 		String line = myReader.nextLine();
 		while (myReader.hasNextLine()) {
 			line = myReader.nextLine();
 			String[] attr = line.split(",");
 			String c = attr[5].split("/")[0];
-			if (!last.equals(c)) {
-				if (provincia.equals(attr[3])) {
-					comuni = comuni + "," + c;
-					last = c;
-				}
+			if (c.contains(search)) {
+				comuni = comuni + ",";
 			}
 		}
+		return comuni.split(",");
 	}
 	
 
