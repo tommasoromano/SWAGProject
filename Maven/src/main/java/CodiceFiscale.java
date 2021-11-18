@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class CodiceFiscale {
 	
 	//@ ensures (codiceFiscale != null);
@@ -15,8 +18,8 @@ public class CodiceFiscale {
 	//@ requires (codice[13] >= '0' && codice[13] <= '9');
 	//@ requires (codice[14] >= '0' && codice[14] <= '9');
 	//@ requires (codice[15] >= 'A' && codice[15] <= 'Z');
-	// TODO -> @ requires ((stato.equals("IT")) ==> codice[11] == 'Z');
-	protected boolean controllaStruttura(char [] codiceFiscale) {
+	//@ requires ((stato.equals("IT")) ==> codice[11] == 'Z');
+	private boolean controllaStruttura(char [] codiceFiscale) {
 		if  (codiceFiscale == null) throw new IllegalArgumentException("Codice fiscale nullo");
 		if (codiceFiscale.length != 16) throw new IllegalArgumentException("Lunghezza errata");
 		
@@ -51,9 +54,9 @@ public class CodiceFiscale {
 					
 	}
 	
-	//@ requires (nome != null && cognome != null && nascita != null);
+	//@ requires (nome != null && cognome != null && nascita != null && stato != null);
 	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato, Comune comune) {
-		if (nome == null || cognome == null || nascita == null) throw new IllegalArgumentException("Parametri nulli");
+		if (nome == null || cognome == null || nascita == null || stato == null) throw new IllegalArgumentException("Parametri nulli");
 		
 		//controllo cognome
 		String cod = "";
@@ -92,31 +95,69 @@ public class CodiceFiscale {
 			if (!naz.equals(stato.GetNumeric())) return false;
 		}
 		
-		if (checksum()==0)return false;
+		if (checksum()!=codiceFiscale[15])return false;
 		
 		return true;
 	}
 	
-	private int checksum() {
+	/**
+	 *  
+	 * @return l'ultimo carattere del codice fiscale computanto il valore dei primi 15 
+	 */
+	private char checksum() {
 		String pari = "";
 		String dispari = "";
 		
-		//TODO
-		return 1;
+		for (int i=0; i<codiceFiscale.length-1; i++) {
+			if (i%2==0) {
+				pari+=codiceFiscale[i];
+			} else {
+				dispari+=codiceFiscale[i];
+			}
+		}
+		
+		int p=0;
+		for (int i=0; i<dispari.length(); i++) {
+			if (dispari.charAt(i) >= '0' && dispari.charAt(i) <= '9') {
+				p+=dispari.charAt(i) - '0';
+			} else {
+				p+=dispari.charAt(i) - 'A';
+			}
+		}
+		
+		List<Integer> ints = List.of(1,0,5,7,9,13,15,17,19,21,2,4,18,20,11,3,6,8,12,14,16,10,22,25,24,23);
+		int d=0;
+		for (int i=0; i<pari.length();i++) {
+			char ch = pari.charAt(i);
+			if (ch >='0' && ch <='9') {
+				d+=ints.get(ch -'0');
+			} else {
+				d+=ints.get(ch-'A');
+			}
+		}
+		
+		return (char)((p+d)%26+'A');
 	}
 	
+	/**
+	 * Il metodo restituisce una stringa composta dalle consonanti seguite dalle vocali del (seza duplicati), seguite da eventuali 
+	 * caratteri 'X' se la lunghezza raggiunta è minore di tre. 
+	 * @param nome il nome da cui trarre il codice.
+	 * @return il codice di tre lettere.
+	 */
 	//@ requires (nome != null);
-	protected static String nomeToCodice(String nome) {
+	private static String nomeToCodice(String nome) {
 		if (nome == null) throw new IllegalArgumentException("Nome nullo");
 		
 		String n = nome.toUpperCase();
+	
 		String cons = "";
 		String voc = "";
 		for (int i=0; i<nome.length(); i++) {
 			if ("AEIOU".indexOf(n.charAt(i)) == -1) { 
-				cons += n.charAt(i);
+				if (cons.indexOf(n.charAt(i)) == -1) cons += n.charAt(i);
 			} else {
-				voc += n.charAt(i);
+				if (voc.indexOf(n.charAt(i)) == -1) voc += n.charAt(i);
 			}
 		}
 		
