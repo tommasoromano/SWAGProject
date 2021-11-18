@@ -13,7 +13,7 @@ public class Comune {
 		this.comune = comune;
 		
 		// associa comune con suo codice
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -33,9 +33,17 @@ public class Comune {
 		
 	}
 	
-	public static String[] GetAllRegion() {
+	/**
+	 * Crea una {@code String[]} di tutte le regioni d'Italia.
+	 * 
+	 * <p>Usa il file <i>comuni-italiani.csv</i> per prendere 
+	 * tutte le informaziomni riguardante i nomi delle regioni.
+	 * 
+	 * @return	uno {@code String[]} di tutte le regioni d'Italia
+	 */
+	public static String[] getAllRegion() {
 		
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -58,9 +66,19 @@ public class Comune {
 		
 	}
 	
-	public static String[] GetAllProvince(String regione) {
+	/**
+	 * Crea una {@code String[]} di tutte le provincie di una regione.
+	 * 
+	 * <p>Usa il file <i>comuni-italiani.csv</i> per prendere 
+	 * tutte le informaziomni riguardante i nomi delle regioni e provincie.
+	 * 
+	 * @param	ricerca le provincie usando {@code String} regione.
+	 * 
+	 * @return	uno {@code String[]} di tutte le provincie della regione.
+	 */
+	public static String[] getAllProvince(String regione) {
 		
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -86,9 +104,19 @@ public class Comune {
 		
 	}
 	
-	public static String[] GetAllComuni(String provincia) {
+	/**
+	 * Crea una {@code String[]} di tutti i comuni di una provincia.
+	 * 
+	 * <p>Usa il file <i>comuni-italiani.csv</i> per prendere 
+	 * tutte le informaziomni riguardante i nomi delle provincie e comuni.
+	 * 
+	 * @param	ricerca i comuni usando {@code String} provincia.
+	 * 
+	 * @return	uno {@code String[]} di tutti i comuni della provincia.
+	 */
+	public static String[] getAllComuni(String provincia) {
 		
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -114,9 +142,20 @@ public class Comune {
 		
 	}
 	
-	public String[] searchComune(String search) {
+	/**
+	 * Ritorna una {@code String[]} di tutti i comuni che iniziano con
+	 * le lettere presenti nella {@code String} <b>search</b>.
+	 * 
+	 * <p>Usa il file <i>comuni-italiani.csv</i> per prendere 
+	 * tutte le informaziomni riguardanti i nomi dei comuni.
+	 * 
+	 * @param	ricerca i comuni usando {@code String} come iniziali.
+	 * 
+	 * @return	uno {@code String[]} di tutti i comuni trovati.
+	 */
+	public static String[] searchComuni(String search) {
 		
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -125,19 +164,24 @@ public class Comune {
 		}
 		String comuni = "";
 		String line = myReader.nextLine();
+		search = search.toLowerCase();
 		while (myReader.hasNextLine()) {
 			line = myReader.nextLine();
 			String[] attr = line.split(",");
 			String c = attr[5].split("/")[0];
-			if (c.contains(search)) {
-				comuni = comuni + ",";
+			if (search.length() < c.length() ) {
+				String lc = c.substring(0,search.length()).toLowerCase();
+				if (lc.contains(search)) {
+					comuni = comuni + "," + c;
+				}
 			}
 		}
+		
 		return comuni.split(",");
 	}
 	
 
-	private static String FilePath() {
+	private static String getFilePath() {
 		return FileSystems.getDefault().getPath("").toAbsolutePath().toString()
 				+ "/src/main/java/comuni-italiani.csv";
 	}
