@@ -86,7 +86,7 @@ public class Main {
 		
 		CodiceFiscale c = new CodiceFiscale("RMPLCU00S30E507G".toCharArray());
 		CodiceFiscale tom = new CodiceFiscale("RMNTMM00R03E507G".toCharArray());
-		System.out.println(c.isValid("Luca", "Rompani", new Data(30,11,2000), null));
-		System.out.println(tom.isValid("Tommaso", "Romano", new Data(3, 10, 2000), null));
+		System.out.println(c.isValid("Luca", "Rompani", new Data(30,11,2000), null, null));
+		System.out.println(tom.isValid("Tommaso", "Romano", new Data(3, 10, 2000), null, null));
 	}
 }

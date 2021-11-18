@@ -52,7 +52,7 @@ public class CodiceFiscale {
 	}
 	
 	//@ requires (nome != null && cognome != null && nascita != null);
-	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato) {
+	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato, Comune comune) {
 		if (nome == null || cognome == null || nascita == null) throw new IllegalArgumentException("Parametri nulli");
 		
 		//controllo cognome
@@ -84,7 +84,8 @@ public class CodiceFiscale {
 		
 		//controllo nazione nascita-comune
 		if (stato.GetIso3().equals("ITA")) {
-			//comuni
+			String com = String.valueOf(codiceFiscale).substring(11,15);
+			if (!com.equals(comune.getComuneCode())) return false;
 		} else {
 			if (codiceFiscale[11] != 'Z') return false;
 			String naz = String.valueOf(codiceFiscale).substring(12, 15);
@@ -97,6 +98,9 @@ public class CodiceFiscale {
 	}
 	
 	private int checksum() {
+		String pari = "";
+		String dispari = "";
+		
 		//TODO
 		return 1;
 	}
