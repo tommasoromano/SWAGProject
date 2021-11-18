@@ -114,10 +114,43 @@ public class Comune {
 		
 	}
 	
+	public String[] getComuniByChar(char[] search) {
+		
+		File myObj = new File(FilePath());
+		Scanner myReader = null;
+		try {
+			myReader = new Scanner(myObj);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String comuni = "";
+		String last = "";
+		String line = myReader.nextLine();
+		while (myReader.hasNextLine()) {
+			line = myReader.nextLine();
+			String[] attr = line.split(",");
+			String c = attr[5].split("/")[0];
+			if (!last.equals(c)) {
+				if (provincia.equals(attr[3])) {
+					comuni = comuni + "," + c;
+					last = c;
+				}
+			}
+		}
+	}
+	
 
 	private static String FilePath() {
 		return FileSystems.getDefault().getPath("").toAbsolutePath().toString()
 				+ "/src/main/java/comuni-italiani.csv";
+	}
+	
+	public String getComuneNome() {
+		return this.comune;
+	}
+	
+	public String getComuneCode() {
+		return this.code;
 	}
 	
 }
