@@ -2,7 +2,7 @@ import java.util.List;
 
 public class CodiceFiscale {
 	
-	//@ ensures (codiceFiscale != null);
+	//@ public invariant codiceFiscale != null;
 	private /*@ spec_public @*/ char[] codiceFiscale;
 	
 	public CodiceFiscale(char[] codiceFiscale) {
@@ -10,14 +10,13 @@ public class CodiceFiscale {
 		this.codiceFiscale = codiceFiscale;
 	}
 	
-	//@ requires (codice != null);
-	//@ requires (codice.length == 16);
-	//@ requires (codice[11] >= 'A' && codice[11] <= 'Z');
-	//@ requires (codice[12] >= '0' && codice[12] <= '9');
-	//@ requires (codice[13] >= '0' && codice[13] <= '9');
-	//@ requires (codice[14] >= '0' && codice[14] <= '9');
-	//@ requires (codice[15] >= 'A' && codice[15] <= 'Z');
-	//@ requires ((stato.equals("IT")) ==> codice[11] == 'Z');
+	//@ requires (codiceFiscale != null);
+	//@ requires (codiceFiscale.length == 16);
+	//@ requires (codiceFiscale[11] >= 'A' && codiceFiscale[11] <= 'Z');
+	//@ requires (codiceFiscale[12] >= '0' && codiceFiscale[12] <= '9');
+	//@ requires (codiceFiscale[13] >= '0' && codiceFiscale[13] <= '9');
+	//@ requires (codiceFiscale[14] >= '0' && codiceFiscale[14] <= '9');
+	//@ requires (codiceFiscale[15] >= 'A' && codiceFiscale[15] <= 'Z');
 	private boolean controllaStruttura(char [] codiceFiscale) {
 		if  (codiceFiscale == null) throw new IllegalArgumentException("Codice fiscale nullo");
 		if (codiceFiscale.length != 16) throw new IllegalArgumentException("Lunghezza errata");
@@ -54,6 +53,7 @@ public class CodiceFiscale {
 	}
 	
 	//@ requires (nome != null && cognome != null && nascita != null && stato != null);
+	//@ ensures (!stato.getIso3().equals("ITA") ==> codiceFiscale[11] == 'Z');
 	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato, Comune comune) {
 		if (nome == null || cognome == null || nascita == null || stato == null) throw new IllegalArgumentException("Parametri nulli");
 		
@@ -85,13 +85,13 @@ public class CodiceFiscale {
 		
 		
 		//controllo nazione nascita-comune
-		if (stato.GetIso3().equals("ITA")) {
+		if (stato.getIso3().equals("ITA")) {
 			String com = String.valueOf(codiceFiscale).substring(11,15);
 			if (!com.equals(comune.getComuneCode())) return false;
 		} else {
 			if (codiceFiscale[11] != 'Z') return false;
 			String naz = String.valueOf(codiceFiscale).substring(12, 15);
-			if (!naz.equals(stato.GetNumeric())) return false;
+			if (!naz.equals(stato.getNumeric())) return false;
 		}
 		
 		if (checksum()!=codiceFiscale[15])return false;

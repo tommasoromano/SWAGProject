@@ -1,7 +1,7 @@
 
 public class Elettore extends Utente {
 
-	private boolean voto;
+	private /*@ spec_public @*/ boolean voto;
 	
 	//@ public invariant tesseraEletorale != null;
 	private /*@ spec_public @*/ String tesseraElettorale;
@@ -16,8 +16,19 @@ public class Elettore extends Utente {
 		this.tesseraElettorale = tesseraElettorale;
 	}
 	
-	public void EsprimiVoto() {
+	//@ ensures getDataNascita().isMaggiorenne();
+	//@ ensures \old(voto) == false;
+	//@ ensures voto == true;
+	public void esprimiVoto() {
 		
+		// controllo sia maggiorenne
+		if (this.getDataNascita().isMaggiorenne()) return;
+		
+		// controllo se ha già votato
+		if (this.voto) return;
+		
+		// azione di voto
+		this.voto = true;
 	}
 
 }

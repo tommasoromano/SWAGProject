@@ -6,20 +6,19 @@ import java.util.Scanner;
 
 public class Nazione {
 	
-	//@ public invariant nazione != null
-	private /*@ spec_public @*/ String iso3;
+	private String iso3;
 	
 	private String numeric;
 	
 	public Nazione(String iso3) {
 		
 		this.iso3 = iso3;
-		this.numeric = GetNumericFrmoIso3();
+		this.numeric = getNumericFrmoIso3();
 	}
 	
-	public static String[] GetAllIso3() {
+	public static String[] getAllIso3() {
 		
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -36,13 +35,13 @@ public class Nazione {
 		return iso3.split(",");
 	}
 	
-	public String GetIso3() {
+	public /* @ pure @ */ String getIso3() {
 		return this.iso3;
 	}
 	
-	private String GetNumericFrmoIso3() {
+	private String getNumericFrmoIso3() {
 		
-		File myObj = new File(FilePath());
+		File myObj = new File(getFilePath());
 		Scanner myReader = null;
 		try {
 			myReader = new Scanner(myObj);
@@ -60,11 +59,11 @@ public class Nazione {
 		return null;
 	}
 	
-	public String GetNumeric() {
+	public /* @ pure @ */ String getNumeric() {
 		return this.numeric;
 	}
 	
-	private static String FilePath() {
+	private static String getFilePath() {
 		return FileSystems.getDefault().getPath("").toAbsolutePath().toString()
 				+ "/src/main/java/iso-country-codes.csv";
 	}

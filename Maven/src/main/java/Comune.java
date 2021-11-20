@@ -72,7 +72,7 @@ public class Comune {
 	 * <p>Usa il file <i>comuni-italiani.csv</i> per prendere 
 	 * tutte le informaziomni riguardante i nomi delle regioni e provincie.
 	 * 
-	 * @param	ricerca le provincie usando {@code String} regione.
+	 * @param regione per ricercare le provincie.
 	 * 
 	 * @return	uno {@code String[]} di tutte le provincie della regione.
 	 */
