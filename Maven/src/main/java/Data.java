@@ -12,7 +12,7 @@ public class Data implements Comparable<Data> {
 	//@ requires (giorno <= 31 && giorno >=1);
 	//@ requires (mese <= 12 && mese >= 1);
 	//@ requires (anno >= 1800);
-	//@ requires (compareTo(getTodayData()) > 0);
+	//@ requires (compareTo(getTodayData()) < 0);
 	public Data(int giorno, int mese, int anno) {
 		
 		if (anno < 1800) throw new IllegalArgumentException("Anno non valido");
@@ -25,8 +25,7 @@ public class Data implements Comparable<Data> {
 		this.mese = mese;
 		this.anno = anno;
 		
-		int[] today = getTodayData();
-		if (compareTo(today[0], today[1], today[2], giorno, mese, anno) < 0) {
+		if (this.compareTo(getTodayData()) < 0) {
 			throw new IllegalArgumentException("Data successiva a data corrente");
 		}
 		
@@ -58,11 +57,12 @@ public class Data implements Comparable<Data> {
 		return Integer.compare(this.giorno, g);
 	}
 	
-	public /* @ pure @ */ int compareTo(int g0, int m0, int a0, int g1, int m1, int a1) {
-		if (Integer.compare(a0, a1) != 0) return Integer.compare(a0, a1);	
-		if (Integer.compare(m0, m1) != 0) return Integer.compare(m0, m1);
+	public /* @ pure @ */ int compareTo(int[] d) {
+		if (d.length != 3) throw new IllegalArgumentException("Formato data non valido");
+		if (Integer.compare(this.anno, d[2]) != 0) return Integer.compare(this.anno, d[2]);	
+		if (Integer.compare(this.mese, d[1]) != 0) return Integer.compare(this.mese, d[1]);
 		
-		return Integer.compare(g0, g1);
+		return Integer.compare(this.giorno, d[0]);
 	}
 	
 	
