@@ -1,4 +1,4 @@
-import java.time.LocalDateTime;    
+import java.time.LocalDateTime; 
 
 public class Data implements Comparable<Data> {
 	
@@ -25,7 +25,8 @@ public class Data implements Comparable<Data> {
 		this.mese = mese;
 		this.anno = anno;
 		
-		if (this.compareTo(getTodayData()) > 0) {
+		int[] today = getTodayData();
+		if (compareTo(today[0], today[1], today[2], giorno, mese, anno) < 0) {
 			throw new IllegalArgumentException("Data successiva a data corrente");
 		}
 		
@@ -57,19 +58,26 @@ public class Data implements Comparable<Data> {
 		return Integer.compare(this.giorno, g);
 	}
 	
+	public /* @ pure @ */ int compareTo(int g0, int m0, int a0, int g1, int m1, int a1) {
+		if (Integer.compare(a0, a1) != 0) return Integer.compare(a0, a1);	
+		if (Integer.compare(m0, m1) != 0) return Integer.compare(m0, m1);
+		
+		return Integer.compare(g0, g1);
+	}
+	
 	
 	public /* @ pure @ */ boolean isMaggiorenne() {
-		Data today = getTodayData();
-		int y = today.getAnno() - this.anno;
+		int[] today = getTodayData();
+		int y = today[2] - this.anno;
 		
 		if (y > 18) {			
 			return true;			
 		} else if (y == 18) {
-			int m = today.getMese() - this.mese;
+			int m = today[1] - this.mese;
 			if (m > 0) {
 				return true;
 			} else if (m == 0) {
-				int g = today.getGiorno() - this.giorno;
+				int g = today[0] - this.giorno;
 				if (g >= 0) {
 					return true;
 				} else {
@@ -84,8 +92,8 @@ public class Data implements Comparable<Data> {
 		}
 	}
 	
-	public /* @ pure @ */ static Data getTodayData() {
-		return new Data(20, 11, 2021);
+	public /* @ pure @ */ static int[] getTodayData() {
+		return new int[] {20, 11, 2021};
 	}
 	
  }
