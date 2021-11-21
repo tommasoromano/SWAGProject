@@ -54,7 +54,7 @@ public class CodiceFiscale {
 	
 	//@ requires (nome != null && cognome != null && nascita != null && stato != null);
 	//@ ensures (!stato.getIso3().equals("ITA") ==> codiceFiscale[11] == 'Z');
-	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato, Comune comune) {
+	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato, Comune comune, Sesso sex) {
 		if (nome == null || cognome == null || nascita == null || stato == null) throw new IllegalArgumentException("Parametri nulli");
 		
 		//controllo cognome
@@ -62,14 +62,14 @@ public class CodiceFiscale {
 		for (int i=0; i<3; i++) {
 			cod+=codiceFiscale[i];
 		}
-		if ( !cod.equals(CodiceFiscale.nomeToCodice(cognome)) ) return false;
+		if ( !cod.equals(CodiceFiscale.nomeToCodice(cognome, true)) ) return false;
 		
 		//controllo nome
 		cod = "";
 		for (int i=3; i<6; i++) {
 			cod+=codiceFiscale[i];
 		}
-		if ( !cod.equals(CodiceFiscale.nomeToCodice(nome))) return false;
+		if ( !cod.equals(CodiceFiscale.nomeToCodice(nome, false))) return false;
 		
 		//controllo anno nascita
 		if (codiceFiscale[6]-'0' != (nascita.getAnno()/10)%10) return false;
@@ -81,6 +81,7 @@ public class CodiceFiscale {
 		
 		//controllo giorno nascita
 		int giorno = (codiceFiscale[9] - '0')*10 + codiceFiscale[10] - '0';
+		if (sex.equals(Sesso.F)) giorno -= 40;	
 		if (giorno != nascita.getGiorno()) return false;
 		
 		
@@ -145,7 +146,7 @@ public class CodiceFiscale {
 	 * @return il codice di tre lettere.
 	 */
 	//@ requires (nome != null);
-	private static String nomeToCodice(String nome) {
+	private static String nomeToCodice(String nome, boolean cognome) {
 		if (nome == null) throw new IllegalArgumentException("Nome nullo");
 		
 		String n = nome.toUpperCase();
@@ -154,12 +155,13 @@ public class CodiceFiscale {
 		String voc = "";
 		for (int i=0; i<nome.length(); i++) {
 			if ("AEIOU".indexOf(n.charAt(i)) == -1) { 
-				if (cons.indexOf(n.charAt(i)) == -1) cons += n.charAt(i);
+				cons += n.charAt(i);
 			} else {
-				if (voc.indexOf(n.charAt(i)) == -1) voc += n.charAt(i);
+				voc += n.charAt(i);
 			}
 		}
-		
+		if (cons.length()>3 && !cognome) return cons.substring(0,1) + cons.substring(2,4);
+
 		String codice = cons+voc;
 		if (codice.length()<3) {
 			for (int i=codice.length(); i<3; i++) {
