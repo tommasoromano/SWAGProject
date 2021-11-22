@@ -28,8 +28,8 @@ public class Nazione {
 		String iso3 = "";
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
-			String[] attr = line.split(",");
-			iso3 = iso3 + "," + attr[2];
+			String[] attr = line.split(";");
+			iso3 = iso3 + "," + attr[12];
 		}
 		
 		return iso3.split(",");
@@ -50,9 +50,9 @@ public class Nazione {
 		}
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
-			String[] attr = line.split(",");
-			if (attr[2].equals(this.iso3)) {
-				return attr[3];
+			String[] attr = line.split(";");
+			if (attr[12].equals(this.iso3)) {
+				return attr[9].substring(1,4);
 			}
 		}
 		
@@ -65,7 +65,7 @@ public class Nazione {
 	
 	private static String getFilePath() {
 		return FileSystems.getDefault().getPath("").toAbsolutePath().toString()
-				+ "/src/main/java/iso-country-codes.csv";
+				+ "/src/main/java/codici-nazioni.csv";
 	}
 	
 }

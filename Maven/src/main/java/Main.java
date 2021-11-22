@@ -6,5 +6,9 @@ public class Main {
 		
 		CodiceFiscale t = new CodiceFiscale("RMNTMS00R03F205E".toCharArray());
 		System.out.println(t.isValid("Tommaso", "Romano", new Data(3,10,2000), new Nazione("ITA"), new Comune("Milano"), Sesso.M));
+	
+		CodiceFiscale m = new CodiceFiscale("MLLLNN00P70Z126B".toCharArray());
+		System.out.println(m.isValid("Lucia Anna", "Mellini", new Data(30,9,2000), new Nazione("NLD"), new Comune("Milano"), Sesso.F));
+		
 	}
 }

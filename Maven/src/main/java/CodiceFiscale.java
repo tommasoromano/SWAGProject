@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class CodiceFiscale {
@@ -17,6 +18,7 @@ public class CodiceFiscale {
 	//@ requires (codiceFiscale[13] >= '0' && codiceFiscale[13] <= '9');
 	//@ requires (codiceFiscale[14] >= '0' && codiceFiscale[14] <= '9');
 	//@ requires (codiceFiscale[15] >= 'A' && codiceFiscale[15] <= 'Z');
+	//@ ensures (\result == true);
 	private boolean controllaStruttura(char [] codiceFiscale) {
 		if  (codiceFiscale == null) throw new IllegalArgumentException("Codice fiscale nullo");
 		if (codiceFiscale.length != 16) throw new IllegalArgumentException("Lunghezza errata");
@@ -38,7 +40,7 @@ public class CodiceFiscale {
 		//giorno nascita
 		if (codiceFiscale[9] > '9' || codiceFiscale[9]<'0') throw new IllegalArgumentException("Valore non numerico");
 		if (codiceFiscale[10] > '9' || codiceFiscale[10]<'0') throw new IllegalArgumentException("Valore non numerico");
-		if (Integer.valueOf(codiceFiscale[9] - '0')*10 + Integer.valueOf(codiceFiscale[10] - '0') > 31) throw new IllegalArgumentException("Giorno non valido");
+		//if (Integer.valueOf(codiceFiscale[9] - '0')*10 + Integer.valueOf(codiceFiscale[10] - '0') > 31) throw new IllegalArgumentException("Giorno non valido");
 		
 		//ulitmi 5 caratteri
 		if (
@@ -53,18 +55,20 @@ public class CodiceFiscale {
 	}
 	
 	//@ requires (nome != null && cognome != null && nascita != null && stato != null);
-	//@ ensures (!stato.getIso3().equals("ITA") ==> codiceFiscale[11] == 'Z');
+	//@ ensures (!(!stato.getIso3().equals("ITA") ==> codiceFiscale[11] == 'Z') ==> \result == false);
 	public boolean isValid(String nome, String cognome, Data nascita, Nazione stato, Comune comune, Sesso sex) {
 		if (nome == null || cognome == null || nascita == null || stato == null) throw new IllegalArgumentException("Parametri nulli");
 		
 		//controllo cognome
 		String cod = "";
+		cognome = cognome.replace(" ", "");
 		for (int i=0; i<3; i++) {
 			cod+=codiceFiscale[i];
 		}
 		if ( !cod.equals(CodiceFiscale.nomeToCodice(cognome, true)) ) return false;
 		
 		//controllo nome
+		nome = nome.replace(" ", "");
 		cod = "";
 		for (int i=3; i<6; i++) {
 			cod+=codiceFiscale[i];
@@ -125,7 +129,11 @@ public class CodiceFiscale {
 			}
 		}
 		
-		List<Integer> ints = List.of(1,0,5,7,9,13,15,17,19,21,2,4,18,20,11,3,6,8,12,14,16,10,22,25,24,23);
+		int[] t_ints = new int[]{1,0,5,7,9,13,15,17,19,21,2,4,18,20,11,3,6,8,12,14,16,10,22,25,24,23};
+		List<Integer> ints = new ArrayList<>();
+		for (Integer i:t_ints) {
+			ints.add(i);
+		}
 		int d=0;
 		for (int i=0; i<pari.length();i++) {
 			char ch = pari.charAt(i);

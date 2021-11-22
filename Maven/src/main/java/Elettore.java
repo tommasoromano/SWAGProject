@@ -16,15 +16,15 @@ public class Elettore extends Utente {
 		this.tesseraElettorale = tesseraElettorale;
 	}
 	
-	//@ ensures getDataNascita().isMaggiorenne();
-	//@ ensures \old(voto) == false;
+	//@ requires getDataNascita().isMaggiorenne();
+	//@ requires \old(voto) == false;
 	//@ ensures voto == true;
 	public void esprimiVoto() {
 		
 		// controllo sia maggiorenne
 		if (this.getDataNascita().isMaggiorenne()) return;
 		
-		// controllo se ha già votato
+		// controllo se ha gia votato
 		if (this.voto) return;
 		
 		// azione di voto
