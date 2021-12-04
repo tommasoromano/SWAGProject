@@ -350,7 +350,7 @@
 													"top": 47,
 													"width": 115.96142578125,
 													"height": 13,
-													"text": "ElettoreView"
+													"text": "VotazioneView"
 												},
 												{
 													"_type": "LabelView",
@@ -1615,7 +1615,7 @@
 												"$ref": "AAAAAAF9e3DbLR2BMpE="
 											},
 											"edgePosition": 1,
-											"text": "8 : ElettoreView"
+											"text": "8 : Votazione"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2174,7 +2174,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9eprNAxWTt1Q="
 							},
-							"name": "ElettoreView",
+							"name": "Votazione",
 							"source": {
 								"$ref": "AAAAAAF9eqC/KRXlrNk="
 							},
@@ -2256,7 +2256,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9eprNAxWTt1Q="
 							},
-							"name": "ElettoreView",
+							"name": "VotazioneView",
 							"represent": {
 								"$ref": "AAAAAAF9eqGD7xYc0Z4="
 							},
@@ -2350,7 +2350,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF9eprNAxWSjQQ="
 					},
-					"name": "Role1"
+					"name": "Role1",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2358,7 +2359,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF9eprNAxWSjQQ="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2374,7 +2376,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF9eprNAxWSjQQ="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2382,7 +2385,8 @@
 					"_parent": {
 						"$ref": "AAAAAAF9eprNAxWSjQQ="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				}
 			]
 		}
