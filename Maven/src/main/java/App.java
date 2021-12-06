@@ -1,4 +1,3 @@
-import controller.DBController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-    	DBController db = new DBController();
     	
         Parent root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
         primaryStage.setTitle("LOGIN");

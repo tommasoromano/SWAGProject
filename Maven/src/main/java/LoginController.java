@@ -1,4 +1,5 @@
 //package controller;
+import controller.DBController;
 
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -41,11 +42,19 @@ public class LoginController {
 
     @FXML
     void handleLogin(ActionEvent event) {
-        if (username.getText().equals("PippoZord") && Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString().equals(
-                Hashing.sha256().hashString("123!", StandardCharsets.UTF_8).toString()))
-            accesLabel.setText("Ciao PippoZord");
-        else    
-            accesLabel.setText("ERRORE");
+    	try {
+    		DBController db = new DBController();
+    		String psw = db.getPsw(username.getText());
+    		String insertpsw = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
+    		if (psw.equals(insertpsw)) {
+    			accesLabel.setText("Welcome");
+    		}  else {
+    			accesLabel.setText("Wrong password, not registered yet?");
+    		}
+    	} catch (Exception e) {
+    		System.err.println("Could not connect to database");
+    		e.printStackTrace();
+    	}
     }   
 
     @FXML
