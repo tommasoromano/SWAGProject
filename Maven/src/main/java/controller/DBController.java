@@ -11,22 +11,34 @@ import java.util.NoSuchElementException;
 
 
 public class DBController {
+	
+	private static DBController _instance;
 	private static String url="jdbc:sqlite:database.db";
 	private Connection db;
 	
+	private DBController() {
+		
+	}
+	
 	/**
-	 * Inizializza this a un controller del database degli elettori 
-	 * @throws Exception se c'è un errore nella connessione con il database 
+	 * 
+	 * @return l'istanza di DBController in uso (instanziandola se non già esistente)
+	 * @throws Exception se c'è errore nella connessione con il databases
 	 */
-	public DBController() throws Exception {
-		try {
-			db = DriverManager.getConnection(url);
-			PreparedStatement st = db.prepareStatement("CREATE TABLE IF NOT EXISTS users (user TEXT, password TEXT, PRIMARY KEY (user))");
-			st.executeUpdate();
-			
-		} catch (SQLException e) {
-			throw new Exception("Errore nella connessione con il db :\n" + e.getMessage());
+	public static DBController getInstance() throws Exception {
+		if (_instance == null) {
+			_instance = new DBController();
+			try {
+				_instance.db = DriverManager.getConnection(url);
+				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS users (user TEXT, password TEXT, PRIMARY KEY (user))");
+				st.executeUpdate();
+				
+			} catch (SQLException e) {
+				throw new Exception("Errore nella connessione con il db :\n" + e.getMessage());
+			}
 		}
+		
+		return _instance;
 	}
 	
 	/**

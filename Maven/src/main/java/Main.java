@@ -12,7 +12,7 @@ public class Main {
 		System.out.println(m.isValid("Lucia Anna", "Mellini", new Data(30,9,2000), new Nazione("NLD"), new Comune("Milano"), Sesso.F));
 		
 		try {
-			DBController d = new DBController();
+			DBController d = DBController.getInstance();
 			d.insertUserPsw("luca", "12345");
 			System.out.println(d.getPsw("luca"));
 		} catch (Exception e) { 

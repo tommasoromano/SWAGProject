@@ -1,5 +1,4 @@
-//package controller;
-import controller.DBController;
+package controller;
 
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -43,7 +42,7 @@ public class LoginController {
     @FXML
     void handleLogin(ActionEvent event) {
     	try {
-    		DBController db = new DBController();
+    		DBController db = DBController.getInstance();
     		String psw = db.getPsw(username.getText());
     		String insertpsw = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
     		if (psw.equals(insertpsw)) {
