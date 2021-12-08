@@ -1,4 +1,5 @@
-import controller.DBController;
+package root.util;
+import root.controller.DBController;
 
 public class Main {
 	public static void main(String args[]) {

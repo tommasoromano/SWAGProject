@@ -1,4 +1,4 @@
-package controller;
+package root.controller;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;

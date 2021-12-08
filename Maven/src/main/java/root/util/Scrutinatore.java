@@ -1,3 +1,4 @@
+package root.util;
 
 public class Scrutinatore extends Utente {
 

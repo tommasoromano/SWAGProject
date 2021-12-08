@@ -1,4 +1,4 @@
-
+package root.util;
 public class Elettore extends Utente {
 
 	private /*@ spec_public @*/ boolean voto;

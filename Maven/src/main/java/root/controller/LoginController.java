@@ -1,4 +1,4 @@
-package controller;
+package root.controller;
 
 import java.net.URL;
 import java.nio.charset.StandardCharsets;

@@ -1,3 +1,4 @@
+package root.util;
 
 public abstract class Utente {
 	
