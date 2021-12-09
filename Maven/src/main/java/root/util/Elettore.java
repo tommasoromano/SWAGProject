@@ -38,9 +38,5 @@ public class Elettore {
 		this.codiceFiscale = codiceFiscale;
 		this.tesseraElettorale = tesseraElettorale;
 	}
-	
-	public Elettore(CodiceFiscale CF) {
-		this.codiceFiscale = CF;
-	}
 
 }

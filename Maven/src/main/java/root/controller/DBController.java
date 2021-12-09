@@ -1,5 +1,6 @@
 package root.controller;
 
+import root.App;
 import root.util.CodiceFiscale;
 import root.util.Data;
 import root.util.Elettore;
@@ -31,7 +32,7 @@ public class DBController {
 	 * @return l'istanza di DBController in uso (instanziandola se non già esistente)
 	 * @throws Exception se c'è errore nella connessione con il databases
 	 */
-	public static DBController getInstance() throws Exception {
+	public static DBController getInstance() {
 		if (_instance == null) {
 			_instance = new DBController();
 			try {
@@ -43,7 +44,8 @@ public class DBController {
 				st.executeUpdate();
 				
 			} catch (SQLException e) {
-				throw new Exception("Errore nella connessione con il db :\n" + e.getMessage());
+				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
+				//throw new Exception("Errore nella connessione con il db :\n" + e.getMessage());
 			}
 		}
 		
@@ -72,66 +74,89 @@ public class DBController {
 			return false;
 		}
 	}
+	
 	/**
-	 * 
-	 * @param username dell'utente.
-	 * @return la password hashata relativa a quell'utente.
-	 * @throws NoSuchElementException username non è presente nel database.
+	 * Se CF e psw sono corretti, crea istanza di Elettore in App e ritorna true
+	 * @param CF
+	 * @param psw
+	 * @return
 	 */
-	private String getPswElettore(CodiceFiscale CF) {
-		String s="";
-		try {
-			PreparedStatement st = db.prepareStatement("SELECT * FROM elettore AS U WHERE U.CF = ?");
-			st.setString(1, CF.toString());
-			ResultSet set = st.executeQuery();
-			if (set==null) throw new NoSuchElementException("Username not found");		
-			
-			while (set.next()) {
-				s = set.getString(2);
-			}
-		} catch (SQLException e ) {
-			System.err.println(e.getMessage());
-		}
-		return s;
-	}
-	
-	private String getPswScrutinatore(String email) {
-		String s="";
-		try {
-			PreparedStatement st = db.prepareStatement("SELECT * FROM scrutinatore AS U WHERE U.email = ?");
-			st.setString(1, email);
-			ResultSet set = st.executeQuery();
-			if (set==null) throw new NoSuchElementException("Email not found");		
-			
-			while (set.next()) {
-				s = set.getString(2);
-			}
-		} catch (SQLException e ) {
-			System.err.println(e.getMessage());
-		}
-		return s;
-	}
-	
 	public boolean elettoreLogin(CodiceFiscale CF, String psw) {
 		try {		
     		String sha256hex = Hashing.sha256()
 					  .hashString(psw, StandardCharsets.UTF_8)
 					  .toString();
-    		String password = getPswElettore(CF);
-    		return password.equals(sha256hex);
+    		
+    		// prendi riga dell'elettore
+    		String email = "";
+    		String password = "";
+    		String nome = "";
+    		String cognome = "";
+    		String tessera = "";
+    		String luogo = "";
+    		Data data = null;
+    		Sesso sesso = Sesso.M;
+			PreparedStatement st = db.prepareStatement("SELECT * FROM elettore AS U WHERE U.CF = ?");
+			st.setString(1, CF.toString());
+			ResultSet set = st.executeQuery();
+			if (set==null) throw new NoSuchElementException("Elettore non trovato");		
+			//email, password, nome, cognome, tessera, luogo_nascita, data_nascita, CF, sesso
+			while (set.next()) {
+				email = set.getString(1);
+				password = set.getString(2);
+				nome = set.getString(3);
+				cognome = set.getString(4);
+				tessera = set.getString(5);
+				luogo = set.getString(6);
+				data = new Data(set.getString(6));
+				sesso = set.getString(8).equals("M") ? Sesso.M : Sesso.F;
+			}
+    		
+    		if (password.equals(sha256hex)) {
+    			// nome cognome sesso data luogo CF tessera
+    			App.getInstance().setElettore(new Elettore(
+    					nome, cognome, sesso, data, luogo, CF, tessera
+    					));
+    			return true;
+    		} else {
+    			return false;
+    		}
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     		return false;
     	}
 	}
 	
+	/**
+	 * Se email e psw sono corretti, crea istanza di Scrutinatore in App e ritorna true
+	 * @param CF
+	 * @param psw
+	 * @return
+	 */
 	public boolean scrutinatoreLogin(String email, String psw) {
 		try {		
     		String sha256hex = Hashing.sha256()
 					  .hashString(psw, StandardCharsets.UTF_8)
 					  .toString();
-    		String password = getPswScrutinatore(email);
-    		return password.equals(sha256hex);
+    		
+    		// prendi riga dell'scrutinatore
+    		String password = "";
+			PreparedStatement st = db.prepareStatement("SELECT * FROM scrutinatore AS U WHERE U.email = ?");
+			st.setString(1, email);
+			ResultSet set = st.executeQuery();
+			if (set==null) throw new NoSuchElementException("Scrutinatore non trovato");		
+			//email, password
+			while (set.next()) {
+				email = set.getString(1);
+				password = set.getString(2);
+			}
+    		
+    		if (password.equals(sha256hex)) {
+    			App.getInstance().setScrutinatore(new Scrutinatore(email));
+    			return true;
+    		} else {
+    			return false;
+    		}
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     		return false;

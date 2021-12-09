@@ -62,15 +62,16 @@ public class ElettoreLoginController {
 			return false;
     	}
     	
+    	// crea istanza di elettore
     	boolean res = DBController.getInstance().elettoreLogin(CF, password.getText());
     	
-    	if (e == null ) {
+    	if (!res) {
     		textError.setText("Codice Fiscale o Password errati");
     		return false;
-    	} else {
-    		App.getInstance().setElettore(e);
-    		return true;
-    	}
+    	} 
+    	
+		return true;
+
 
     }
 

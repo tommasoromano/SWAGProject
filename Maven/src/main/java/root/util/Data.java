@@ -16,11 +16,7 @@ public class Data implements Comparable<Data> {
 	//@ requires (compareTo(giorno, mese, anno, getTodayData()) < 0);
 	public Data(int giorno, int mese, int anno) {
 		
-		if (anno < 1800) throw new IllegalArgumentException("Anno non valido");
-		if (mese < 1 || mese > 12) throw new IllegalArgumentException("Mese non valido");
-		if ( (mese == 1 || mese == 3 || mese == 5 || mese == 7 || mese == 8 || mese == 10 || mese == 12 ) && giorno > 31) throw new IllegalArgumentException("Giorno non valido per mese " + mese); 
-		if ( mese == 2 && giorno > 29) throw new IllegalArgumentException("Giorno non valido per mese " + mese);
-		if ( (mese == 4 || mese == 6 || mese == 9 || mese == 11) && giorno > 30) throw new IllegalArgumentException("Giorno non valido per mese "+ mese);
+		isValid(giorno, mese, anno);
 	
 		this.giorno = giorno;
 		this.mese = mese;
@@ -29,6 +25,35 @@ public class Data implements Comparable<Data> {
 		if (this.compareTo(giorno, mese, anno, getTodayData()) > 0) {
 			throw new IllegalArgumentException("Data successiva a data corrente");
 		}
+		
+	}
+	
+	public Data(String data) {
+		String[] s = data.split("/");
+		if (s.length != 3) throw new IllegalArgumentException("Data non valida");
+		
+		int g = Integer.parseInt(s[0]);
+		int m = Integer.parseInt(s[1]);
+		int a = Integer.parseInt(s[2]);
+		
+		isValid(g, m, a);
+		
+		this.giorno = g;
+		this.mese = m;
+		this.anno = a;
+		
+		if (this.compareTo(g, m, a, getTodayData()) > 0) {
+			throw new IllegalArgumentException("Data successiva a data corrente");
+		}
+	}
+	
+	private void isValid(int giorno, int mese, int anno) {
+		
+		if (anno < 1800) throw new IllegalArgumentException("Anno non valido");
+		if (mese < 1 || mese > 12) throw new IllegalArgumentException("Mese non valido");
+		if ( (mese == 1 || mese == 3 || mese == 5 || mese == 7 || mese == 8 || mese == 10 || mese == 12 ) && giorno > 31) throw new IllegalArgumentException("Giorno non valido per mese " + mese); 
+		if ( mese == 2 && giorno > 29) throw new IllegalArgumentException("Giorno non valido per mese " + mese);
+		if ( (mese == 4 || mese == 6 || mese == 9 || mese == 11) && giorno > 30) throw new IllegalArgumentException("Giorno non valido per mese "+ mese);
 		
 	}
 	
@@ -90,7 +115,7 @@ public class Data implements Comparable<Data> {
 	
 	@Override 
 	public String toString() {
-		return anno + "-" + mese + "-" + giorno;
+		return giorno + "/" + mese + "/" + anno;
 	}
 	
  }

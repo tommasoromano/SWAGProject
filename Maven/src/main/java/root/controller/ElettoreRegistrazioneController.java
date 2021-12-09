@@ -108,6 +108,7 @@ public class ElettoreRegistrazioneController {
 			textError.setText("Data non valida");
 			return false;
 		}
+		
 		//codice fiscale
     	if (codiceFiscale.getText().length() == 0) {
     		textError.setText("Compila il campo Codice Fiscale");
@@ -143,18 +144,13 @@ public class ElettoreRegistrazioneController {
     		s = Sesso.F;
     	}
     	
-    	try { 
-    		boolean res = DBController.getInstance().registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText(), s);
-    		if (!res) {
-    			textError.setText("Codice fiscale già in uso");
-    		}
-    		return res;
-    	} catch (Exception e) {
-    		textError.setText(e.getMessage());
-    		e.printStackTrace();
-    	}
-    	
-    	return false;
+    	boolean res = DBController.getInstance().registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText(), s);
+		if (!res) {
+			textError.setText("Codice fiscale già in uso");
+			return false;
+		}
+		
+		return true;
     }
 
 }

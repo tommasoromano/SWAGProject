@@ -46,6 +46,14 @@ public class ScrutinatoreLoginController {
 			return false;
     	}
     	
+    	// crea istanza di scrutinatore
+    	boolean res = DBController.getInstance().scrutinatoreLogin(email.getText(), codice.getText());
+    	
+    	if (!res) {
+    		textError.setText("Email o Codice errati");
+    		return false;
+    	} 
+    	
     	return true;
     }
 
