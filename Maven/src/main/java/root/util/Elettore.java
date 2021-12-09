@@ -1,34 +1,42 @@
 package root.util;
-public class Elettore extends Utente {
 
-	private /*@ spec_public @*/ boolean voto;
+public class Elettore {
+
+	//@ public invariant nome != null;
+	private /*@ spec_public @*/ String nome;
+	
+	//@ public invariant cognome != null;
+	private /*@ spec_public @*/ String cognome;
+
+	private Sesso sesso;
+	
+	//@ public invariant dataNascita != null;
+	private /*@ spec_public @*/ Data dataNascite;
+	
+	//@ public invariant nazioneNascita != null
+	private /*@ spec_public @*/ String luogoNascita;
+	
+	//@ public invariant codiceFiscale != null;
+	private /*@ spec_public @*/ CodiceFiscale codiceFiscale;
 	
 	//@ public invariant tesseraEletorale != null;
 	private /*@ spec_public @*/ String tesseraElettorale;
 	
-	//@ requires tesseraElettorale != null;
+	/*@ requires nome != null && cognome != null && dataNascita != null && 
+	@ nazioneNascita != null && codiceFiscale != null && tesseraElettorale != null;
+	@*/
 	public Elettore(String nome, String cognome, Sesso sesso, 
-			Data dataNascita, Comune comuneNascita, Nazione nazioneNascita, 
+			Data dataNascita, String luogoNascita, 
 			CodiceFiscale codiceFiscale, 
 			String tesseraElettorale) 
 	{
-		super(nome, cognome, sesso, dataNascita, comuneNascita, nazioneNascita, codiceFiscale);
+		this.nome = nome;
+		this.cognome = cognome;
+		this.sesso = sesso;
+		this.dataNascite = dataNascita;
+		this.luogoNascita = luogoNascita;
+		this.codiceFiscale = codiceFiscale;
 		this.tesseraElettorale = tesseraElettorale;
-	}
-	
-	//@ requires getDataNascita().isMaggiorenne();
-	//@ requires \old(voto) == false;
-	//@ ensures voto == true;
-	public void esprimiVoto() {
-		
-		// controllo sia maggiorenne
-		if (this.getDataNascita().isMaggiorenne()) return;
-		
-		// controllo se ha gia votato
-		if (this.voto) return;
-		
-		// azione di voto
-		this.voto = true;
 	}
 
 }

@@ -5,16 +5,36 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import root.controller.DBController;
+import root.util.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
+	public App() {
+		
+	}
+	private static App _instance;
+	
+	public static App getInstance() {
+		if (_instance == null) {
+			_instance = new App();
+		}
+		return _instance;
+	}
+	
     private static Scene scene;
+    
+    private Elettore elettore;
+    private Scrutinatore scrutinatore;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,7 +44,7 @@ public class App extends Application {
         stage.setTitle("Vota Online");
         stage.setMinWidth(900);
         stage.setMinHeight(600);
-        stage.setResizable(false);   
+        stage.setResizable(true);   
         stage.show();
     }
 
@@ -46,5 +66,21 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+    
+    public void setElettore(Elettore e) {
+    	this.elettore = e;
+    }
+    
+    public Elettore getElettore() {
+    	return this.elettore;
+    }
+    
+    public void setScrutinatore(Scrutinatore s) {
+    	this.scrutinatore = s;
+    }
+    
+    public Scrutinatore getScrutinatore() {
+    	return this.scrutinatore;
     }
 }

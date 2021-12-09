@@ -1,17 +1,17 @@
 package root.util;
 
-public class Scrutinatore extends Utente {
+public class Scrutinatore {
 
-	//@ public invariant codiceGestore != null;
-	private /*@ spec_public @*/ String codiceGestore;
+	//@ public invariant email != null;
+	private /*@ spec_public @*/ String email;
+		
+	//@ public invariant codice != null;
+	private /*@ spec_public @*/ String codice;
 	
-	//@ requires codiceGestore != null;
-	public Scrutinatore(String nome, String cognome, Sesso sesso, 
-			Data dataNascita, Comune comuneNascita, Nazione nazioneNascita, 
-			CodiceFiscale codiceFiscale,
-			String codiceGestore) 
+	//@ requires email != null && codice != null;
+	public Scrutinatore(String email, String codice) 
 	{
-		super(nome, cognome, sesso, dataNascita, comuneNascita, nazioneNascita, codiceFiscale);
-		this.codiceGestore = codiceGestore;
+		this.email = email;
+		this.codice = codice;
 	}
 }

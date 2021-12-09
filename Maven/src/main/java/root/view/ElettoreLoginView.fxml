@@ -32,9 +32,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Email" />
+                  <Label text="Codice Fiscale" />
                   <Label text="Password" GridPane.rowIndex="1" />
-                  <TextField fx:id="email" GridPane.columnIndex="1" />
+                  <TextField fx:id="codiceFiscale" GridPane.columnIndex="1" />
                   <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>

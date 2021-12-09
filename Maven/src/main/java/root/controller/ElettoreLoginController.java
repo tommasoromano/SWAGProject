@@ -21,7 +21,7 @@ public class ElettoreLoginController {
     private Button buttonLogin;
 	
 	@FXML
-    private TextField email;
+    private TextField codiceFiscale;
 
     @FXML
     private TextField password;
@@ -43,8 +43,8 @@ public class ElettoreLoginController {
     
     private boolean checkLogin() {
     	
-    	if (email.getText().length() == 0) {
-    		textError.setText("Compila il campo Email");
+    	if (codiceFiscale.getText().length() == 0) {
+    		textError.setText("Compila il campo Codice Fiscale");
 			return false;
     	}
     	if (password.getText().length() == 0) {
@@ -52,19 +52,14 @@ public class ElettoreLoginController {
 			return false;
     	}
     	
-    	try {
-    		DBController db = DBController.getInstance();
-    		String sha256hex = Hashing.sha256()
-					  .hashString(password.getText(), StandardCharsets.UTF_8)
-					  .toString();
-    		if (! db.getPswElettore(email.getText()).equals(sha256hex)) {
-    			textError.setText("Password errata");
-    			return false;
-    		} 
-    		return true;
-    	} catch (Exception e) {
-    		textError.setText("Errore");
+    	Elettore e = DBController.getInstance().elettoreLogin(codiceFiscale.getText(), password.getText());
+    	
+    	if (e == null ) {
+    		textError.setText("Codice Fiscale o Password errati");
     		return false;
+    	} else {
+    		App.getInstance().setElettore(e);
+    		return true;
     	}
 
     }
