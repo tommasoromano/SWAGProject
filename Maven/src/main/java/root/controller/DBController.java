@@ -3,6 +3,7 @@ package root.controller;
 import root.util.CodiceFiscale;
 import root.util.Data;
 import root.util.Elettore;
+import root.util.Scrutinatore;
 import root.util.Sesso;
 
 import java.nio.charset.StandardCharsets;
@@ -94,12 +95,42 @@ public class DBController {
 		return s;
 	}
 	
+	private String getPswScrutinatore(String email) {
+		String s="";
+		try {
+			PreparedStatement st = db.prepareStatement("SELECT * FROM scrutinatore AS U WHERE U.email = ?");
+			st.setString(1, email);
+			ResultSet set = st.executeQuery();
+			if (set==null) throw new NoSuchElementException("Email not found");		
+			
+			while (set.next()) {
+				s = set.getString(2);
+			}
+		} catch (SQLException e ) {
+			System.err.println(e.getMessage());
+		}
+		return s;
+	}
+	
 	public boolean elettoreLogin(CodiceFiscale CF, String psw) {
 		try {		
     		String sha256hex = Hashing.sha256()
 					  .hashString(psw, StandardCharsets.UTF_8)
 					  .toString();
     		String password = getPswElettore(CF);
+    		return password.equals(sha256hex);
+    	} catch (Exception e) {
+    		System.err.println(e.getMessage());
+    		return false;
+    	}
+	}
+	
+	public boolean scrutinatoreLogin(String email, String psw) {
+		try {		
+    		String sha256hex = Hashing.sha256()
+					  .hashString(psw, StandardCharsets.UTF_8)
+					  .toString();
+    		String password = getPswScrutinatore(email);
     		return password.equals(sha256hex);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());

@@ -108,23 +108,17 @@ public class ElettoreRegistrazioneController {
 			textError.setText("Data non valida");
 			return false;
 		}
-    	//codice fiscale
-    	CodiceFiscale CF  = null;
+		//codice fiscale
     	if (codiceFiscale.getText().length() == 0) {
     		textError.setText("Compila il campo Codice Fiscale");
+    		return false;
     	}
-    	try {
-    		String txt = codiceFiscale.getText().toUpperCase();
-    		char [] codice = new char[16];
-    		for (int i=0; i<codice.length; i++) {
-    			codice[i] = txt.charAt(i);
-    		}
-			CF = new CodiceFiscale(codice);
-		} catch (IllegalArgumentException e) {
-			textError.setText("Codice fiscale non valido");
-			System.err.println(e.getMessage());
-			return false;
-		}
+    	CodiceFiscale CF  = CodiceFiscale.fromStringToCF(codiceFiscale.getText());
+    	if (CF == null) {
+    		textError.setText("Codice Fiscale errato");
+    		return false;
+    	}
+    	
 		//tessera elettorale
     	if (tesseraElettorale.getText().length() == 0) {
     		textError.setText("Compila il campo Tessera Elettorale");

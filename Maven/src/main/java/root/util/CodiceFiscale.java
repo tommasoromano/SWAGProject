@@ -184,6 +184,24 @@ public class CodiceFiscale {
 		return codice;
 	}
 	
+	/**
+	 * Crea un'istanza di CodiceFiscale se s corretta
+	 * @param s
+	 * @return istanza di CodiceFiscale
+	 */
+	public static CodiceFiscale fromStringToCF(String s) {
+		try {
+    		String txt = s.toUpperCase();
+    		char [] codice = new char[16];
+    		for (int i=0; i<codice.length; i++) {
+    			codice[i] = txt.charAt(i);
+    		}
+			return new CodiceFiscale(codice);
+		} catch (IllegalArgumentException e) {
+			return null;
+		}
+	}
+	
 	@Override 
 	public String toString() {
 		String s = "";
