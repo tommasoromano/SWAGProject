@@ -12,7 +12,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import root.App;
 
-public class ElettoreRegistrazioneController {
+public class ElettoreRegistrazioneController extends Controller {
+
+	@Override
+    public void init() {
+    	
+    }
 	
 	@FXML
 	private CheckBox sessoMaschio;
@@ -144,7 +149,16 @@ public class ElettoreRegistrazioneController {
     		s = Sesso.F;
     	}
     	
-    	boolean res = DBController.getInstance().registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText(), s);
+    	boolean res = DBController.getInstance().registerElettore(
+    			email.getText(), 
+    			password.getText(), 
+    			nome.getText(), 
+    			cognome.getText(), 
+    			d, 
+    			luogo.getText(), 
+    			CF, 
+    			tesseraElettorale.getText(), 
+    			s);
 		if (!res) {
 			textError.setText("Codice fiscale già in uso");
 			return false;

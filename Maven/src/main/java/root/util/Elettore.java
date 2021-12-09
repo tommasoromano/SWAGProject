@@ -38,5 +38,13 @@ public class Elettore {
 		this.codiceFiscale = codiceFiscale;
 		this.tesseraElettorale = tesseraElettorale;
 	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public String getCognome() {
+		return this.cognome;
+	}
 
 }

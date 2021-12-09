@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import root.controller.Controller;
 import root.controller.DBController;
 import root.util.*;
 
@@ -56,6 +57,8 @@ public class App extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		Controller c = loader.getController();
+		c.init();
         return parent;
     }
 

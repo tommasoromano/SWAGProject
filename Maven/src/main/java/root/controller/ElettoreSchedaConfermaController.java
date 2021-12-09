@@ -4,7 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import root.App;
 
-public class ElettoreSchedaConfermaController {
+public class ElettoreSchedaConfermaController extends Controller {
+
+	@Override
+    public void init() {
+    	
+    }
 
     @FXML
     private Button buttonAnnulla;

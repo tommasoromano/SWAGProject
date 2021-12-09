@@ -6,7 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import root.App;
 
-public class ScrutinatoreLoginController {
+public class ScrutinatoreLoginController extends Controller {
+
+	@Override
+    public void init() {
+    	
+    }
 
 	@FXML
     private Button buttonIndietro;

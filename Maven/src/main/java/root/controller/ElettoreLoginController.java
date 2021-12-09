@@ -13,8 +13,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import root.App;
 
-public class ElettoreLoginController {
+public class ElettoreLoginController extends Controller {
 
+	@Override
+    public void init() {
+    	
+    }
+	
 	@FXML
     private Button buttonIndietro;
 	
@@ -49,8 +54,15 @@ public class ElettoreLoginController {
     		textError.setText("Compila il campo Codice Fiscale");
     		return false;
     	}
-    	CodiceFiscale CF  = CodiceFiscale.fromStringToCF(codiceFiscale.getText());
-    	if (CF == null) {
+    	CodiceFiscale CF = null;
+    	try
+    	{
+    		CF  = CodiceFiscale.fromStringToCF(codiceFiscale.getText());
+        	if (CF == null) {
+        		textError.setText("Codice Fiscale errato");
+        		return false;
+        	}
+    	} catch(Exception e) {
     		textError.setText("Codice Fiscale errato");
     		return false;
     	}

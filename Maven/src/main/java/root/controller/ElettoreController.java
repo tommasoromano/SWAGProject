@@ -4,9 +4,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import root.App;
+import root.util.Elettore;
 
-public class ElettoreController {
+public class ElettoreController extends Controller {
 
+    @Override
+    public void init() {
+    	Elettore e = App.getInstance().getElettore();
+    	String h = e.getNome() + " " + e.getCognome();
+    	textHead.setText(h);
+    }
+    
     @FXML
     private Button buttonScheda1;
 
@@ -20,6 +28,5 @@ public class ElettoreController {
     void onActionScheda() {
     	App.navigate("ElettoreSchedaView");
     }
-   
 
 }

@@ -30,7 +30,7 @@ public class Data implements Comparable<Data> {
 	
 	public Data(String data) {
 		String[] s = data.split("/");
-		if (s.length != 3) throw new IllegalArgumentException("Data non valida");
+		if (s.length != 3) throw new IllegalArgumentException("Data non valida: " + data);
 		
 		int g = Integer.parseInt(s[0]);
 		int m = Integer.parseInt(s[1]);

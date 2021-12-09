@@ -43,6 +43,8 @@ public class DBController {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scrutinatore (email TEXT, password TEXT, PRIMARY KEY (email))");
 				st.executeUpdate();
 				
+				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
+				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
 				//throw new Exception("Errore nella connessione con il db :\n" + e.getMessage());
@@ -108,7 +110,7 @@ public class DBController {
 				cognome = set.getString(4);
 				tessera = set.getString(5);
 				luogo = set.getString(6);
-				data = new Data(set.getString(6));
+				data = new Data(set.getString(7));
 				sesso = set.getString(8).equals("M") ? Sesso.M : Sesso.F;
 			}
     		

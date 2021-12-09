@@ -5,7 +5,12 @@ import root.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class HomeController {
+public class HomeController extends Controller {
+
+	@Override
+    public void init() {
+    	
+    }
 
     @FXML
     private Button buttonElettoreLogin;
