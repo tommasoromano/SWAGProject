@@ -44,13 +44,6 @@ public class RegistrationController {
 		}
 		try {
 			DBController db = DBController.getInstance();
-			boolean res = db.insertUserPsw(username.getText(), password.getText());
-			if (res) {
-				registrationLabel.setText("Successful registration");
-				//switchToLogin(action);
-			} else {
-				registrationLabel.setText("Registration failure: username invalid");
-			}
 		} catch (Exception e) {
 			registrationLabel.setText("An internal error has occurred, please retry");
 			e.printStackTrace();

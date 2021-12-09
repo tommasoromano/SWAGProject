@@ -1,5 +1,7 @@
 package root.controller;
 
+import root.util.CodiceFiscale;
+import root.util.Data;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,7 +32,7 @@ public class DBController {
 			_instance = new DBController();
 			try {
 				_instance.db = DriverManager.getConnection(url);
-				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS users (user TEXT, password TEXT, PRIMARY KEY (user))");
+				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS elettore (email TEXT, password TEXT, nome TEXT, cognome TEXT, tessera TEXT, luogo_nascita TEXT, data_nascita TEXT, CF TEXT,  PRIMARY KEY (email))");
 				st.executeUpdate();
 				
 			} catch (SQLException e) {
@@ -50,7 +52,7 @@ public class DBController {
 	public String getPsw(String username) {
 		String s="";
 		try {
-			PreparedStatement st = db.prepareStatement("SELECT * FROM users AS U WHERE U.user = ?");
+			PreparedStatement st = db.prepareStatement("SELECT * FROM elettore AS U WHERE U.email = ?");
 			st.setString(1, username);
 			ResultSet set = st.executeQuery();
 			if (set==null) throw new NoSuchElementException("Username not found");		
@@ -65,19 +67,27 @@ public class DBController {
 	}
 	
 	/**
-	 *
+	 * Inserisce i dati di login nel database
 	 * @param username
 	 * @param psw
-	 * @return true se l'username e la password (hashata) sono inseriti correttamente nel database, false altrimenti.
+	 * @return true se i dati sono inseriti correttamente nel database, false altrimenti.
 	 */
-	public boolean insertUserPsw(String username, String psw) {
+	public boolean registerElettore(String mail, String psw, String nome, String cognome, Data nascita, String luogo, CodiceFiscale CF, String tessera) {
+		
 		try {
-			PreparedStatement st = db.prepareStatement("INSERT INTO users VALUES (?, ?)");
+			PreparedStatement st = db.prepareStatement("INSERT INTO elettore VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			String sha256hex = Hashing.sha256()
 					  .hashString(psw, StandardCharsets.UTF_8)
 					  .toString();
-			st.setString(1, username);
+			st.setString(1, mail);
 			st.setString(2, sha256hex);
+			st.setString(3, nome);
+			st.setString(4, cognome);
+			st.setString(5,  tessera);
+			st.setString(6, luogo);
+			st.setString(7,  nascita.toString());
+			st.setString(8, CF.toString());
+			
 			st.executeUpdate();
 			return true;
 			

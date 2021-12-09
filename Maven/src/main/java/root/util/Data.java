@@ -88,4 +88,9 @@ public class Data implements Comparable<Data> {
 		return new int[] {22, 11, 2021};
 	}
 	
+	@Override 
+	public String toString() {
+		return anno + "-" + mese + "-" + giorno;
+	}
+	
  }

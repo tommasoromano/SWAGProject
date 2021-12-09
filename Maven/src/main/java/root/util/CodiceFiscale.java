@@ -9,6 +9,7 @@ public class CodiceFiscale {
 	private /*@ spec_public @*/ char[] codiceFiscale;
 	
 	public CodiceFiscale(char[] codiceFiscale) {
+		if (codiceFiscale == null) throw new IllegalArgumentException("Codice nullo");
 		if (!controllaStruttura(codiceFiscale)) throw new IllegalArgumentException("Codice fiscale non valido");
 		this.codiceFiscale = codiceFiscale;
 	}
@@ -21,36 +22,35 @@ public class CodiceFiscale {
 	//@ requires (codiceFiscale[14] >= '0' && codiceFiscale[14] <= '9');
 	//@ requires (codiceFiscale[15] >= 'A' && codiceFiscale[15] <= 'Z');
 	//@ ensures (\result == true);
-	private boolean controllaStruttura(char [] codiceFiscale) {
-		if  (codiceFiscale == null) throw new IllegalArgumentException("Codice fiscale nullo");
-		if (codiceFiscale.length != 16) throw new IllegalArgumentException("Lunghezza errata");
-		
+	private boolean controllaStruttura(char [] codice) {
+		if  (codice == null) throw new IllegalArgumentException("Codice fiscale nullo");
+		if (codice.length != 16) throw new IllegalArgumentException("Lunghezza errata");
 		//primi sei caratteri sono lettere 
 		for (int i=0; i<6; i++) {
-			if (codiceFiscale[i] > 'Z' || codiceFiscale[i] < 'A') throw new IllegalArgumentException("Carattere " + i + " non lettera");
+			if (codice[i] > 'Z' || codice[i] < 'A') throw new IllegalArgumentException("Carattere " + codice[i] + " non lettera");
 		}
 		
 		
 		//due interi
 		for (int i=6; i<8; i++) {
-			if (codiceFiscale[i]>'9' || codiceFiscale[i] < '0') throw new IllegalArgumentException("Carattere " + i + " non numerico");
+			if (codice[i]>'9' || codice[i] < '0') throw new IllegalArgumentException("Carattere " + codice[i] + " non numerico");
 		}
 		
 		//mese nascita
-		if ("ABCDEHLMPRST".indexOf(codiceFiscale[8]) == -1) throw new IllegalArgumentException("Mese non valido");
+		if ("ABCDEHLMPRST".indexOf(codice[8]) == -1) throw new IllegalArgumentException("Mese non valido");
 		
 		//giorno nascita
-		if (codiceFiscale[9] > '9' || codiceFiscale[9]<'0') throw new IllegalArgumentException("Valore non numerico");
-		if (codiceFiscale[10] > '9' || codiceFiscale[10]<'0') throw new IllegalArgumentException("Valore non numerico");
+		if (codice[9] > '9' || codice[9]<'0') throw new IllegalArgumentException("Valore non numerico");
+		if (codice[10] > '9' || codice[10]<'0') throw new IllegalArgumentException("Valore non numerico");
 		//if (Integer.valueOf(codiceFiscale[9] - '0')*10 + Integer.valueOf(codiceFiscale[10] - '0') > 31) throw new IllegalArgumentException("Giorno non valido");
 		
 		//ulitmi 5 caratteri
 		if (
-			!(codiceFiscale[11] >= 'A' && codiceFiscale[11] <= 'Z') || 
-			!(codiceFiscale[12] >= '0' && codiceFiscale[12] <= '9') || 
-			!(codiceFiscale[13] >= '0' && codiceFiscale[13] <= '9') ||
-			!(codiceFiscale[14] >= '0' && codiceFiscale[14] <= '9') ||
-			!(codiceFiscale[15] >= 'A' && codiceFiscale[15] <= 'Z')) throw new IllegalArgumentException("Ultimi 5 caratteri non validi");
+			!(codice[11] >= 'A' && codice[11] <= 'Z') || 
+			!(codice[12] >= '0' && codice[12] <= '9') || 
+			!(codice[13] >= '0' && codice[13] <= '9') ||
+			!(codice[14] >= '0' && codice[14] <= '9') ||
+			!(codice[15] >= 'A' && codice[15] <= 'Z')) throw new IllegalArgumentException("Ultimi 5 caratteri non validi");
 		
 		return true;
 					
@@ -182,6 +182,15 @@ public class CodiceFiscale {
 		}
 		
 		return codice;
+	}
+	
+	@Override 
+	public String toString() {
+		String s = "";
+		for (int i=0; i<codiceFiscale.length; i++) {
+			s+= codiceFiscale[i];
+		}
+		return s;
 	}
 	
 }

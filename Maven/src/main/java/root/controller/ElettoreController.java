@@ -20,5 +20,6 @@ public class ElettoreController {
     void onActionScheda() {
     	App.navigate("ElettoreSchedaView");
     }
+   
 
 }

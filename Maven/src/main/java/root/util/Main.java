@@ -14,7 +14,7 @@ public class Main {
 		
 		try {
 			DBController d = DBController.getInstance();
-			d.insertUserPsw("luca", "12345");
+			d.registerElettore("luca@gmail.com", "12345", "luca", "rompani", new Data(30,11,2000), "Lecco", l, "0000");
 			System.out.println(d.getPsw("luca"));
 		} catch (Exception e) { 
 			throw new IllegalArgumentException(e.getMessage());
