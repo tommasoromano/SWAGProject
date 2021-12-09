@@ -2,8 +2,10 @@ package root.controller;
 
 import root.util.CodiceFiscale;
 import root.util.Data;
+import root.util.Sesso;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,7 +13,13 @@ import javafx.scene.control.TextField;
 import root.App;
 
 public class ElettoreRegistrazioneController {
-
+	
+	@FXML
+	private CheckBox sessoMaschio;
+	
+	@FXML
+	private CheckBox sessoFemmina;
+	
 	@FXML
     private Button buttonIndietro;
 
@@ -57,6 +65,16 @@ public class ElettoreRegistrazioneController {
     	}
     	
 	}
+    
+    @FXML
+    void checkboxMaschio() {
+    	sessoFemmina.setSelected(false);
+    }
+    
+    @FXML
+    void checkboxFemmina() {
+    	sessoMaschio.setSelected(false);
+    }
     
     /**
      * 
@@ -123,14 +141,17 @@ public class ElettoreRegistrazioneController {
 			return false;
     	}
     	
+    	//sesso
+    	Sesso s;
+    	if (sessoMaschio.isSelected()) {
+    		s = Sesso.M;
+    	} else {
+    		s = Sesso.F;
+    	}
+    	
     	try {
     		DBController db = DBController.getInstance(); 
-    		String r = db.getPsw(email.getText());
-    		if (!r.isEmpty()) {
-    			textError.setText("Mail già in uso");
-    			return false;
-    		}
-    		return db.registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText());
+    		return db.registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText(), s);
     	} catch (Exception e) {
     		textError.setText(e.getMessage());
     		e.printStackTrace();

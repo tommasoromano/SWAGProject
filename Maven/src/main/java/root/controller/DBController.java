@@ -2,6 +2,9 @@ package root.controller;
 
 import root.util.CodiceFiscale;
 import root.util.Data;
+import root.util.Elettore;
+import root.util.Sesso;
+
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,7 +35,10 @@ public class DBController {
 			_instance = new DBController();
 			try {
 				_instance.db = DriverManager.getConnection(url);
-				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS elettore (email TEXT, password TEXT, nome TEXT, cognome TEXT, tessera TEXT, luogo_nascita TEXT, data_nascita TEXT, CF TEXT,  PRIMARY KEY (email))");
+				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS elettore (email TEXT, password TEXT, nome TEXT, cognome TEXT, tessera TEXT, luogo_nascita TEXT, data_nascita TEXT, CF TEXT, sesso TEXT,  PRIMARY KEY (CF))");
+				st.executeUpdate();
+				
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scrutinatore (email TEXT, password TEXT, PRIMARY KEY (email))");
 				st.executeUpdate();
 				
 			} catch (SQLException e) {
@@ -49,11 +55,11 @@ public class DBController {
 	 * @return la password hashata relativa a quell'utente.
 	 * @throws NoSuchElementException username non è presente nel database.
 	 */
-	public String getPsw(String username) {
+	private String getPswElettore(CodiceFiscale CF) {
 		String s="";
 		try {
-			PreparedStatement st = db.prepareStatement("SELECT * FROM elettore AS U WHERE U.email = ?");
-			st.setString(1, username);
+			PreparedStatement st = db.prepareStatement("SELECT * FROM elettore AS U WHERE U.CF = ?");
+			st.setString(1, CF.toString());
 			ResultSet set = st.executeQuery();
 			if (set==null) throw new NoSuchElementException("Username not found");		
 			
@@ -66,16 +72,29 @@ public class DBController {
 		return s;
 	}
 	
+	public boolean elettoreLogin(CodiceFiscale CF, String psw) {
+		try {		
+    		String sha256hex = Hashing.sha256()
+					  .hashString(psw, StandardCharsets.UTF_8)
+					  .toString();
+    		String password = getPswElettore(CF);
+    		return password.equals(sha256hex);
+    	} catch (Exception e) {
+    		System.err.println(e.getMessage());
+    		return false;
+    	}
+	}
+	
 	/**
 	 * Inserisce i dati di login nel database
 	 * @param username
 	 * @param psw
 	 * @return true se i dati sono inseriti correttamente nel database, false altrimenti.
 	 */
-	public boolean registerElettore(String mail, String psw, String nome, String cognome, Data nascita, String luogo, CodiceFiscale CF, String tessera) {
+	public boolean registerElettore(String mail, String psw, String nome, String cognome, Data nascita, String luogo, CodiceFiscale CF, String tessera, Sesso s) {
 		
 		try {
-			PreparedStatement st = db.prepareStatement("INSERT INTO elettore VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement st = db.prepareStatement("INSERT INTO elettore VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			String sha256hex = Hashing.sha256()
 					  .hashString(psw, StandardCharsets.UTF_8)
 					  .toString();
@@ -87,6 +106,7 @@ public class DBController {
 			st.setString(6, luogo);
 			st.setString(7,  nascita.toString());
 			st.setString(8, CF.toString());
+			st.setString(9, s.toString());
 			
 			st.executeUpdate();
 			return true;

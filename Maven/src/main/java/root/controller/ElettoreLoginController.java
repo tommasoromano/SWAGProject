@@ -57,7 +57,7 @@ public class ElettoreLoginController {
     		String sha256hex = Hashing.sha256()
 					  .hashString(password.getText(), StandardCharsets.UTF_8)
 					  .toString();
-    		if (! db.getPsw(email.getText()).equals(sha256hex)) {
+    		if (! db.getPswElettore(email.getText()).equals(sha256hex)) {
     			textError.setText("Password errata");
     			return false;
     		} 
