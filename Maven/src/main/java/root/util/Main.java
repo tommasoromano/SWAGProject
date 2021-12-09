@@ -14,8 +14,8 @@ public class Main {
 		
 		try {
 			DBController d = DBController.getInstance();
-			d.registerElettore("luca@gmail.com", "12345", "luca", "rompani", new Data(30,11,2000), "Lecco", l, "0000");
-			System.out.println(d.getPswElettore("luca"));
+			d.registerElettore("luca@gmail.com", "12345", "luca", "rompani", new Data(30,11,2000), "Lecco", l, "0000", Sesso.M);
+			System.out.println(d.elettoreLogin(l, "12345"));
 		} catch (Exception e) { 
 			throw new IllegalArgumentException(e.getMessage());
 		}

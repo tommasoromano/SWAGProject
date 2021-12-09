@@ -149,9 +149,12 @@ public class ElettoreRegistrazioneController {
     		s = Sesso.F;
     	}
     	
-    	try {
-    		DBController db = DBController.getInstance(); 
-    		return db.registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText(), s);
+    	try { 
+    		boolean res = DBController.getInstance().registerElettore(email.getText(), password.getText(), nome.getText(), cognome.getText(), d, luogo.getText(), CF, tesseraElettorale.getText(), s);
+    		if (!res) {
+    			textError.setText("Codice fiscale già in uso");
+    		}
+    		return res;
     	} catch (Exception e) {
     		textError.setText(e.getMessage());
     		e.printStackTrace();

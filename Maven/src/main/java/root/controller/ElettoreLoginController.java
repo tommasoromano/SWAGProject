@@ -1,6 +1,7 @@
 package root.controller;
 
 import root.controller.DBController;
+import root.util.Elettore;
 
 import java.nio.charset.StandardCharsets;
 
@@ -52,7 +53,7 @@ public class ElettoreLoginController {
 			return false;
     	}
     	
-    	Elettore e = DBController.getInstance().elettoreLogin(codiceFiscale.getText(), password.getText());
+    	Elettore e = null;//DBController.getInstance().elettoreLogin(codiceFiscale.getText(), password.getText());
     	
     	if (e == null ) {
     		textError.setText("Codice Fiscale o Password errati");

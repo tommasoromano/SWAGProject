@@ -51,6 +51,28 @@ public class DBController {
 	
 	/**
 	 * 
+	 * @param username dello scrutinatore
+	 * @param psw, la password dello scrutinatore
+	 * @return true se lo scrutinatore è inserito correttamente, false altrimenti
+	 */
+	private boolean insertScrutinatore(String username, String psw) {
+		try {
+			String hashed_psw = Hashing.sha256()
+					  .hashString(psw, StandardCharsets.UTF_8)
+					  .toString();
+			PreparedStatement st = db.prepareStatement("INSERT INTO scrutinatore VALUES (?, ?)");
+			st.setString(1, username);
+			st.setString(2, hashed_psw);
+			
+			st.executeUpdate();
+			return true;
+		} catch (SQLException e) { 
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	/**
+	 * 
 	 * @param username dell'utente.
 	 * @return la password hashata relativa a quell'utente.
 	 * @throws NoSuchElementException username non è presente nel database.
