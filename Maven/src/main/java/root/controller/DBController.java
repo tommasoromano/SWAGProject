@@ -50,7 +50,7 @@ public class DBController {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT)");
 				st.executeUpdate();
 				
-				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
+				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
@@ -199,7 +199,7 @@ public class DBController {
 			return true;
 			
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -237,15 +237,14 @@ public class DBController {
 		try {		
     		
 			PreparedStatement st = db.prepareStatement("SELECT * FROM scheda");
+			ResultSet row = db.prepareStatement("SELECT COUNT(*) FROM scheda").executeQuery();
 			ResultSet set = st.executeQuery();
 			
-			if (set==null) return null;		
+			if (set==null || row == null) return null;		
 			
-			int count = 0;
-			List<Scheda> tmpSchede = new ArrayList<>();
+			Scheda []schede = new Scheda[row.getInt(1)];
 			while (set.next()) {
-				count++;
-				tmpSchede.add(
+				schede[set.getRow()-1] =
 					new Scheda(
 							set.getString(1),
 							new Data(set.getString(2)),
@@ -253,18 +252,12 @@ public class DBController {
 							set.getString(4),
 							set.getString(5),
 							set.getString(6)
-							));
-			}
-			Scheda[] schede = new Scheda[count];
-			int i = 0;
-			while (i < count) {
-				schede[i] = tmpSchede.get(i);
-				i++;
+							);
 			}
     		
     		return schede;
     	} catch (Exception e) {
-    		System.err.println(e.getMessage());
+    		e.printStackTrace();
     		return null;
     	}
 	}

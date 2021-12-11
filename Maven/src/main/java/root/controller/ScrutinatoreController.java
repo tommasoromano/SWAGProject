@@ -10,12 +10,18 @@ import root.util.Scrutinatore;
 public class ScrutinatoreController extends Controller {
 
 	private Scheda[] schede;
+
+    @FXML
+    private Button buttonCrea;
+    
+    @FXML
+    private Label test;
 	
 	@Override
     public void init() {
 		this.schede = DBController.getInstance().getSchede();
-		if (this.schede == null) {
-			test.setText("Nessuna scheda");
+		if (this.schede == null || this.schede.length == 0) {
+			//test.setText("Nessuna scheda");
 		} else {
 			String t = "";
 			for (int i = 0; i < schede.length; i++) {
@@ -24,12 +30,6 @@ public class ScrutinatoreController extends Controller {
 			test.setText(t);
 		}
     }
-
-    @FXML
-    private Button buttonCrea;
-    
-    @FXML
-    private Label test;
 
     @FXML
     void onActionCrea() {
