@@ -132,6 +132,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </GridPane>
+            <Label fx:id="test" text="Sessioni future" />
          </children>
       </VBox>
    </children>

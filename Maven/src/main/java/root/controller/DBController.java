@@ -4,6 +4,7 @@ import root.App;
 import root.util.CodiceFiscale;
 import root.util.Data;
 import root.util.Elettore;
+import root.util.Scheda;
 import root.util.Scrutinatore;
 import root.util.Sesso;
 
@@ -14,6 +15,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import com.google.common.hash.Hashing;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 
@@ -41,6 +45,9 @@ public class DBController {
 				st.executeUpdate();
 				
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scrutinatore (email TEXT, password TEXT, PRIMARY KEY (email))");
+				st.executeUpdate();
+				
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT)");
 				st.executeUpdate();
 				
 				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
@@ -196,4 +203,70 @@ public class DBController {
 			return false;
 		}
 	}
+
+	/**
+	 * 
+	 * @param nome
+	 * @param inizio
+	 * @param fine
+	 * @param tipoVoto
+	 * @param tipoVincitore
+	 * @return
+	 */
+	public boolean creaScheda(String nome, Data inizio, Data fine, String tipoVoto, String datiVoto, String tipoVincitore) {
+		try {
+			PreparedStatement st = db.prepareStatement("INSERT INTO scheda VALUES (?, ?, ?, ?, ?, ?)");
+
+			st.setString(1, nome);
+			st.setString(2, inizio.toString());
+			st.setString(3, fine.toString());
+			st.setString(4, tipoVoto);
+			st.setString(5, datiVoto);
+			st.setString(6, tipoVincitore);
+			
+			st.executeUpdate();
+			return true;
+			
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	public Scheda[] getSchede() {
+		try {		
+    		
+			PreparedStatement st = db.prepareStatement("SELECT * FROM scheda");
+			ResultSet set = st.executeQuery();
+			
+			if (set==null) return null;		
+			
+			int count = 0;
+			List<Scheda> tmpSchede = new ArrayList<>();
+			while (set.next()) {
+				count++;
+				tmpSchede.add(
+					new Scheda(
+							set.getString(1),
+							new Data(set.getString(2)),
+							new Data(set.getString(3)),
+							set.getString(4),
+							set.getString(5),
+							set.getString(6)
+							));
+			}
+			Scheda[] schede = new Scheda[count];
+			int i = 0;
+			while (i < count) {
+				schede[i] = tmpSchede.get(i);
+				i++;
+			}
+    		
+    		return schede;
+    	} catch (Exception e) {
+    		System.err.println(e.getMessage());
+    		return null;
+    	}
+	}
+	
 }

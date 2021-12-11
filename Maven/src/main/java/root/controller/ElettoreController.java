@@ -27,6 +27,7 @@ public class ElettoreController extends Controller {
     @FXML
     void onActionScheda() {
     	App.navigate("ElettoreSchedaView");
+    	
     }
 
 }

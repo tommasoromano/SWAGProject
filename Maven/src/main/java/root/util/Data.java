@@ -22,9 +22,9 @@ public class Data implements Comparable<Data> {
 		this.mese = mese;
 		this.anno = anno;
 		
-		if (this.compareTo(giorno, mese, anno, getTodayData()) > 0) {
+		/*if (this.compareTo(giorno, mese, anno, getTodayData()) > 0) {
 			throw new IllegalArgumentException("Data successiva a data corrente");
-		}
+		}*/
 		
 	}
 	
@@ -42,9 +42,9 @@ public class Data implements Comparable<Data> {
 		this.mese = m;
 		this.anno = a;
 		
-		if (this.compareTo(g, m, a, getTodayData()) > 0) {
+		/*if (this.compareTo(g, m, a, getTodayData()) > 0) {
 			throw new IllegalArgumentException("Data successiva a data corrente");
-		}
+		}*/
 	}
 	
 	private void isValid(int giorno, int mese, int anno) {
