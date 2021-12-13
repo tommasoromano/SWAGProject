@@ -46,5 +46,10 @@ public class Elettore {
 	public String getCognome() {
 		return this.cognome;
 	}
+	
+	public boolean hasVotato(Scheda s) {
+		
+		return false;
+	}
 
 }

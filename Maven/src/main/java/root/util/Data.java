@@ -1,4 +1,5 @@
 package root.util;
+import java.time.LocalDate;
 import java.time.LocalDateTime; 
 
 public class Data implements Comparable<Data> {
@@ -69,6 +70,10 @@ public class Data implements Comparable<Data> {
 		return giorno;
 	}
 	
+	/**
+	 * return less than zero if this < d, more than zero if this > d, equals zero
+	 * @param d
+	 */
 	public /* @ pure @ */ int compareTo(Data d) {
 		if (Integer.compare(this.anno, d.anno) != 0) return Integer.compare(this.anno, d.anno);	
 		if (Integer.compare(this.mese, d.mese) != 0) return Integer.compare(this.mese, d.mese);
@@ -84,17 +89,17 @@ public class Data implements Comparable<Data> {
 	}
 	
 	public /* @ pure @ */ boolean isMaggiorenne() {
-		int[] today = getTodayData();
-		int y = today[2] - this.anno;
+		Data today = getTodayData();
+		int y = today.getAnno() - this.anno;
 		
 		if (y > 18) {			
 			return true;			
 		} else if (y == 18) {
-			int m = today[1] - this.mese;
+			int m = today.getMese() - this.mese;
 			if (m > 0) {
 				return true;
 			} else if (m == 0) {
-				int g = today[0] - this.giorno;
+				int g = today.getGiorno() - this.giorno;
 				if (g >= 0) {
 					return true;
 				} else {
@@ -109,8 +114,13 @@ public class Data implements Comparable<Data> {
 		}
 	}
 	
-	public /* @ pure @ */ static int[] getTodayData() {
-		return new int[] {22, 11, 2021};
+	public static Data getTodayData() {
+		LocalDate today = LocalDate.now();
+		return new Data(
+				today.getDayOfMonth(), 
+				today.getMonthValue(), 
+				today.getYear()
+				);
 	}
 	
 	@Override 

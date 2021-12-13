@@ -1,110 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="root.controller.ElettoreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="root.controller.ElettoreController">
    <children>
       <Label fx:id="textHead" alignment="CENTER" text="Tizio Caio" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+      <VBox fx:id="parent" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
-            <Label text="Sessioni aperte" />
-            <HBox alignment="CENTER">
+            <GridPane maxWidth="600.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label text="Nome Sessione">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data inizio">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data fine" />
-                  <Button fx:id="buttonScheda1" alignment="CENTER" mnemonicParsing="false" onAction="#onActionScheda" text="Scheda1">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="buttonScheda2" alignment="CENTER" mnemonicParsing="false" onAction="#onActionScheda" text="Scheda2" />
+                  <Label text="Nome scheda" />
+                  <Label text="Data apertura" GridPane.columnIndex="1" />
+                  <Label text="Data chiusura" GridPane.columnIndex="2" />
+                  <Label text="Azione" GridPane.columnIndex="3" />
                </children>
-            </HBox>
-            <Label text="Sessioni future" />
-            <HBox alignment="CENTER">
-               <children>
-                  <Label text="Nome Sessione">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data inizio">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data fine" />
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" text="Scheda1">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" text="Scheda2" />
-               </children>
-            </HBox>
-            <Label text="Sessioni a cui hai votato" />
-            <HBox alignment="CENTER">
-               <children>
-                  <Label text="Nome Sessione">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data inizio">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data fine" />
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" text="Scheda1">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" text="Scheda2" />
-               </children>
-            </HBox>
-            <Label text="Sessioni concluse" />
-            <HBox alignment="CENTER">
-               <children>
-                  <Label text="Nome Sessione">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data inizio">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="data fine" />
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" text="Scheda1">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" text="Scheda2" />
-               </children>
-            </HBox>
+            </GridPane>
          </children>
       </VBox>
    </children>

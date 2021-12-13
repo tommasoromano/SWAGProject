@@ -3,7 +3,10 @@ package root.controller;
 import root.App;
 import root.util.CodiceFiscale;
 import root.util.Data;
+import root.util.DatiVoto;
 import root.util.Elettore;
+import root.util.ModalitaConteggio;
+import root.util.ModalitaVoto;
 import root.util.Scheda;
 import root.util.Scrutinatore;
 import root.util.Sesso;
@@ -47,10 +50,16 @@ public class DBController {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scrutinatore (email TEXT, password TEXT, PRIMARY KEY (email))");
 				st.executeUpdate();
 				
-				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT)");
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT, scrutinata TEXT)");
 				st.executeUpdate();
 				
-				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoElettore (CF TEXT, scheda TEXT)");
+				st.executeUpdate();
+				
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoScheda (voto TEXT, scheda TEXT)");
+				st.executeUpdate();
+				
+				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
@@ -213,16 +222,20 @@ public class DBController {
 	 * @param tipoVincitore
 	 * @return
 	 */
-	public boolean creaScheda(String nome, Data inizio, Data fine, String tipoVoto, String datiVoto, String tipoVincitore) {
+	public boolean creaScheda(String nome, Data inizio, Data fine, ModalitaVoto modVoto, DatiVoto datiVoto, ModalitaConteggio modConteggio) {
+		/**
+		 * TO-DO: controllare che nome scheda non esiste già
+		 */
 		try {
-			PreparedStatement st = db.prepareStatement("INSERT INTO scheda VALUES (?, ?, ?, ?, ?, ?)");
+			PreparedStatement st = db.prepareStatement("INSERT INTO scheda VALUES (?, ?, ?, ?, ?, ?, ?)");
 
 			st.setString(1, nome);
 			st.setString(2, inizio.toString());
 			st.setString(3, fine.toString());
-			st.setString(4, tipoVoto);
-			st.setString(5, datiVoto);
-			st.setString(6, tipoVincitore);
+			st.setString(4, modVoto.toString());
+			st.setString(5, datiVoto.toString());
+			st.setString(6, modConteggio.toString());
+			st.setString(7, "false");
 			
 			st.executeUpdate();
 			return true;
@@ -231,6 +244,14 @@ public class DBController {
 			System.err.println(e.getMessage());
 			return false;
 		}
+	}
+	
+	public boolean scrutinaScheda(Scheda s) {
+		return false;
+	}
+	
+	public boolean visualizzaEsito(Scheda s) {
+		return false;
 	}
 	
 	public Scheda[] getSchede() {
@@ -249,9 +270,10 @@ public class DBController {
 							set.getString(1),
 							new Data(set.getString(2)),
 							new Data(set.getString(3)),
-							set.getString(4),
-							set.getString(5),
-							set.getString(6)
+							new ModalitaVoto(set.getString(4)),
+							new DatiVoto(set.getString(5)),
+							new ModalitaConteggio(set.getString(6)),
+							set.getString(7).equals("true")
 							);
 			}
     		

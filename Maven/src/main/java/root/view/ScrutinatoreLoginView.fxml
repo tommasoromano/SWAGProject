@@ -35,7 +35,7 @@
                   <Label text="Email" />
                   <Label text="Codice" GridPane.rowIndex="1" />
                   <TextField fx:id="email" GridPane.columnIndex="1" />
-                  <TextField fx:id="codice" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="codice" accessibleRole="PASSWORD_FIELD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />

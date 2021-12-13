@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -34,7 +35,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Data di apertura" GridPane.rowIndex="1" />
@@ -42,15 +42,23 @@
                   <TextField fx:id="nomeScheda" GridPane.columnIndex="1" />
                   <Label text="Data di chiusura" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Tipo di voto" GridPane.rowIndex="2" />
-                  <Label text="Dati voto" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="datiVoto" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <DatePicker fx:id="dataFine" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label text="Conteggio vincitore" GridPane.rowIndex="3" />
+                  <Label text="Conteggio vincitore" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <DatePicker fx:id="dataInizio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ChoiceBox fx:id="tipoVoto" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ChoiceBox fx:id="tipoVincitore" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ChoiceBox fx:id="tipoVincitore" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                </children>
             </GridPane>
+            <Label fx:id="descrizione" alignment="CENTER" maxWidth="500.0" text="Dati voto">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="datiVoto" maxHeight="100.0" maxWidth="500.0" prefHeight="30.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextArea>
             <Label fx:id="textError" textFill="RED">
                <VBox.margin>
                   <Insets top="10.0" />

@@ -9,6 +9,10 @@ public abstract class Controller {
 	public void init() {
 		
 	}
+	
+	public void init(Object param) {
+		
+	}
 
 }
 

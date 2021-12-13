@@ -7,25 +7,40 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import root.App;
 import root.util.Data;
+import root.util.DatiVoto;
+import root.util.ModalitaConteggio;
+import root.util.ModalitaVoto;
+import root.util.Scheda;
 
 public class CreaSchedaController extends Controller {
 	
 	@Override
 	public void init() {
-		tipoVoto.getItems().add("Voto ordinale");
-		tipoVoto.getItems().add("Voto categorico");
-		tipoVoto.getItems().add("Voto categorico con preferenze");
-		tipoVoto.getItems().add("Referendum");
+		String[] mv = ModalitaVoto.getAllTipi();
+		for (int i = 0; i < mv.length; i++) {
+			tipoVoto.getItems().add(mv[i]);
+		}
 		tipoVoto.getSelectionModel().selectFirst();
 		
-		tipoVincitore.getItems().add("Maggioranza");
-		tipoVincitore.getItems().add("Maggioranza assoluta");
-		tipoVincitore.getItems().add("Referendum senza quorum");
-		tipoVincitore.getItems().add("Referendum con quorum");
+		String[] mc = ModalitaConteggio.getAllTipi();
+		for (int i = 0; i < mc.length; i++) {
+			tipoVincitore.getItems().add(mc[i]);
+		}
 		tipoVincitore.getSelectionModel().selectFirst();
+		
+		/**
+		 * TO-DO: descrizione.setText() in base a modalita di voto
+		 */
+		String desc = "- Voto ordinale e categorico: scrivere i partiti o candidati separandoli con :\n"
+				+ "Esempio1 Partito1:Partito2:Partito3 Esempio2 Candidato1:Candidato2:Candidato3\n"
+				+ "- Voto categorico con preferenze: scrivere i partiti separandoli con : "
+				+ "e i candidati di ogni partito all'interno di () separandoli con :\n"
+				+ "Esempio: Partito1(Candidato1:Candidato2):Partito2(Candidato3:Candidato4)\n";
+		descrizione.setText(desc);
 	}
 	
     @FXML
@@ -41,11 +56,14 @@ public class CreaSchedaController extends Controller {
     private DatePicker dataInizio;
 
     @FXML
-    private TextField datiVoto;
+    private TextArea datiVoto;
 
     @FXML
     private TextField nomeScheda;
 
+    @FXML
+    private Label descrizione;
+    
     @FXML
     private Label textError;
 
@@ -57,6 +75,12 @@ public class CreaSchedaController extends Controller {
 
     @FXML
     void onActionCrea() {
+    	if (checkCreaScheda()) {
+    		App.navigate("ScrutinatoreView");
+    	} 
+    }
+    
+    void onActionModifica() {
     	if (checkCreaScheda()) {
     		App.navigate("ScrutinatoreView");
     	} 
@@ -111,9 +135,9 @@ public class CreaSchedaController extends Controller {
 				nomeScheda.getText(), 
 				di, 
 				df, 
-				tipoVoto.getValue().toString(),
-				datiVoto.getText(), 
-				tipoVincitore.getValue().toString())) {
+				new ModalitaVoto(tipoVoto.getValue().toString()),
+				new DatiVoto(datiVoto.getText()), 
+				new ModalitaConteggio(tipoVincitore.getValue().toString()))) {
     		return true;
     	} else {
     		textError.setText("Errore durante la creazione della scheda, riprovare");

@@ -39,7 +39,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadView("HomeView"), 1280, 720);
+        scene = new Scene(loadView("HomeView", null), 1280, 720);
         navigate("HomeView");
         stage.setScene(scene);
         stage.setTitle("Vota Online");
@@ -49,7 +49,7 @@ public class App extends Application {
         stage.show();
     }
 
-    private static Parent loadView(String view) {
+    private static Parent loadView(String view, Object param) {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + view + ".fxml"));
         Parent parent = null;
 		try {
@@ -58,12 +58,18 @@ public class App extends Application {
 			e.printStackTrace();
 		}
 		Controller c = loader.getController();
-		c.init();
+		if (param == null) c.init();
+		else c.init(param);
         return parent;
     }
 
     public static void navigate(String view) {
-    	var parent = loadView(view);
+    	var parent = loadView(view, null);
+        scene.setRoot(parent);
+    }
+    
+    public static void navigate(String view, Object param) {
+    	var parent = loadView(view, param);
         scene.setRoot(parent);
     }
 
