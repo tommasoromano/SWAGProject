@@ -90,26 +90,50 @@ public class ElettoreRegistrazioneController extends Controller {
     	if (nome.getText().length() == 0) {
     		textError.setText("Compila il campo Nome");
 			return false;
+    	} else {
+    		String cog = nome.getText().toLowerCase();
+    		for (int i=0; i<cog.length(); i++) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39) {
+    				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
+    				 return false;
+    			}
+    		}
     	}
     	//cognome
     	if (cognome.getText().length() == 0) {
     		textError.setText("Compila il campo Cognome");
 			return false;
+    	} else {
+    		String cog = cognome.getText().toLowerCase();
+    		for (int i=0; i<cog.length(); i++) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39) {
+    				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
+    				 return false;
+    			}
+    		}
     	}
     	//luogo nascita
     	if (luogo.getText().length() == 0) {
     		textError.setText("Compila il campo Luogo");
 			return false;
+    	} else {
+    		String cog = luogo.getText().toLowerCase();
+    		for (int i=0; i<cog.length(); i++) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39) {
+    				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
+    				 return false;
+    			}
+    		}
     	}
     	//data nascita
     	if (data == null) {
     		textError.setText("Compila il campo Data");
 			return false;
     	}
-    	Data d =null;
+    	Data d = null;
 		try {
 			d = new Data(data.getValue().getDayOfMonth(),data.getValue().getMonthValue(), data.getValue().getYear());
-		} catch (IllegalArgumentException e) {
+		} catch (Exception e) {
 			textError.setText("Data non valida");
 			return false;
 		}
@@ -119,8 +143,11 @@ public class ElettoreRegistrazioneController extends Controller {
     		textError.setText("Compila il campo Codice Fiscale");
     		return false;
     	}
-    	CodiceFiscale CF  = CodiceFiscale.fromStringToCF(codiceFiscale.getText());
-    	if (CF == null) {
+    	
+    	CodiceFiscale CF = null;
+    	try {
+    		CF = CodiceFiscale.fromStringToCF(codiceFiscale.getText());
+    	} catch (Exception e) {
     		textError.setText("Codice Fiscale errato");
     		return false;
     	}
@@ -129,11 +156,27 @@ public class ElettoreRegistrazioneController extends Controller {
     	if (tesseraElettorale.getText().length() == 0) {
     		textError.setText("Compila il campo Tessera Elettorale");
 			return false;
+    	} else {
+    		String s = tesseraElettorale.getText();
+    		for (int i=0; i<s.length(); i++) {
+    			if (s.charAt(i) < '0' || s.charAt(i) > '9') {
+    				textError.setText("Tessera elettorale non valida");
+    				return false;
+    			}
+    		}
     	}
     	//email
     	if (email.getText().length() == 0) {
     		textError.setText("Compila il campo Email");
 			return false;
+    	} else {
+    		String cog = email.getText().toLowerCase();
+    		for (int i=0; i<cog.length(); i++) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 64) {
+    				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
+    				 return false;
+    			}
+    		}
     	}
     	//password
     	if (password.getText().length() == 0) {
@@ -166,5 +209,5 @@ public class ElettoreRegistrazioneController extends Controller {
 		
 		return true;
     }
-
+  
 }
