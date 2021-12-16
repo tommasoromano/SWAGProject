@@ -93,7 +93,7 @@ public class ElettoreRegistrazioneController extends Controller {
     	} else {
     		String cog = nome.getText().toLowerCase();
     		for (int i=0; i<cog.length(); i++) {
-    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39 && cog.charAt(i) != 32) {
     				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
     				 return false;
     			}
@@ -106,7 +106,7 @@ public class ElettoreRegistrazioneController extends Controller {
     	} else {
     		String cog = cognome.getText().toLowerCase();
     		for (int i=0; i<cog.length(); i++) {
-    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39 && cog.charAt(i) != 32) {
     				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
     				 return false;
     			}
@@ -119,7 +119,7 @@ public class ElettoreRegistrazioneController extends Controller {
     	} else {
     		String cog = luogo.getText().toLowerCase();
     		for (int i=0; i<cog.length(); i++) {
-    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 39 && cog.charAt(i) != 32) {
     				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
     				 return false;
     			}
@@ -133,6 +133,10 @@ public class ElettoreRegistrazioneController extends Controller {
     	Data d = null;
 		try {
 			d = new Data(data.getValue().getDayOfMonth(),data.getValue().getMonthValue(), data.getValue().getYear());
+			if (!d.isMaggiorenne()) {
+				textError.setText("Elettore non maggiorenne");
+				return false;
+			}
 		} catch (Exception e) {
 			textError.setText("Data non valida");
 			return false;
@@ -172,7 +176,7 @@ public class ElettoreRegistrazioneController extends Controller {
     	} else {
     		String cog = email.getText().toLowerCase();
     		for (int i=0; i<cog.length(); i++) {
-    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 64) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 64 && cog.charAt(i) != 46) {
     				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
     				 return false;
     			}
