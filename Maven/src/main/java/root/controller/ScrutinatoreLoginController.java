@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import root.App;
+import root.util.LogManager;
 
 public class ScrutinatoreLoginController extends Controller {
 
@@ -36,6 +37,7 @@ public class ScrutinatoreLoginController extends Controller {
     @FXML
     void onActionLogin() {
     	if (checkLogin()) {
+    		LogManager.getInstance().logScrutinatoreLogin(App.getInstance().getScrutinatore());
     		App.navigate("ScrutinatoreView");
     	}
     }
@@ -52,7 +54,7 @@ public class ScrutinatoreLoginController extends Controller {
     	}
     	
     	// crea istanza di scrutinatore
-    	boolean res = DBController.getInstance().scrutinatoreLogin(email.getText(), codice.getText());
+    	boolean res = DBManager.getInstance().scrutinatoreLogin(email.getText(), codice.getText());
     	
     	if (!res) {
     		textError.setText("Email o Codice errati");

@@ -10,6 +10,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import root.App;
+import root.util.LogManager;
 import root.util.Data;
 import root.util.DatiVoto;
 import root.util.ModalitaConteggio;
@@ -131,13 +132,14 @@ public class CreaSchedaController extends Controller {
     	}
 		
 		// cerca di creare scheda su DB
-		if (DBController.getInstance().creaScheda(
+		if (DBManager.getInstance().creaScheda(
 				nomeScheda.getText(), 
 				di, 
 				df, 
 				new ModalitaVoto(tipoVoto.getValue().toString()),
 				new DatiVoto(datiVoto.getText()), 
 				new ModalitaConteggio(tipoVincitore.getValue().toString()))) {
+			LogManager.getInstance().logCreaScheda(App.getInstance().getScrutinatore(), nomeScheda.getText());
     		return true;
     	} else {
     		textError.setText("Errore durante la creazione della scheda, riprovare");

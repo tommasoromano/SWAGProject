@@ -29,7 +29,7 @@ public class ElettoreController extends Controller {
     	String h = e.getNome() + " " + e.getCognome();
     	textHead.setText(h);
     	
-    	this.schede = DBController.getInstance().getSchede();
+    	this.schede = DBManager.getInstance().getSchede();
 		
 		if (this.schede == null || this.schede.length == 0) {
 			

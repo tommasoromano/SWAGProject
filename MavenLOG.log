@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-12-20T15:06:25.303602Z</date>
+  <millis>1640012785303</millis>
+  <nanos>602000</nanos>
+  <sequence>0</sequence>
+  <logger>root.util.LogManager</logger>
+  <level>INFO</level>
+  <class>root.util.LogManager</class>
+  <method>logElettoreLogin</method>
+  <thread>14</thread>
+  <message>Elettore RMPLCU00S30E507G log in a ore 2021-12-20 16:06:25.302</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-12-20T15:07:50.585101Z</date>
+  <millis>1640012870585</millis>
+  <nanos>101000</nanos>
+  <sequence>0</sequence>
+  <logger>root.util.LogManager</logger>
+  <level>INFO</level>
+  <class>root.util.LogManager</class>
+  <method>logElettoreLogin</method>
+  <thread>14</thread>
+  <message>Elettore RMPLCU00S30E507G log in a ore 2021-12-20 16:07:50.584</message>
+</record>
+</log>

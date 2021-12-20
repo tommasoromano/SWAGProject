@@ -10,7 +10,6 @@ import root.util.ModalitaVoto;
 import root.util.Scheda;
 import root.util.Scrutinatore;
 import root.util.Sesso;
-
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,19 +17,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import com.google.common.hash.Hashing;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 
-public class DBController {
+public class DBManager {
 	
-	private static DBController _instance;
+	private static DBManager _instance;
 	private static String url="jdbc:sqlite:database.db";
 	private Connection db;
 	
-	private DBController() {
+	private DBManager() {
 		
 	}
 	
@@ -39,9 +35,9 @@ public class DBController {
 	 * @return l'istanza di DBController in uso (instanziandola se non già esistente)
 	 * @throws Exception se c'è errore nella connessione con il databases
 	 */
-	public static DBController getInstance() {
+	public static DBManager getInstance() {
 		if (_instance == null) {
-			_instance = new DBController();
+			_instance = new DBManager();
 			try {
 				_instance.db = DriverManager.getConnection(url);
 				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS elettore (email TEXT, password TEXT, nome TEXT, cognome TEXT, tessera TEXT, luogo_nascita TEXT, data_nascita TEXT, CF TEXT, sesso TEXT,  PRIMARY KEY (CF))");

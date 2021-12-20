@@ -34,7 +34,7 @@ public class ScrutinatoreController extends Controller {
 	
 	@Override
     public void init() {
-		this.schede = DBController.getInstance().getSchede();
+		this.schede = DBManager.getInstance().getSchede();
 		
 		if (this.schede == null || this.schede.length == 0) {
 			

@@ -1,12 +1,12 @@
 package root.controller;
 
-import root.controller.DBController;
+import root.controller.DBManager;
 import root.util.CodiceFiscale;
 
 import java.nio.charset.StandardCharsets;
 
 import com.google.common.hash.Hashing;
-
+import root.util.LogManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,6 +43,7 @@ public class ElettoreLoginController extends Controller {
     @FXML
     void onActionLogin() {
     	if (checkLogin()) {
+    		LogManager.getInstance().logElettoreLogin(App.getInstance().getElettore());
     		App.navigate("ElettoreView");
     	}
     }
@@ -75,7 +76,7 @@ public class ElettoreLoginController extends Controller {
     	}
     	
     	// crea istanza di elettore
-    	boolean res = DBController.getInstance().elettoreLogin(CF, password.getText());
+    	boolean res = DBManager.getInstance().elettoreLogin(CF, password.getText());
     	
     	if (!res) {
     		textError.setText("Codice Fiscale o Password errati");

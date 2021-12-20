@@ -2,6 +2,7 @@ package root.controller;
 
 import root.util.CodiceFiscale;
 import root.util.Data;
+import root.util.LogManager;
 import root.util.Sesso;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -66,6 +67,7 @@ public class ElettoreRegistrazioneController extends Controller {
     @FXML
     void onActionRegistrati() {
     	if (checkRegistrazione()) {
+    		//LogManager.getInstance().logElettoreRegistrazione(App.getInstance().getElettore());
     		App.navigate("ElettoreLoginView");
     	}
     	
@@ -176,7 +178,7 @@ public class ElettoreRegistrazioneController extends Controller {
     	} else {
     		String cog = email.getText().toLowerCase();
     		for (int i=0; i<cog.length(); i++) {
-    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 64 && cog.charAt(i) != 46) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 64 && cog.charAt(i) != 46 && (cog.charAt(i) < '0'|| cog.charAt(i) > '9')) {
     				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
     				 return false;
     			}
@@ -196,7 +198,7 @@ public class ElettoreRegistrazioneController extends Controller {
     		s = Sesso.F;
     	}
     	
-    	boolean res = DBController.getInstance().registerElettore(
+    	boolean res = DBManager.getInstance().registerElettore(
     			email.getText(), 
     			password.getText(), 
     			nome.getText(), 

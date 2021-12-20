@@ -47,6 +47,10 @@ public class Elettore {
 		return this.cognome;
 	}
 	
+	public CodiceFiscale getCF() {
+		return this.codiceFiscale;
+	}
+	
 	public boolean hasVotato(Scheda s) {
 		
 		return false;
