@@ -41,6 +41,7 @@ public class LogManager {
 		FileHandler f = null;
 		try {
 			f = new FileHandler(path, true);
+			f.setFormatter(new SimpleFormatter());
 			String cf = el.getCF().toString();
 			logger.addHandler(f);
 			logger.setLevel(Level.INFO);
@@ -58,6 +59,7 @@ public class LogManager {
 		FileHandler f = null;
 		try {
 			f = new FileHandler(path, true);
+			f.setFormatter(new SimpleFormatter());
 			logger.addHandler(f);
 			logger.log(Level.SEVERE, "An exception occurred", e);
 		} catch (IOException ex) {
@@ -82,6 +84,7 @@ public class LogManager {
 		FileHandler f = null;
 		try {
 			f = new FileHandler(path, true);
+			f.setFormatter(new SimpleFormatter());
 			String nome = s.getEmail();
 			logger.addHandler(f);
 			logger.setLevel(Level.INFO);
