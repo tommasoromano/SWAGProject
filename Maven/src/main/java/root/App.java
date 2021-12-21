@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import root.controller.Controller;
-import root.controller.DBController;
 import root.util.*;
 
 import java.io.File;

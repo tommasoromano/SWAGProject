@@ -10,7 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import root.App;
+import root.*;
 
 public class ElettoreRegistrazioneController extends Controller {
 
@@ -172,7 +172,10 @@ public class ElettoreRegistrazioneController extends Controller {
     	} else {
     		String cog = email.getText().toLowerCase();
     		for (int i=0; i<cog.length(); i++) {
-    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') && cog.charAt(i) != 64) {
+    			if ((cog.charAt(i) < 'a' || cog.charAt(i) > 'z') 
+    					&& (cog.charAt(i) < '0' || cog.charAt(i) > '9')
+    					&& cog.charAt(i) != '@'
+    					&& cog.charAt(i) != '.') {
     				 textError.setText("Carattere " +cog.charAt(i) + " non valido");
     				 return false;
     			}
@@ -192,7 +195,7 @@ public class ElettoreRegistrazioneController extends Controller {
     		s = Sesso.F;
     	}
     	
-    	boolean res = DBController.getInstance().registerElettore(
+    	boolean res = DBManager.getInstance().registerElettore(
     			email.getText(), 
     			password.getText(), 
     			nome.getText(), 

@@ -47,6 +47,10 @@ public class Elettore {
 		return this.cognome;
 	}
 	
+	public Sesso getSesso() {
+		return this.sesso;
+	}
+	
 	public boolean hasVotato(Scheda s) {
 		
 		return false;

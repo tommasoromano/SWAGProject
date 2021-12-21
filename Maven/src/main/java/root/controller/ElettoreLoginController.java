@@ -1,6 +1,6 @@
 package root.controller;
 
-import root.controller.DBController;
+import root.controller.*;
 import root.util.CodiceFiscale;
 
 import java.nio.charset.StandardCharsets;
@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import root.App;
+import root.*;
 
 public class ElettoreLoginController extends Controller {
 
@@ -75,7 +75,7 @@ public class ElettoreLoginController extends Controller {
     	}
     	
     	// crea istanza di elettore
-    	boolean res = DBController.getInstance().elettoreLogin(CF, password.getText());
+    	boolean res = DBManager.getInstance().elettoreLogin(CF, password.getText());
     	
     	if (!res) {
     		textError.setText("Codice Fiscale o Password errati");

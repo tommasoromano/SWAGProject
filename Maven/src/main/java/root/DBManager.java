@@ -1,4 +1,4 @@
-package root.controller;
+package root;
 
 import root.App;
 import root.util.CodiceFiscale;
@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 
-public class DBController {
+public class DBManager {
 	
-	private static DBController _instance;
+	private static DBManager _instance;
 	private static String url="jdbc:sqlite:database.db";
 	private Connection db;
 	
-	private DBController() {
+	private DBManager() {
 		
 	}
 	
@@ -39,9 +39,9 @@ public class DBController {
 	 * @return l'istanza di DBController in uso (instanziandola se non già esistente)
 	 * @throws Exception se c'è errore nella connessione con il databases
 	 */
-	public static DBController getInstance() {
+	public static DBManager getInstance() {
 		if (_instance == null) {
-			_instance = new DBController();
+			_instance = new DBManager();
 			try {
 				_instance.db = DriverManager.getConnection(url);
 				PreparedStatement st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS elettore (email TEXT, password TEXT, nome TEXT, cognome TEXT, tessera TEXT, luogo_nascita TEXT, data_nascita TEXT, CF TEXT, sesso TEXT,  PRIMARY KEY (CF))");
@@ -59,7 +59,7 @@ public class DBController {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoScheda (voto TEXT, scheda TEXT)");
 				st.executeUpdate();
 				
-				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
+				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
@@ -211,77 +211,6 @@ public class DBController {
 			e.printStackTrace();
 			return false;
 		}
-	}
-
-	/**
-	 * 
-	 * @param nome
-	 * @param inizio
-	 * @param fine
-	 * @param tipoVoto
-	 * @param tipoVincitore
-	 * @return
-	 */
-	public boolean creaScheda(String nome, Data inizio, Data fine, ModalitaVoto modVoto, DatiVoto datiVoto, ModalitaConteggio modConteggio) {
-		/**
-		 * TO-DO: controllare che nome scheda non esiste già
-		 */
-		try {
-			PreparedStatement st = db.prepareStatement("INSERT INTO scheda VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-			st.setString(1, nome);
-			st.setString(2, inizio.toString());
-			st.setString(3, fine.toString());
-			st.setString(4, modVoto.toString());
-			st.setString(5, datiVoto.toString());
-			st.setString(6, modConteggio.toString());
-			st.setString(7, "false");
-			
-			st.executeUpdate();
-			return true;
-			
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
-			return false;
-		}
-	}
-	
-	public boolean scrutinaScheda(Scheda s) {
-		return false;
-	}
-	
-	public boolean visualizzaEsito(Scheda s) {
-		return false;
-	}
-	
-	public Scheda[] getSchede() {
-		try {		
-    		
-			PreparedStatement st = db.prepareStatement("SELECT * FROM scheda");
-			ResultSet row = db.prepareStatement("SELECT COUNT(*) FROM scheda").executeQuery();
-			ResultSet set = st.executeQuery();
-			
-			if (set==null || row == null) return null;		
-			
-			Scheda []schede = new Scheda[row.getInt(1)];
-			while (set.next()) {
-				schede[set.getRow()-1] =
-					new Scheda(
-							set.getString(1),
-							new Data(set.getString(2)),
-							new Data(set.getString(3)),
-							new ModalitaVoto(set.getString(4)),
-							new DatiVoto(set.getString(5)),
-							new ModalitaConteggio(set.getString(6)),
-							set.getString(7).equals("true")
-							);
-			}
-    		
-    		return schede;
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    		return null;
-    	}
 	}
 	
 }
