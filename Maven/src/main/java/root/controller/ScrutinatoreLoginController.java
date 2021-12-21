@@ -3,6 +3,7 @@ package root.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import root.*;
 
@@ -20,7 +21,7 @@ public class ScrutinatoreLoginController extends Controller {
     private Button buttonLogin;
 	
 	@FXML
-    private TextField codice;
+    private PasswordField codice;
 
     @FXML
     private TextField email;
