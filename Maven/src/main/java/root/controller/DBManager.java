@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import com.google.common.hash.Hashing;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 
 public class DBManager {
@@ -46,7 +47,7 @@ public class DBManager {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scrutinatore (email TEXT, password TEXT, PRIMARY KEY (email))");
 				st.executeUpdate();
 				
-				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT, scrutinata TEXT)");
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (id TEXT, nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT, scrutinata TEXT, PRIMARY KEY (id))");
 				st.executeUpdate();
 				
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoElettore (CF TEXT, scheda TEXT)");
@@ -55,7 +56,7 @@ public class DBManager {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoScheda (voto TEXT, scheda TEXT)");
 				st.executeUpdate();
 				
-				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
+				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
@@ -219,19 +220,26 @@ public class DBManager {
 	 * @return
 	 */
 	public boolean creaScheda(String nome, Data inizio, Data fine, ModalitaVoto modVoto, DatiVoto datiVoto, ModalitaConteggio modConteggio) {
-		/**
-		 * TO-DO: controllare che nome scheda non esiste già
-		 */
+		// crea un nuovo id univoco
+		Random r = new Random();
+		int id = r.nextInt(1000000-0) + 0;
+		while (getSchedaById(id) != null) {
+			r = new Random();
+			id = r.nextInt(1000000-0) + 0;
+		}
+		
+		// crea la scheda
 		try {
-			PreparedStatement st = db.prepareStatement("INSERT INTO scheda VALUES (?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement st = db.prepareStatement("INSERT INTO scheda VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-			st.setString(1, nome);
-			st.setString(2, inizio.toString());
-			st.setString(3, fine.toString());
-			st.setString(4, modVoto.toString());
-			st.setString(5, datiVoto.toString());
-			st.setString(6, modConteggio.toString());
-			st.setString(7, "false");
+			st.setString(1, Integer.toString(id));
+			st.setString(2, nome);
+			st.setString(3, inizio.toString());
+			st.setString(4, fine.toString());
+			st.setString(5, modVoto.toString());
+			st.setString(6, datiVoto.toString());
+			st.setString(7, modConteggio.toString());
+			st.setString(8, "false");
 			
 			st.executeUpdate();
 			return true;
@@ -242,8 +250,48 @@ public class DBManager {
 		}
 	}
 	
+	public Scheda getSchedaById(int id) {
+		try {		
+    		Scheda scheda = null;
+    		
+			PreparedStatement st = db.prepareStatement("SELECT * FROM scheda AS S WHERE S.id = ?");
+			st.setString(1, Integer.toString(id));
+			ResultSet set = st.executeQuery();
+			if (set==null) {
+				throw new NoSuchElementException("Scheda non trovata");		
+			}
+			while (set.next()) {
+				scheda =
+						new Scheda(
+								Integer.parseInt(set.getString(1)),
+								set.getString(2),
+								new Data(set.getString(3)),
+								new Data(set.getString(4)),
+								new ModalitaVoto(set.getString(5)),
+								new DatiVoto(set.getString(6)),
+								new ModalitaConteggio(set.getString(7)),
+								set.getString(8).equals("true")
+								);
+				return scheda;
+			}
+			return scheda;
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return null;
+    	}
+	}
+	
 	public boolean scrutinaScheda(Scheda s) {
-		return false;
+		try {		
+			PreparedStatement st = db.prepareStatement("UPDATE scheda AS S SET S.scrutinata = ?  WHERE S.id = ?");
+			st.setString(1, "true");
+			st.setString(2, Integer.toString(s.getId()));
+			st.executeUpdate();
+			return true;
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return false;
+    	}
 	}
 	
 	public boolean visualizzaEsito(Scheda s) {
@@ -263,13 +311,14 @@ public class DBManager {
 			while (set.next()) {
 				schede[set.getRow()-1] =
 					new Scheda(
-							set.getString(1),
-							new Data(set.getString(2)),
+							Integer.parseInt(set.getString(1)),
+							set.getString(2),
 							new Data(set.getString(3)),
-							new ModalitaVoto(set.getString(4)),
-							new DatiVoto(set.getString(5)),
-							new ModalitaConteggio(set.getString(6)),
-							set.getString(7).equals("true")
+							new Data(set.getString(4)),
+							new ModalitaVoto(set.getString(5)),
+							new DatiVoto(set.getString(6)),
+							new ModalitaConteggio(set.getString(7)),
+							set.getString(8).equals("true")
 							);
 			}
     		

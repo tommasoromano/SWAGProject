@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Scheda {
 	
+	private int id;
 	private String nome;
 	private Data inizio;
 	private Data fine;
@@ -12,7 +13,8 @@ public class Scheda {
 	private ModalitaConteggio modConteggio;
 	private boolean scrutinata;
 	
-	public Scheda(String nome, Data inizio, Data fine, ModalitaVoto modVoto, DatiVoto datiVoto, ModalitaConteggio modConteggio, boolean scrutinata) {
+	public Scheda(int id, String nome, Data inizio, Data fine, ModalitaVoto modVoto, DatiVoto datiVoto, ModalitaConteggio modConteggio, boolean scrutinata) {
+		this.id = id;
 		this.nome = nome;
 		this.inizio = inizio;
 		this.fine = fine;
@@ -43,6 +45,7 @@ public class Scheda {
 		
 	}
 	
+	public int getId() { return this.id; }
 	public String getNome() { return this.nome; };
 	public Data getInizio() { return inizio; };
 	public Data getFine() { return fine; }	
@@ -54,7 +57,8 @@ public class Scheda {
 	
 	@Override
 	public String toString() {
-		return this.nome+":"
+		return this.id+":"
+				+this.nome+":"
 				+this.inizio.toString()+":"
 				+this.fine.toString()+":"
 				+this.modVoto.toString()+":"

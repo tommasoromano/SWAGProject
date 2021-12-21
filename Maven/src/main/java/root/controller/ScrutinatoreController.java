@@ -71,6 +71,10 @@ public class ScrutinatoreController extends Controller {
 				b = new Button("Esito");
 			} else {
 				b = new Button("Scrutina");
+				b.setOnAction(e -> {
+					DBManager.getInstance().scrutinaScheda(s);
+					App.navigate("ScrutinatoreView");
+				});
 			}
 		}
 		

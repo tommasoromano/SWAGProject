@@ -2,3 +2,11 @@ Dec 21, 2021 10:37:32 AM root.util.LogManager logElettore
 INFO: Elettore RMPLCU00S30E507G log in
 Dec 21, 2021 10:42:32 AM root.util.LogManager logElettore
 INFO: Elettore RMPLCU00S30E507G log in
+Dec 21, 2021 1:12:05 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore rompa@bob.it log in
+Dec 21, 2021 1:19:08 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore rompa@bob.it log in
+Dec 21, 2021 3:25:58 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore rompa@bob.it log in
+Dec 21, 2021 3:39:44 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore rompa@bob.it log in
