@@ -5,9 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import root.App;
+import root.util.LogManager;
 import root.util.Scheda;
 
 public class ElettoreSchedaController extends Controller {
+	
+	private Scheda scheda;
 
 	@FXML
 	private Label nomeScheda;
@@ -29,6 +32,7 @@ public class ElettoreSchedaController extends Controller {
 
     @FXML
     void onActionBianca() {
+    	LogManager.getInstance().logVotazione(App.getInstance().getElettore(), scheda.getNome());
     	App.navigate("ElettoreSchedaConfermaView");
     }
 
@@ -39,11 +43,13 @@ public class ElettoreSchedaController extends Controller {
 
     @FXML
     void onActionNulla() {
+    	LogManager.getInstance().logVotazione(App.getInstance().getElettore(), scheda.getNome());
     	App.navigate("ElettoreSchedaConfermaView");
     }
 
     @FXML
     void onActionVota() {
+    	LogManager.getInstance().logVotazione(App.getInstance().getElettore(), scheda.getNome());
     	App.navigate("ElettoreSchedaConfermaView");
     }
     
@@ -52,10 +58,10 @@ public class ElettoreSchedaController extends Controller {
     	
     	if (param.getClass().equals(Scheda.class)) {
     		
-    		Scheda s = ((Scheda) param);
+    		scheda = ((Scheda) param);
     		
-    		nomeScheda.setText(s.getNome());
-    		String [] candidati = s.getDatiVoto().getCandidati();
+    		nomeScheda.setText(scheda.getNome());
+    		String [] candidati = scheda.getDatiVoto().getCandidati();
     		for (String str : candidati) {
     			Button butt = new Button("Vota: " + str);
     			parent.getChildren().add(butt);
