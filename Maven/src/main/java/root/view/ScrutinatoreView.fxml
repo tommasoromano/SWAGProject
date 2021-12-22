@@ -42,5 +42,6 @@
             </GridPane>
          </children>
       </VBox>
+      <Button fx:id="logoutButton" layoutX="44.0" layoutY="20.0" mnemonicParsing="false" onAction="#onActionLogout" text="Log out" />
    </children>
 </AnchorPane>

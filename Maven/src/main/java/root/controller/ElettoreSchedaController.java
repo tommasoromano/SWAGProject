@@ -55,8 +55,12 @@ public class ElettoreSchedaController extends Controller {
     		Scheda s = ((Scheda) param);
     		
     		nomeScheda.setText(s.getNome());
+    		String [] candidati = s.getDatiVoto().getCandidati();
+    		for (String str : candidati) {
+    			Button butt = new Button("Vota: " + str);
+    			parent.getChildren().add(butt);
+    		}
     		
-    		parent.getChildren().add(new Label(s.toString()));
     		
     	} else {
     		

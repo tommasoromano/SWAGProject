@@ -77,6 +77,7 @@ public class CreaSchedaController extends Controller {
     @FXML
     void onActionCrea() {
     	if (checkCreaScheda()) {
+    		LogManager.getInstance().logCreaScheda(App.getInstance().getScrutinatore(), nomeScheda.getText());
     		App.navigate("ScrutinatoreView");
     	} 
     }
@@ -139,7 +140,7 @@ public class CreaSchedaController extends Controller {
 				new ModalitaVoto(tipoVoto.getValue().toString()),
 				new DatiVoto(datiVoto.getText()), 
 				new ModalitaConteggio(tipoVincitore.getValue().toString()))) {
-			LogManager.getInstance().logCreaScheda(App.getInstance().getScrutinatore(), nomeScheda.getText());
+			
     		return true;
     	} else {
     		textError.setText("Errore durante la creazione della scheda, riprovare");

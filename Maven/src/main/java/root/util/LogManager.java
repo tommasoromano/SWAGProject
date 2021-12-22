@@ -94,6 +94,14 @@ public class LogManager {
 		}	
 	}
 	
+	public void logElettoreLogout(Elettore e) {
+		logElettore(e, "log out");
+	}
+	
+	public void logScrutinatoreLogout(Scrutinatore s) {
+		logScrutinatore(s, "log out");
+	}
+	
 	public void logScrutinatoreLogin(Scrutinatore s) {
 		logScrutinatore(s, "log in");
 	}
@@ -102,7 +110,8 @@ public class LogManager {
 		logScrutinatore(scr, "crea nuova scheda: " + sch);
 	}
 	
-	public void logModificaScheda(Scrutinatore scr, String sch) {
-		logScrutinatore(scr, "modifica scheda: " + sch);
+	public void logVotazione(Elettore e, String sch) {
+		logElettore(e, "ha votato scheda: "+ sch);
 	}
+	
 }

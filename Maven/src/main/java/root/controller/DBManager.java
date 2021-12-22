@@ -56,7 +56,7 @@ public class DBManager {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoScheda (voto TEXT, scheda TEXT)");
 				st.executeUpdate();
 				
-				boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
+				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
@@ -202,6 +202,7 @@ public class DBManager {
 			st.setString(9, s.toString());
 			
 			st.executeUpdate();
+			App.getInstance().setElettore(new Elettore(nome, cognome, s, nascita, luogo, CF, tessera));
 			return true;
 			
 		} catch (SQLException e) {

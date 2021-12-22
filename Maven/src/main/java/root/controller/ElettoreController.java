@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import root.App;
 import root.util.Elettore;
+import root.util.LogManager;
 import root.util.Scheda;
 
 public class ElettoreController extends Controller {
@@ -22,6 +23,9 @@ public class ElettoreController extends Controller {
 
     @FXML
     private Label textHead;
+    
+    @FXML
+    private Button logoutButton;
     
     @Override
     public void init() {
@@ -95,7 +99,13 @@ public class ElettoreController extends Controller {
 	}
     
     public void onActionVota() {
-    	
+    	LogManager.getInstance().logVotazione(App.getInstance().getElettore(), "test");
     }
-
+    
+    @FXML
+    void onActionLogout() {
+    	LogManager.getInstance().logElettoreLogout(App.getInstance().getElettore());
+    	App.getInstance().setElettore(null);
+    	App.navigate("HomeView");
+    }
 }

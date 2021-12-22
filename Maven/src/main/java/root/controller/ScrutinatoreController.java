@@ -19,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import root.App;
+import root.util.LogManager;
 import root.util.Scheda;
 import root.util.Scrutinatore;
 
@@ -31,6 +32,9 @@ public class ScrutinatoreController extends Controller {
     
     @FXML
     private VBox parent;
+    
+    @FXML
+    private Button logoutButton;
 	
 	@Override
     public void init() {
@@ -98,6 +102,13 @@ public class ScrutinatoreController extends Controller {
     @FXML
     void onActionCrea() {
     	App.navigate("CreaSchedaView");
+    }
+    
+    @FXML
+    void onActionLogout() {
+    	LogManager.getInstance().logScrutinatoreLogout(App.getInstance().getScrutinatore());
+    	App.getInstance().setScrutinatore(null);
+    	App.navigate("HomeView");
     }
 
 }

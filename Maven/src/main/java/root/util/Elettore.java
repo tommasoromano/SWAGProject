@@ -30,8 +30,11 @@ public class Elettore {
 			CodiceFiscale codiceFiscale, 
 			String tesseraElettorale) 
 	{
-		this.nome = nome;
-		this.cognome = cognome;
+		if (nome == null || cognome == null || 
+				sesso == null || dataNascita == null || 
+				luogoNascita == null || tesseraElettorale == null) throw new IllegalArgumentException("Parametro nullo"); 
+		this.nome = nome.substring(0,1).toUpperCase() + nome.substring(1);
+		this.cognome = cognome.substring(0,1).toUpperCase() + cognome.substring(1);
 		this.sesso = sesso;
 		this.dataNascite = dataNascita;
 		this.luogoNascita = luogoNascita;

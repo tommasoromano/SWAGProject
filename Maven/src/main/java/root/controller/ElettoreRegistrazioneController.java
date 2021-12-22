@@ -1,9 +1,6 @@
 package root.controller;
 
-import root.util.CodiceFiscale;
-import root.util.Data;
-import root.util.LogManager;
-import root.util.Sesso;
+import root.util.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -67,8 +64,8 @@ public class ElettoreRegistrazioneController extends Controller {
     @FXML
     void onActionRegistrati() {
     	if (checkRegistrazione()) {
-    		//LogManager.getInstance().logElettoreRegistrazione(App.getInstance().getElettore());
-    		App.navigate("ElettoreLoginView");
+    		LogManager.getInstance().logElettoreRegistrazione(App.getInstance().getElettore());
+    		App.navigate("ElettoreView");
     	}
     	
 	}
@@ -150,9 +147,18 @@ public class ElettoreRegistrazioneController extends Controller {
     		return false;
     	}
     	
+    	//sesso
+    	Sesso s;
+    	if (sessoMaschio.isSelected()) {
+    		s = Sesso.M;
+    	} else {
+    		s = Sesso.F;
+    	}
+    	
     	CodiceFiscale CF = null;
     	try {
     		CF = CodiceFiscale.fromStringToCF(codiceFiscale.getText());
+    		//if (!CF.isValid(nome.getText(), cognome.getText(), d,new Nazione("ITA"), new Comune(luogo.getText()), s)) throw new IllegalArgumentException();
     	} catch (Exception e) {
     		textError.setText("Codice Fiscale errato");
     		return false;
@@ -163,9 +169,9 @@ public class ElettoreRegistrazioneController extends Controller {
     		textError.setText("Compila il campo Tessera Elettorale");
 			return false;
     	} else {
-    		String s = tesseraElettorale.getText();
-    		for (int i=0; i<s.length(); i++) {
-    			if (s.charAt(i) < '0' || s.charAt(i) > '9') {
+    		String tes = tesseraElettorale.getText();
+    		for (int i=0; i<tes.length(); i++) {
+    			if (tes.charAt(i) < '0' || tes.charAt(i) > '9') {
     				textError.setText("Tessera elettorale non valida");
     				return false;
     			}
@@ -188,14 +194,6 @@ public class ElettoreRegistrazioneController extends Controller {
     	if (password.getText().length() == 0) {
 			textError.setText("Compila il campo Password");
 			return false;
-    	}
-    	
-    	//sesso
-    	Sesso s;
-    	if (sessoMaschio.isSelected()) {
-    		s = Sesso.M;
-    	} else {
-    		s = Sesso.F;
     	}
     	
     	boolean res = DBManager.getInstance().registerElettore(
