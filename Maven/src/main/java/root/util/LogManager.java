@@ -1,23 +1,19 @@
 package root.util;
 
 import java.util.logging.*;
-import java.sql.Timestamp;
 import java.io.IOException;
 import java.nio.file.FileSystems;
-import java.io.File;
 
 public class LogManager {
 	
 	private static final String path = FileSystems.getDefault().getPath("").toAbsolutePath().toString() + "/LOG.log";
 	private static final Logger logger = Logger.getLogger(LogManager.class.getName());
+	private static FileHandler filehandler;
 	private static LogManager _instance;
 	
 	private LogManager() {
 		try {
-			File f = new File(path);
-			if (!f.exists()) {
-				f.createNewFile();
-			}
+			filehandler = new FileHandler(path, true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -38,17 +34,12 @@ public class LogManager {
 	 * @param msg messaggio aggiuntivo del log
 	 */
 	private void logElettore(Elettore el, String msg) {
-		FileHandler f = null;
-		try {
-			f = new FileHandler(path, true);
-			f.setFormatter(new SimpleFormatter());
-			String cf = el.getCF().toString();
-			logger.addHandler(f);
-			logger.setLevel(Level.INFO);
-			logger.info("Elettore " + cf +" "+ msg);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+		filehandler.setFormatter(new SimpleFormatter());
+		String cf = el.getCF().toString();
+		logger.addHandler(filehandler);
+		logger.setLevel(Level.INFO);
+		logger.info("Elettore " + cf +" "+ msg);
+			
 	}
 	
 	/**
@@ -56,15 +47,9 @@ public class LogManager {
 	 * @param e l'eccezione da loggare
 	 */
 	public void logException(Exception e) {
-		FileHandler f = null;
-		try {
-			f = new FileHandler(path, true);
-			f.setFormatter(new SimpleFormatter());
-			logger.addHandler(f);
-			logger.log(Level.SEVERE, "An exception occurred", e);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}	
+		filehandler.setFormatter(new SimpleFormatter());
+		logger.addHandler(filehandler);
+		logger.log(Level.SEVERE, "An exception occurred", e);
 	}
 	
 	public void logElettoreRegistrazione(Elettore e) {
@@ -81,17 +66,11 @@ public class LogManager {
 	 * @param msg messaggio aggiuntivo per il logging
 	 */
 	private void logScrutinatore(Scrutinatore s, String msg) {
-		FileHandler f = null;
-		try {
-			f = new FileHandler(path, true);
-			f.setFormatter(new SimpleFormatter());
-			String nome = s.getEmail();
-			logger.addHandler(f);
-			logger.setLevel(Level.INFO);
-			logger.info("Scrutinatore " + nome +" " + msg);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+		filehandler.setFormatter(new SimpleFormatter());
+		String nome = s.getEmail();
+		logger.addHandler(filehandler);
+		logger.setLevel(Level.INFO);
+		logger.info("Scrutinatore " + nome +" " + msg);
 	}
 	
 	public void logElettoreLogout(Elettore e) {

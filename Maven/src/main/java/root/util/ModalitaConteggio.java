@@ -1,7 +1,5 @@
 package root.util;
 
-import root.util.ModalitaVoto.Tipo;
-
 public class ModalitaConteggio {
 
 	public enum Tipo {

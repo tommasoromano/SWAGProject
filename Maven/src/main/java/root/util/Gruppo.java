@@ -31,7 +31,7 @@ public class Gruppo implements Votabile {
 	
 	public void esprimiVotoCategoricoPreferenze(Candidato ...c) {
 		for (Candidato x : c) {
-			x.vota();
+			x.esprimiVotoCategorico();
 		}
 		voti += 1;
 	}
@@ -44,4 +44,9 @@ public class Gruppo implements Votabile {
 	public int getVoti() {
 		return voti;
 	}
+	
+	public int getPosizione() {
+		return posizione;
+	}
+	
 }

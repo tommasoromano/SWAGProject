@@ -1,6 +1,5 @@
 package root.util;
 import java.time.LocalDate;
-import java.time.LocalDateTime; 
 
 public class Data implements Comparable<Data> {
 	
@@ -79,13 +78,6 @@ public class Data implements Comparable<Data> {
 		if (Integer.compare(this.mese, d.mese) != 0) return Integer.compare(this.mese, d.mese);
 		
 		return Integer.compare(this.giorno, d.giorno);
-	}
-	
-	private /* @ pure @ */ int compareTo(int g, int m, int a, int[] d) {
-		if (Integer.compare(a, d[2]) != 0) return Integer.compare(a, d[2]);	
-		if (Integer.compare(m, d[1]) != 0) return Integer.compare(m, d[1]);
-		
-		return Integer.compare(g, d[0]);
 	}
 	
 	public /* @ pure @ */ boolean isMaggiorenne() {

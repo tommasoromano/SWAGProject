@@ -1,11 +1,7 @@
 package root.controller;
 
-import root.controller.DBManager;
+
 import root.util.CodiceFiscale;
-
-import java.nio.charset.StandardCharsets;
-
-import com.google.common.hash.Hashing;
 import root.util.LogManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

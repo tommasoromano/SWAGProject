@@ -1,7 +1,5 @@
 package root.util;
 
-import java.time.LocalDate;
-
 public class Scheda {
 	
 	private int id;
