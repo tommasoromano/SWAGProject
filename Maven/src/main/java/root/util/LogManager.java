@@ -26,7 +26,7 @@ public class LogManager {
 	
 	public static LogManager getInstance() {
 		if (_instance == null) {
-			_instance=new LogManager();
+			_instance = new LogManager();
 		}
 		
 		return _instance;
