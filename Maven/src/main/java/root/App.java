@@ -39,7 +39,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadView("HomeView", null), 1280, 720);
+        scene = new Scene(loadView("HomeView", null), 900, 600);
         navigate("HomeView");
         stage.setScene(scene);
         stage.setTitle("Vota Online");
