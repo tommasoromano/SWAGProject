@@ -23,6 +23,7 @@
                   <Insets top="40.0" />
                </VBox.margin></Label>
             <Button fx:id="buttonConferma" mnemonicParsing="false" onAction="#onActionConferma" text="Conferma voto" />
+            <Label fx:id="textError" prefHeight="18.0" prefWidth="475.0" textAlignment="JUSTIFY" />
          </children>
       </VBox>
    </children>

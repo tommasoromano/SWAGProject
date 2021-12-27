@@ -128,3 +128,165 @@ Dec 27, 2021 12:40:46 AM root.util.LogManager logElettore
 INFO: Elettore RMNTMS00R03F205E ha votato scheda: Test
 Dec 27, 2021 12:40:46 AM root.util.LogManager logElettore
 INFO: Elettore RMNTMS00R03F205E ha votato scheda: Test
+dic 27, 2021 2:14:34 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 27, 2021 2:15:10 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test4
+dic 27, 2021 2:15:10 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test4
+dic 27, 2021 2:15:24 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: Test
+dic 27, 2021 2:15:24 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: Test
+dic 27, 2021 2:15:24 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: Test
+dic 27, 2021 2:15:30 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:15:30 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:15:30 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:15:30 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:15:56 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 2:15:56 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 2:15:56 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 2:15:56 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 2:15:56 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 2:20:01 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 2:21:11 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: RompaSwag
+dic 27, 2021 2:21:11 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: RompaSwag
+dic 27, 2021 2:21:22 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 2:21:22 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 2:21:22 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 2:21:34 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 27, 2021 2:21:34 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 27, 2021 2:21:34 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 27, 2021 2:21:34 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 27, 2021 2:21:50 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 2:21:50 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 2:21:50 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 2:21:50 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 2:21:50 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 2:26:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:26:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:26:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:26:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:26:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:26:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:28:18 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K registrazione
+dic 27, 2021 2:42:30 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G registrazione
+dic 27, 2021 2:44:10 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 2:45:57 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 2:56:40 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 3:00:50 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 3:15:58 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 3:28:39 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 3:56:03 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 3:57:12 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 4:31:38 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G log in
+dic 27, 2021 4:31:49 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 4:31:49 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore DFSDSS00S30E507G ha votato scheda: RompaSwag
+dic 27, 2021 4:33:12 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 4:35:08 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 4:40:35 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 4:41:11 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 4:44:28 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 4:58:58 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 4:59:43 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log out
+dic 27, 2021 4:59:43 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log out
+dic 27, 2021 4:59:55 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 4:59:55 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 4:59:55 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 27, 2021 5:00:37 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: test10
+dic 27, 2021 5:00:37 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: test10
+dic 27, 2021 5:00:37 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: test10
+dic 27, 2021 5:00:37 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: test10
+dic 27, 2021 5:00:41 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 5:00:41 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 5:00:41 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 5:00:41 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 5:00:41 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 27, 2021 5:00:48 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 5:00:48 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 5:00:48 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 5:00:48 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 5:00:48 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+dic 27, 2021 5:00:48 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore FFFFFF99S20E583K log in

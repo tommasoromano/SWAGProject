@@ -4,14 +4,20 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.Node;
 import root.App;
+import root.util.Gruppo;
+import root.util.Candidato;
 import root.util.LogManager;
 import root.util.Scheda;
 
 public class ElettoreSchedaController extends Controller {
 	
+	private boolean votato = false;
+	private int [] ordine;
 	private Scheda scheda;
 
 	@FXML
@@ -30,6 +36,10 @@ public class ElettoreSchedaController extends Controller {
     private Button buttonConferma;
 
     @FXML
+    private Label textError;
+    
+    
+    @FXML
     void onActionIndietro() {
     	App.navigate("ElettoreView");
     }
@@ -47,27 +57,45 @@ public class ElettoreSchedaController extends Controller {
     		// crea la UI in base a ModalitaVoto della scheda
     		switch(this.scheda.getTipoVoto().getTipo()) {
     			case VotoOrdinale:
+    				Label desc = new Label("Ordinare in modo crescente i candidati, dal più favorito al meno");
+    				parent.getChildren().add(desc);
+    				
     				String[] votabile = this.scheda.getDatiVoto().getCandidati();
+    				ordine = new int[votabile.length];
+    				for (int i=0; i<ordine.length; i++) {
+    					ordine[i] = -1;
+    				}
+    				
     				hbox = null;
     				for (int i = 0; i < votabile.length; i+=1) {
+    					Label b = new Label(votabile[i]);
+    					ChoiceBox<Integer> box = new ChoiceBox<>();
+    					box.setId("" + i);
+    					box.setOnAction((event)->{
+    						int pos = Integer.valueOf(box.getId());
+    						ordine[pos] = box.getValue();
+    					}) ;
+    					for (int j=0; j<votabile.length; j++) {
+    						box.getItems().add(j+1);
+    					}
     					if (i%2==0) {
     						hbox = new HBox();
     						hbox.setAlignment(Pos.CENTER);
     						hbox.setSpacing(20);
-        					Button b = new Button(votabile[i]);
-        					b.setOnAction((event) -> {
-        					    onActionVota(b.getText());
-        					});
     						hbox.getChildren().add(b);
+    						hbox.getChildren().add(box);
     					} else {
-        					Button b = new Button(votabile[i]);
-        					b.setOnAction((event) -> {
-        					    onActionVota(b.getText());
-        					});
     						hbox.getChildren().add(b);
+    						hbox.getChildren().add(box);
     						parent.getChildren().add(hbox);
+    						
     					}
     				}
+    				Button button = new Button("Vota");
+    				button.setOnAction((event) -> {
+    					votoOrdinale();
+    				});
+    				parent.getChildren().add(button);
     				break;
     			case VotoCategorico:
     				votabile = this.scheda.getDatiVoto().getCandidati();
@@ -196,10 +224,42 @@ public class ElettoreSchedaController extends Controller {
     	}
     	
     }
+   
+    
+    public boolean votoOrdinale() {
+    	String [] candidati = scheda.getDatiVoto().getCandidati();
+    	
+    	for (int i=0; i<ordine.length; i++) {
+    		if (ordine[i] == -1) {
+    			textError.setText("Selezionare tutti i candidati");
+    			return false;
+    		}
+    		for (int j=0; j<ordine.length; j++) {
+    			if (i!=j && ordine[i]==ordine[j]) {
+    				textError.setText("Ordinamento non valido");
+    				return false;
+    			}
+    		}
+    	}
+    	
+    	this.voto="";
+    	for (int i=0; i<candidati.length; i++) {
+    		this.voto+=candidati[i] + "-" + ordine[i];
+    		if (i<candidati.length-1) this.voto+= ":";
+    	}
+    	return true;
+    }
     
     private void onActionVota(String dati) {
-    	this.voto = dati;
-    	this.labelConferma.setText("Hai scelto di votare: " + this.voto);
+    	switch (this.scheda.getTipoVoto().getTipo()) {
+    	case VotoOrdinale:
+    		votato = votoOrdinale();
+    		break;
+    	default:
+    		System.out.println("Errore");
+    		break;
+    	}
+    	
     }
     
     private void onActionBianca() {
@@ -216,9 +276,13 @@ public class ElettoreSchedaController extends Controller {
     
     @FXML
     void onActionConferma() {
-    	LogManager.getInstance().logVotazione(App.getInstance().getElettore(), scheda.getNome());
+    	if (!votato) {
+    		textError.setText("Errore");
+    		return;
+    	}
+    	/*LogManager.getInstance().logVotazione(App.getInstance().getElettore(), scheda.getNome());
     	DBManager.getInstance().votaScheda(this.scheda, this.voto);
-    	App.navigate("ElettoreView");
+    	App.navigate("ElettoreView");*/
     }
 
 }
