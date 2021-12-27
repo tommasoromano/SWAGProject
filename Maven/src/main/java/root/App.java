@@ -11,6 +11,7 @@ import root.util.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -50,22 +51,26 @@ public class App extends Application {
     }
 
     private static Parent loadView(String view, Object param) {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + view + ".fxml"));
-        Parent parent = null;
 		try {
+			URL url = App.class.getResource("view/" + view + ".fxml");
+	        FXMLLoader loader = new FXMLLoader(url);
+
+	        Parent parent = null;
 			parent = loader.load();
+
+			Controller c = loader.getController();
+			if (param == null) c.init();
+			else c.init(param);
+	        return parent;
+	        
 		} catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
-		Controller c = loader.getController();
-		if (param == null) c.init();
-		else c.init(param);
-        return parent;
     }
 
     public static void navigate(String view) {
-    	var parent = loadView(view, null);
-        scene.setRoot(parent);
+    	navigate(view, null);
     }
     
     public static void navigate(String view, Object param) {

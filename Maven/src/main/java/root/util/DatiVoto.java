@@ -1,5 +1,8 @@
 package root.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatiVoto {
 
 	/**
@@ -16,23 +19,69 @@ public class DatiVoto {
 	 * - voto categorico con preferenze cx(pn:pn+1)
 	 * - referendum si/no
 	 */
-	private String data;
+	private String dati;
 	
-	private String [] candidati;
-	private String [] preferenze;
-	private String domanda;
-	
-	public DatiVoto(String data) {
-		
-		
-		this.candidati = data.split(":");
+	public DatiVoto(String dati) {
+		this.dati = dati;
 	}
 	
 	public String [] getCandidati() {
-		return candidati;
+		if (this.dati.contains("(")) {
+			// con preferenze
+			String[] all = this.dati.split(":");
+			List<String> candidati = new ArrayList<>();
+			for (int i = 0, j = 0; i < all.length; i++) {
+				// candidto1(preferenza1:preferenza2):candidato2 ...
+				if (all[i].contains("(")) {
+					candidati.add(all[i].split("\\(")[0]);
+				}
+			}
+			String[] c = new String[candidati.size()];
+			candidati.toArray(c);
+			return c;
+		} else {
+			return this.dati.split(":");
+		}
 	}
 	
+	public String [] getPreferenze(String candidato) {
+		if (this.dati.contains("(")) {
+			String[] all = this.dati.split(":");
+			List<String> pref = new ArrayList<>();
+			boolean p = false;
+			for (int i = 0, j = 0; i < all.length; i++) {
+				// candidto1(preferenza1:preferenza2):candidato2 ...
+				if (all[i].contains("(")) {
+					if (all[i].split("\\(")[0].equals(candidato)) {
+						pref.add(all[i].split("\\(")[1]);
+						p = true;
+					}
+				} else {
+					if (p) {
+						if (all[i].contains(")")) {
+							pref.add(all[i].split("\\)")[0]);
+							p = false;
+						} else {
+							pref.add(all[i]);
+						}
+					}
+				}
+				
+			}
+			String[] c = new String[pref.size()];
+			pref.toArray(c);
+			return c;
+		} else {
+			return null;
+		}
+	}
+	
+	public String getDomanda() {
+		return this.dati;
+	}
+	
+	
 	@Override
-	public String toString() { return this.candidati.toString(); }
+	public String toString() { return this.dati; }
 
 }

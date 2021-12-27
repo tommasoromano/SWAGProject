@@ -25,23 +25,21 @@ public class CreaSchedaController extends Controller {
 		for (int i = 0; i < mv.length; i++) {
 			tipoVoto.getItems().add(mv[i]);
 		}
+		tipoVoto.setOnAction((event) -> {
+		    cambiaModalitaVoto(tipoVoto.getValue().toString());
+		});
 		tipoVoto.getSelectionModel().selectFirst();
 		
 		String[] mc = ModalitaConteggio.getAllTipi();
 		for (int i = 0; i < mc.length; i++) {
 			tipoVincitore.getItems().add(mc[i]);
 		}
+		tipoVincitore.setOnAction((event) -> {
+		    
+		});
 		tipoVincitore.getSelectionModel().selectFirst();
 		
-		/**
-		 * TO-DO: descrizione.setText() in base a modalita di voto
-		 */
-		String desc = "- Voto ordinale e categorico: scrivere i partiti o candidati separandoli con :\n"
-				+ "Esempio1 Partito1:Partito2:Partito3 Esempio2 Candidato1:Candidato2:Candidato3\n"
-				+ "- Voto categorico con preferenze: scrivere i partiti separandoli con : "
-				+ "e i candidati di ogni partito all'interno di () separandoli con :\n"
-				+ "Esempio: Partito1(Candidato1:Candidato2):Partito2(Candidato3:Candidato4)\n";
-		descrizione.setText(desc);
+		
 	}
 	
     @FXML
@@ -70,9 +68,13 @@ public class CreaSchedaController extends Controller {
 
     @FXML
     private ChoiceBox tipoVincitore;
+    
+    private ModalitaVoto modalitaVoto;
 
     @FXML
     private ChoiceBox tipoVoto;
+    
+    private ModalitaConteggio modalitaConteggio;
 
     @FXML
     void onActionCrea() {
@@ -82,10 +84,37 @@ public class CreaSchedaController extends Controller {
     	} 
     }
     
-    void onActionModifica() {
-    	if (checkCreaScheda()) {
-    		App.navigate("ScrutinatoreView");
-    	} 
+    private void cambiaModalitaVoto(String n) {
+    	modalitaVoto = new ModalitaVoto(n);
+    	datiVoto.clear();
+ 		String text = "Istruzioni:\n";
+    	switch(modalitaVoto.getTipo()) {
+    	 	case VotoOrdinale:
+    	 		text += "Inserire condidatio o gruppo o partito separandoli con \":\" esempio:\n"
+    	 				+"Candidato1:Candidato2:Candidato3:Candidato4 etc";
+    	 		descrizione.setText(text);
+    	 		break;
+    	 	case VotoCategorico:
+    	 		text += "Inserire condidatio o gruppo o partito separandoli con \":\" esempio:\n"
+    	 				+"Candidato1:Candidato2:Candidato3:Candidato4 etc";
+    	 		descrizione.setText(text);
+    	 		break;
+    	 	case VotoCategoricoConPreferenze:
+    	 		text += "Inserire gruppo o partito separandoli con \":\""
+    	 		+"le preferenze dentro () separandole con \":\", esempio:\n"
+    	 				+"Candidato1(Preferenza1:Preferenza2):Candidato2(Preferenza3:Preferenza4) etc";
+    	 		descrizione.setText(text);
+    	 		break;
+    	 	case Referendum:
+    	 		text += "Inserire domanda del Referendum";
+    	 		descrizione.setText(text);
+    	 		break;
+    	}
+    		
+    }
+    
+    private void cambiaModalitaConteggio(String n) {
+    	modalitaConteggio = new ModalitaConteggio(n);
     }
     
     private boolean checkCreaScheda() {

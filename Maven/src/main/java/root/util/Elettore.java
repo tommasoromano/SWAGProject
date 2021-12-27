@@ -53,10 +53,5 @@ public class Elettore {
 	public CodiceFiscale getCF() {
 		return this.codiceFiscale;
 	}
-	
-	public boolean hasVotato(Scheda s) {
-		
-		return false;
-	}
 
 }

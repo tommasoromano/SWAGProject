@@ -60,7 +60,7 @@ public class ElettoreController extends Controller {
 			b.setDisable(true);
 		}
 		else if (t == 0) {
-			if (App.getInstance().getElettore().hasVotato(s)) {
+			if (DBManager.getInstance().hasElettoreVotoScheda(s)) {
 				b = new Button("Vota");
 				b.setDisable(true);
 			} else {
@@ -95,10 +95,6 @@ public class ElettoreController extends Controller {
 		}
 		
 	}
-    
-    public void onActionVota() {
-    	LogManager.getInstance().logVotazione(App.getInstance().getElettore(), "test");
-    }
     
     @FXML
     void onActionLogout() {

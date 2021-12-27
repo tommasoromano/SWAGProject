@@ -331,4 +331,45 @@ public class DBManager {
     	}
 	}
 	
+	public boolean hasElettoreVotoScheda(Scheda s) {
+		try {		
+    		Scheda scheda = null;
+    		
+			PreparedStatement st = db.prepareStatement("SELECT * FROM votoElettore AS V WHERE v.CF = ? AND V.scheda = ?");
+			st.setString(1, App.getInstance().getElettore().getCF().toString());
+			st.setString(2, Integer.toString(s.getId()));
+			ResultSet set = st.executeQuery();
+			if (set==null) {
+				return false;		
+			}
+			while (set.next()) {
+				return true;
+			}
+			return false;
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return false;
+    	}
+	}
+	
+	public boolean votaScheda(Scheda s, String voto) {
+		try {
+			PreparedStatement st = db.prepareStatement("INSERT INTO votoScheda VALUES (?, ?)");
+			st.setString(1, voto);
+			st.setString(2, Integer.toString(s.getId()));
+			st.executeUpdate();
+			
+
+			st = db.prepareStatement("INSERT INTO votoElettore VALUES (?, ?)");
+			st.setString(1, App.getInstance().getElettore().getCF().toString());
+			st.setString(2, Integer.toString(s.getId()));
+			st.executeUpdate();
+			return true;
+			
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	
 }

@@ -18,3 +18,113 @@ Dec 24, 2021 4:21:20 PM root.util.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log out
 Dec 24, 2021 4:21:20 PM root.util.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log out
+Dec 25, 2021 4:38:55 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Dec 25, 2021 4:59:35 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Dec 25, 2021 5:00:23 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 25, 2021 5:00:23 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 25, 2021 5:00:33 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 25, 2021 5:00:33 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 25, 2021 5:00:33 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:24:28 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Dec 26, 2021 11:25:49 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: test4
+Dec 26, 2021 11:25:49 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: test4
+Dec 26, 2021 11:25:54 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 26, 2021 11:25:54 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 26, 2021 11:25:54 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 26, 2021 11:26:08 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:26:08 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:26:08 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:26:08 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:33:35 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:35:01 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 11:36:40 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 4:35:58 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 5:00:37 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 5:34:01 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 5:35:27 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 5:36:11 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 5:37:35 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 26, 2021 5:54:04 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:02:22 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Dec 27, 2021 12:02:24 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 27, 2021 12:02:24 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 27, 2021 12:02:34 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:02:34 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:02:34 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:03:46 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:04:48 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:05:23 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:06:56 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:14:21 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:18:41 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:22:23 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Dec 27, 2021 12:22:26 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 27, 2021 12:22:26 AM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 27, 2021 12:22:36 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:22:36 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:22:36 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:23:26 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: test4
+Dec 27, 2021 12:23:26 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: test4
+Dec 27, 2021 12:23:26 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: test4
+Dec 27, 2021 12:23:26 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: test4
+Dec 27, 2021 12:31:46 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:31:57 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: test4
+Dec 27, 2021 12:31:57 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: test4
+Dec 27, 2021 12:40:29 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 27, 2021 12:40:46 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: Test
+Dec 27, 2021 12:40:46 AM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: Test

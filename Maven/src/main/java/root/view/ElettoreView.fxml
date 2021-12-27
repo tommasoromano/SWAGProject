@@ -16,7 +16,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <VBox fx:id="parent" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+      <VBox fx:id="parent" alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
             <GridPane maxWidth="600.0">
               <columnConstraints>
