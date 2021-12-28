@@ -22,6 +22,10 @@ public class Candidato implements Votabile {
 		voti+=1;
 	}
 	
+	public void esprimiVotoCategoricoConPreferenze(Votabile v, Candidato ...c) {
+		
+	}
+	
 	@Override
 	public String toString() {
 		return nome + " " + cognome;

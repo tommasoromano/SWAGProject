@@ -29,7 +29,7 @@ public class Gruppo implements Votabile {
 		voti += 1;
 	}
 	
-	public void esprimiVotoCategoricoPreferenze(Candidato ...c) {
+	public void esprimiVotoCategoricoConPreferenze(Votabile v, Candidato ...c) {
 		for (Candidato x : c) {
 			x.esprimiVotoCategorico();
 		}

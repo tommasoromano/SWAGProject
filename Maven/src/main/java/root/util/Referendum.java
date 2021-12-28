@@ -1,6 +1,6 @@
 package root.util;
 
-public class Referendum implements Votabile {
+public class Referendum {
 	private String domanda;
 	private int si;
 	private int no;
