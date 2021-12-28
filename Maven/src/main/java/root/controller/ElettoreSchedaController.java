@@ -49,8 +49,9 @@ public class ElettoreSchedaController extends Controller {
     
     @Override
     public void init(Object param) {
-    	this.votato = false;
-    	this.voto = "";
+
+    	setVotazioneCorretta(false, "Selezionare voto");
+    	
     	boxes = new ArrayList<>();
 
     	if (param.getClass().equals(Scheda.class)) {
@@ -74,6 +75,9 @@ public class ElettoreSchedaController extends Controller {
     					ChoiceBox<Integer> box = new ChoiceBox<>();
     					boxes.add(box);
     					box.setId("" + i);
+    					box.setOnAction((event) -> {
+    						votoOrdinale();
+    					});
     					for (int j=0; j<votabile.length; j++) {
     						box.getItems().add(j+1);
     					}
@@ -91,11 +95,7 @@ public class ElettoreSchedaController extends Controller {
     						
     					}
     				}
-    				Button button = new Button("Vota");
-    				button.setOnAction((event) -> {
-    					votoOrdinale();
-    				});
-    				parent.getChildren().add(button);
+    				votoOrdinale();
     				break;
     			case VotoCategorico:
     				votabile = this.scheda.getDatiVoto().getCandidati();
@@ -105,24 +105,19 @@ public class ElettoreSchedaController extends Controller {
     						hbox = new HBox();
     						hbox.setAlignment(Pos.CENTER);
     						hbox.setSpacing(20);
-        					Button b = new Button(votabile[i]);
-        					b.setOnAction((event) -> {
-        						this.voto = b.getText();
-        			    		this.votato = true;
-        			    		this.labelConferma.setText("Hai votato: " + this.voto);
-        					});
-    						hbox.getChildren().add(b);
-    					} else {
-        					Button b = new Button(votabile[i]);
-        					b.setOnAction((event) -> {
-        						this.voto = b.getText();
-        			    		this.votato = true;
-        			    		this.labelConferma.setText("Hai votato: " + this.voto);
-        					});
-    						hbox.getChildren().add(b);
-    						parent.getChildren().add(hbox);
     					}
+    					Button b = new Button(votabile[i]);
+    					b.setOnAction((event) -> {
+    						this.voto = b.getText();
+    						votoCategorico();
+    					});
+						hbox.getChildren().add(b);
+					
+						if (i+1 >= votabile.length || i%2!=0) {
+    						parent.getChildren().add(hbox);
+						} 
     				}
+    				//votoCategorico();
     				break;
     			case VotoCategoricoConPreferenze:
     				votabile = this.scheda.getDatiVoto().getCandidati();
@@ -141,75 +136,47 @@ public class ElettoreSchedaController extends Controller {
     					    		((CheckBox)n).setSelected(false);
     					    	}
     					    }
+    						votoCategoricoPreferenze();
     					});
-    					
+    					// se primo del hbox
     					if (i%2==0) {
     						hboxParent = new HBox();
     						hboxParent.setAlignment(Pos.CENTER);
     						hboxParent.setSpacing(20);
-    						// crea button gruppo
-    						hbox = new HBox();
-    						hbox.setAlignment(Pos.CENTER);
-    						hbox.setSpacing(5);
-        					
-        					// cre button preferenze del gruppo
-        					VBox vbox = new VBox();
-    						vbox.setAlignment(Pos.CENTER);
-    						vbox.setSpacing(5);
-        					for (int j = 0; j < pref.length; j++) {
-        						CheckBox checkp = new CheckBox(pref[j]);
-        						checkp.setId("g:"+i+":p:" + j );
-        						boxes.add(checkp);
-        						checkp.setOnAction((event) -> {
-        							checkp.setSelected(true);
-            					    for (Node n : boxes) {
-            					    	if (!n.equals(checkp) && (n instanceof CheckBox) && !n.getId().contains("gruppo")) {
-            					    		((CheckBox)n).setSelected(false);
-            					    	}
-            					    }
-            					});
-        						vbox.getChildren().add(checkp);
-        					}
-    						hbox.getChildren().add(b);
-    						hbox.getChildren().add(vbox);
-    						hboxParent.getChildren().add(hbox);
-    						if (i+1 >= votabile.length) {
-        						parent.getChildren().add(hboxParent);
-    						}
-    					} else {
-    						hbox = new HBox();
-    						hbox.setAlignment(Pos.CENTER);
-    						hbox.setSpacing(5);
-        					// crea button preferenze
-        					VBox vbox = new VBox();
-    						vbox.setAlignment(Pos.CENTER);
-    						vbox.setSpacing(5);
-        					for (int j = 0; j < pref.length; j++) {
-        						CheckBox checkp = new CheckBox(pref[j]);
-        						boxes.add(checkp);
-        						checkp.setId("g:"+i+":p:" + j );
-        						checkp.setOnAction((event) -> {
-        							checkp.setSelected(true);
-            					    for (Node n : boxes) {
-            					    	if (!n.equals(checkp) && (n instanceof CheckBox) && !n.getId().contains("gruppo")) {
-            					    		((CheckBox)n).setSelected(false);
-            					    	}
-            					    }
-            					});
-        						vbox.getChildren().add(checkp);
-        					}
-    						hbox.getChildren().add(b);
-    						hbox.getChildren().add(vbox);
-    						hboxParent.getChildren().add(hbox);
-    						parent.getChildren().add(hboxParent);
-
     					}
+						// crea button gruppo
+						hbox = new HBox();
+						hbox.setAlignment(Pos.CENTER);
+						hbox.setSpacing(5);
+    					
+    					// cre button preferenze del gruppo
+    					VBox vbox = new VBox();
+						vbox.setAlignment(Pos.CENTER);
+						vbox.setSpacing(5);
+    					for (int j = 0; j < pref.length; j++) {
+    						CheckBox checkp = new CheckBox(pref[j]);
+    						checkp.setId("g:"+i+":p:" + j );
+    						boxes.add(checkp);
+    						checkp.setOnAction((event) -> {
+    							checkp.setSelected(true);
+        					    for (Node n : boxes) {
+        					    	if (!n.equals(checkp) && (n instanceof CheckBox) && !n.getId().contains("gruppo")) {
+        					    		((CheckBox)n).setSelected(false);
+        					    	}
+        					    }
+        						votoCategoricoPreferenze();
+        					});
+    						vbox.getChildren().add(checkp);
+    					}
+						hbox.getChildren().add(b);
+						hbox.getChildren().add(vbox);
+						hboxParent.getChildren().add(hbox);
+						
+						if (i+1 >= votabile.length || i%2!=0) {
+    						parent.getChildren().add(hboxParent);
+						}
     				}
-    				Button vota = new Button("Vota");
-					vota.setOnAction((e)-> {
-						votoCategoricoPreferenze();
-					});
-					parent.getChildren().add(vota);
+    				votoCategoricoPreferenze();
     				break;
     			case Referendum:
     				Label domanda = new Label(scheda.getDatiVoto().getDomanda());
@@ -223,6 +190,7 @@ public class ElettoreSchedaController extends Controller {
 					    for (Node n : boxes) {
 					    	if (!n.equals(s) && (n instanceof CheckBox)) ((CheckBox)n).setSelected(false);
 					    }
+						referendum();
 					});
 					CheckBox no = new CheckBox("No");
 					boxes.add(no);
@@ -230,15 +198,12 @@ public class ElettoreSchedaController extends Controller {
 						for (Node n : boxes) {
 					    	if (!n.equals(no) && (n instanceof CheckBox)) ((CheckBox)n).setSelected(false);
 					    }
+						referendum();
 					});
 					hbox.getChildren().add(s);
 					hbox.getChildren().add(no);
 					parent.getChildren().add(hbox);
-					Button v = new Button("Vota");
-					v.setOnAction((e)-> {
-						referendum();
-					});
-					parent.getChildren().add(v);
+					referendum();
     				break;
     			default:
     				
@@ -273,13 +238,13 @@ public class ElettoreSchedaController extends Controller {
     	
     	for (int i=0; i<boxes.size(); i++) {
     		if ( (boxes.get(i) instanceof ChoiceBox<?>) && ( ((ChoiceBox<?>)boxes.get(i)).getValue() == null ) ) {
-    			textError.setText("Selezionare tutti i candidati");
+    			setVotazioneCorretta(false, "Selezionare tutti i candidati");
     			return;
     		}
     		
     		for (int j=0; j<boxes.size(); j++) {
     			if (i!=j &&  ((ChoiceBox<?>)boxes.get(i)).getValue().equals(((ChoiceBox<?>)boxes.get(j)).getValue()) ) {
-    				textError.setText("Ordinamento non valido");
+    				setVotazioneCorretta(false, "Ordinamento non valido");
     				return;
     			}
     		}
@@ -290,11 +255,12 @@ public class ElettoreSchedaController extends Controller {
     		this.voto+=candidati[i] + "-" + ((ChoiceBox<?>)boxes.get(i)).getValue().toString();
     		if (i<candidati.length-1) this.voto+= ":";
     	}
-    	textError.setText("");
-    	this.votato = true;
-    	this.labelConferma.setText("Dati votazione: " + this.voto);
+    	setVotazioneCorretta(true, this.voto);
     }
     
+    private void votoCategorico() {
+    	setVotazioneCorretta(true, this.voto);
+    }
         
     private void votoCategoricoPreferenze() {
     	CheckBox gruppo = null;
@@ -310,48 +276,54 @@ public class ElettoreSchedaController extends Controller {
     	}
     	
     	if (gruppo == null || preferenze == null) {
-    		textError.setText("Selezionare un gruppo e una preferenza");
+    		setVotazioneCorretta(false, "Selezionare un gruppo e una preferenza");
     		return;
     	}
     	
     	if (!gruppo.getId().split(":")[1].equals(preferenze.getId().split(":")[1])) {
-    		textError.setText("Preferenza deve appartenere allo stesso gruppo selezionato");
+    		setVotazioneCorretta(false, "Preferenza deve appartenere allo stesso gruppo selezionato");
     		return;
     	}
-    	this.voto = "gruppo: " + gruppo.getText() + " con preferenza: " + preferenze.getText(); 
-    	this.votato = true;
-    	textError.setText("");
-    	this.labelConferma.setText("Hai votato: "+ this.voto);
+    	setVotazioneCorretta(true,"gruppo: " + gruppo.getText() + " con preferenza: " + preferenze.getText());
     }
     
     private void referendum() {
+    	buttonConferma.setDisable(false);
     	for (Node n : boxes) {
     		if ( (n instanceof CheckBox ) && ((CheckBox)n).isSelected()) {
-    			this.votato = true;
-    			this.voto = ((CheckBox)n).getText();
-    			textError.setText("");
-    			this.labelConferma.setText("Hai votato: " + this.voto);
+    			setVotazioneCorretta(true,((CheckBox)n).getText());
     			return;
     		}
     	}
-    	
-    	textError.setText("Inserire preferenza");
+    	setVotazioneCorretta(false, "Inserire preferenze");
     }
     
     private void onActionBianca() {
     	for (Node n : boxes) {
     		if ( (n instanceof CheckBox) ) ((CheckBox)n).setSelected(false);
     	}
-    	this.voto = "scheda bianca";
-    	this.labelConferma.setText("Hai scelto di votare: " + this.voto);
+    	setVotazioneCorretta(true,"scheda bianca");
     }
 
     private void onActionNulla() {
     	for (Node n : boxes) {
     		if ( (n instanceof CheckBox) ) ((CheckBox)n).setSelected(false);
     	}
-    	this.voto = "scheda nulla";
-    	this.labelConferma.setText("Hai scelto di votare: " + this.voto);
+    	setVotazioneCorretta(true, "scheda nulla");
+    }
+    
+    private void setVotazioneCorretta(boolean corretta, String msg) {
+    	this.votato = corretta;
+    	buttonConferma.setDisable(!corretta);
+    	if (corretta) {
+    		this.voto = msg;
+    		labelConferma.setText("Hai scelto di votare:\n" + msg);
+    		textError.setText("");
+    	} else {
+    		this.voto = "";
+    		labelConferma.setText("");
+    		textError.setText(msg);
+    	}
     }
     
     @FXML

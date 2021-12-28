@@ -508,3 +508,33 @@ dic 28, 2021 5:25:16 PM root.util.LogManager logElettore
 INFORMAZIONI: Elettore FFFFFF99S20E583K log in
 dic 28, 2021 5:27:49 PM root.util.LogManager logElettore
 INFORMAZIONI: Elettore FFFFFF99S20E583K log in
+Dec 28, 2021 5:38:54 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Dec 28, 2021 5:39:08 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 28, 2021 5:39:08 PM root.util.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Dec 28, 2021 5:39:18 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 5:39:18 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 5:39:18 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 6:31:20 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 6:48:41 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 6:58:19 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 7:05:48 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Dec 28, 2021 7:07:46 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: RompaSwag
+Dec 28, 2021 7:07:46 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E ha votato scheda: RompaSwag
+Dec 28, 2021 7:07:56 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out
+Dec 28, 2021 7:07:56 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out
+Dec 28, 2021 7:07:56 PM root.util.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out

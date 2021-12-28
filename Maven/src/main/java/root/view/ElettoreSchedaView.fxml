@@ -18,12 +18,12 @@
       <VBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
             <VBox fx:id="parent" alignment="CENTER" spacing="10.0" />
-            <Label fx:id="labelConferma" text="Stai votando: Scheda nulla">
+            <Label fx:id="labelConferma" alignment="CENTER" contentDisplay="CENTER" text="Stai votando: Scheda nulla">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin></Label>
             <Button fx:id="buttonConferma" mnemonicParsing="false" onAction="#onActionConferma" text="Conferma voto" />
-            <Label fx:id="textError" prefHeight="18.0" prefWidth="475.0" textAlignment="JUSTIFY" textFill="RED" />
+            <Label fx:id="textError" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="475.0" textAlignment="JUSTIFY" textFill="RED" />
          </children>
       </VBox>
    </children>
