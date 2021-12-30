@@ -55,12 +55,7 @@ public class DBManager {
 				
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoScheda (voto TEXT, scheda TEXT)");
 				st.executeUpdate();
-				
-				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS gruppo (nome TEXT, PRIMARY KEY(nome))");
-				st.executeUpdate();
-				
-				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS candidato (nome TEXT, cognome TEXT, partito TEXT, PRIMARY KEY (nome, cognome, partito), FOREIGN KEY(partito) REFERENCES gruppo(nome))");
-				st.executeUpdate();
+		
 				
 				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				//res = _instance.insertScrutinatore("admin@test.it","123456");
@@ -356,78 +351,6 @@ public class DBManager {
     	}
 	}
 	
-	/**
-	 * Inserisce il partito nel database
-	 * @param nome il nome del partito
-	 * @return true se il partito non è già presente, false altrimenti
-	 */
-	public boolean insertPartito(String nome) {
-		try {
-			PreparedStatement st = db.prepareStatement("INSERT INTO gruppo VALUES (?)");
-			st.setString(1, nome);
-			
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	/**
-	 * Inserisce il candidato nel db, se il suo partito è già nel database
-	 * @param nome del candidato
-	 * @param cognome del candidato
-	 * @param partito del candidato
-	 * @return true se il candidato è inserito correttamente, false altrimenti
-	 */
-	public boolean insertCandidato(String nome, String cognome, String partito) {
-		try {
-			PreparedStatement st = db.prepareStatement("SELECT * FROM gruppo AS G WHERE G.nome = ?");
-			st.setString(1, partito);
-			ResultSet res = st.executeQuery();
-			if (res == null) return false;
-			
-			st = db.prepareStatement("INSERT INTO candidato VALUES (?, ?, ?)");
-			st.setString(1, nome);
-			st.setString(2, cognome);
-			st.setString(3, partito);
-			st.executeUpdate();
-			
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	/**
-	 * 
-	 * @return l'array conposto dai nomi e partito dei candidati come stringa 
-	 */
-	public String [] getCandidati() {
-		String [] candidati;
-		try {
-			PreparedStatement st = db.prepareStatement("SELECT COUNT(*) FROM candidato");
-			ResultSet res = st.executeQuery();
-			if (res == null) return null;
-			candidati = new String [res.getInt(1)];
-			
-			st = db.prepareStatement("SELECT * FROM candidato");
-			res = st.executeQuery();
-			if (res == null) return null;
-			
-			int i=0;
-			while (res.next()) {
-				candidati[i] = res.getString(1)+ " " + res.getString(2) + ", partito: " + res.getString(3);
-				i++;
-			}
-			
-			return candidati;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	public boolean votaScheda(Scheda s, String voto) {
 		try {

@@ -2,6 +2,8 @@ package root.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
+import org.controlsfx.control.CheckComboBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -66,9 +68,6 @@ public class CreaSchedaController extends Controller {
 
     @FXML
     private TextField nomeScheda;
-
-    @FXML
-    private Label descrizione;
     
     @FXML
     private Label textError;
@@ -91,131 +90,106 @@ public class CreaSchedaController extends Controller {
     	} 
     }
     
-    private void aggiungiNuovo(String tipo, TextField nome, TextField cognome, TextField partito) {
-    	boolean res = false;
+    private boolean aggiungiNuovoVotabile(CheckComboBox<String> candidati, String tipo, String nome, String cognome, String partito) {
+    	String str = "";
+    	
     	if (tipo.equals("Gruppo")) {
-    		if (nome == null || nome.getText().isBlank()) {
+    		if (nome == null || nome.isBlank()) {
     			textError.setText("Inserire nome del gruppo");
-    			return;
+    			return false;
     		}
-    		res = DBManager.getInstance().insertPartito(nome.getText());
     		
+    		str = nome; 		
     	} else if (tipo.equals("Candidato")) {
-    		if (nome == null || nome.getText().isBlank()) {
+    		if (nome == null || nome.isBlank()) {
     			textError.setText("Compilare campo nome");
-    			return;
+    			return false;
     		}
     		
-    		if (cognome == null || cognome.getText().isBlank()) {
+    		if (cognome == null || cognome.isBlank()) {
     			textError.setText("Compilare campo cognome");
-    			return;
+    			return false;
     		}
     		
-    		if (partito==null || partito.getText().isBlank()) {
+    		if (partito==null || partito.isBlank()) {
     			textError.setText("Compilare campo partito");
-    			return;
+    			return false;
     		}
     		
-    		res = DBManager.getInstance().insertCandidato(nome.getText(), cognome.getText(), partito.getText());
+    		str = nome + " " + cognome + "; " + partito;
+    	} else {
+    		return false;
     	}
-    	if (!res) textError.setText("Inserimento non riuscito");
-    	if (res) textError.setText("Inserito");
+    	candidati.getItems().add(str);
+    	return true;
     }
     
     private void cambiaModalitaVoto(String n) {
     	modalitaVoto = new ModalitaVoto(n);
     	datiVoto.clear();
- 		String text = "Istruzioni:\n";
- 		ChoiceBox<String> candidati=null;
- 		Label addnuovo=null;
     	switch(modalitaVoto.getTipo()) {
     	 	case VotoOrdinale:
-    	 		removeNode = new ArrayList<>();
-    	 		candidati = new ChoiceBox<>();  	 		
-    	 		addnuovo = new Label("Aggiungi nuovo candidato o gruppo");
-    	 		ChoiceBox<String> addnew = new ChoiceBox<>();
-    	 		addnew.setOnAction((e) -> {
-    	 			for (Node m : removeNode) {
-    	 				parent.getChildren().remove(m);
-    	 			}
-    	 			removeNode = new ArrayList<>();
-    	 			TextField nome = new TextField();
-    	 			nome.setPromptText("Nome: ");
-    	 			TextField cognome = new TextField();
-    	 			cognome.setPromptText("Cognome: ");
-	 				TextField partito = new TextField();
-	 				partito.setPromptText("Partito: ");
-	 				parent.getChildren().add(3, nome);
-	 				removeNode.add(nome);
-	 				int pos = 4;
-    	 			if (addnew.getValue().equals("Candidato")) {
-    	 				parent.getChildren().add(4, cognome);
-    	 				parent.getChildren().add(5, partito);
-    	 				removeNode.add(cognome);
-    	 				removeNode.add(partito);
-    	 				pos = 6;
-    	 			}
-    	 			Button ok = new Button("Inserisci");
-    	 			ok.setId("b");
-    	 			ok.setOnAction((ev)-> {
-    	 				aggiungiNuovo(addnew.getValue(), nome, cognome, partito);
-    	 			});
-    	 			parent.getChildren().add(pos, ok);
-    	 			removeNode.add(ok);
-    	 		});
-    	 		addnew.getItems().add("Gruppo");
-    	 		addnew.getItems().add("Candidato");
-    	 		parent.getChildren().add(1, addnuovo);
-    	 		parent.getChildren().add(2, addnew);
-    	 		
-    	 		String [] cand = DBManager.getInstance().getCandidati();
-    	 		
-    	 		if (cand == null || cand.length == 0) return;
-    	 		for (String c : cand) {
-    	 			candidati.getItems().add(c);
-    	 		}
-   
-    	 		parent.getChildren().add(1,candidati);
-    	 		
-    	 		text += "Inserire condidatio o gruppo o partito separandoli con \":\" esempio:\n"
-    	 				+"Candidato1:Candidato2:Candidato3:Candidato4 etc";
-    	 		descrizione.setText(text);
+    	 		candidatiGruppiUI();
     	 		break;
     	 	case VotoCategorico:
-    	 		for (Node m : removeNode) {
-	 				parent.getChildren().remove(m);
-	 			}
-    	 		removeNode = new ArrayList<>();
-    	 		text += "Inserire condidatio o gruppo o partito separandoli con \":\" esempio:\n"
-    	 				+"Candidato1:Candidato2:Candidato3:Candidato4 etc";
-    	 		descrizione.setText(text);
-    	 		parent.getChildren().remove(addnuovo);
-    	 		parent.getChildren().remove(candidati);
+    	 		candidatiGruppiUI();
     	 		break;
     	 	case VotoCategoricoConPreferenze:
-    	 		for (Node m : removeNode) {
-	 				parent.getChildren().remove(m);
-	 			}
-    	 		parent.getChildren().remove(addnuovo);
-    	 		parent.getChildren().remove(candidati);
-    	 		removeNode = new ArrayList<>();
-    	 		text += "Inserire gruppo o partito separandoli con \":\""
-    	 		+"le preferenze dentro () separandole con \":\", esempio:\n"
-    	 				+"Candidato1(Preferenza1:Preferenza2):Candidato2(Preferenza3:Preferenza4) etc";
-    	 		descrizione.setText(text);
+    	 		
+    	 		
     	 		break;
     	 	case Referendum:
-    	 		for (Node m : removeNode) {
-	 				parent.getChildren().remove(m);
-	 			}
-    	 		parent.getChildren().remove(addnuovo);
-    	 		parent.getChildren().remove(candidati);
-    	 		removeNode = new ArrayList<>();
-    	 		text += "Inserire domanda del Referendum";
-    	 		descrizione.setText(text);
+    	 		TextField txt = new TextField();
+    	 		txt.setPromptText("Domanda: ");
     	 		break;
     	}
     		
+    }
+    
+    private void candidatiGruppiUI() {
+    	removeNode = new ArrayList<>();
+    	CheckComboBox<String> candidati = new CheckComboBox<>();  	
+    	Label addnuovo = new Label("Aggiungi nuovo candidato o gruppo");
+ 		ChoiceBox<String> addnew = new ChoiceBox<>();
+ 		addnew.setOnAction((e) -> {
+ 			for (Node m : removeNode) {
+ 				parent.getChildren().remove(m);
+ 			}
+ 			removeNode = new ArrayList<>();
+ 			TextField nome = new TextField();
+ 			nome.setPromptText("Nome: ");
+ 			TextField cognome = new TextField();
+ 			cognome.setPromptText("Cognome: ");
+				TextField partito = new TextField();
+				partito.setPromptText("Partito: ");
+				parent.getChildren().add(3, nome);
+				removeNode.add(nome);
+				int pos = 4;
+ 			if (addnew.getValue().equals("Candidato")) {
+ 				parent.getChildren().add(4, cognome);
+ 				parent.getChildren().add(5, partito);
+ 				removeNode.add(cognome);
+ 				removeNode.add(partito);
+ 				pos = 6;
+ 			}
+ 			Button ok = new Button("Inserisci");
+ 			ok.setId("b");
+ 			ok.setOnAction((ev)-> {
+ 				boolean res = aggiungiNuovoVotabile(candidati, addnew.getValue(), nome.getText(), cognome.getText(), partito.getText());
+ 				if (res) {
+	 				nome.setText("");
+	 				cognome.setText("");
+	 				partito.setText("");
+ 				}
+ 			});
+ 			parent.getChildren().add(pos, ok);
+ 			removeNode.add(ok);
+ 		});
+ 		addnew.getItems().add("Gruppo");
+ 		addnew.getItems().add("Candidato");
+ 		parent.getChildren().add(1, addnuovo);
+ 		parent.getChildren().add(2, addnew);
+ 		parent.getChildren().add(3,candidati);
     }
     
     private void cambiaModalitaConteggio(String n) {
