@@ -257,9 +257,6 @@ public class CreaSchedaController extends Controller {
     		}
     	}
     	
-    	System.out.println(votabili.toString());
-    	System.out.println(preferenze.toString());
-    	
     	// modify choiche box
     	cb.getItems().clear();
     	for (int i = 0; i < votabili.size(); i++) {
@@ -282,7 +279,7 @@ public class CreaSchedaController extends Controller {
     		if (i != 0 && i%2==0) j++;
     		
     		HBox hb = new HBox();
-    		hb.setAlignment(Pos.CENTER_LEFT);
+    		hb.setAlignment(Pos.TOP_LEFT);
 			hb.setSpacing(10);
         	Label l = new Label(votabili.get(i));
         	Button b = new Button("X");
@@ -320,7 +317,6 @@ public class CreaSchedaController extends Controller {
         	this.data += votabili.get(i) + "(" + preferenze.get(i) + ")";
         	if (i+1 < votabili.size()) this.data += ":";
     	}
-    	
     }
     
     private void votoReferendumUI() {
