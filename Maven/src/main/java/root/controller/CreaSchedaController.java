@@ -157,7 +157,11 @@ public class CreaSchedaController extends Controller {
 	    	TextField tfp = new TextField();
 	    	Button bp = new Button("Aggiungi");
 	    	bp.setOnAction((event) -> {
-	    		changeVotabiliPreferenze(cb.getValue().toString(), tfp.getText());
+	    		if (cb.getSelectionModel().isEmpty()) {
+	    			textError.setText("Selezionare gruppo per aggiungere la preferenza");
+	    		} else { 
+	    			changeVotabiliPreferenze(cb.getValue().toString(), tfp.getText());
+	    		}
 	    	});
 	    	
 	    	gridPane.add(lp, 0, 4);
@@ -309,9 +313,9 @@ public class CreaSchedaController extends Controller {
 	            	vb.getChildren().add(hbp);
         		}
         	}
-        	hb.getChildren().add(vb);
         	
-        	gridPane.add(hb, i%2, j);
+        	gridPane.add(hb, (i%2 == 0) ? 0 : 2, j);
+        	gridPane.add(vb, (i%2 == 0) ? 1 : 3, j);
         	
         	this.data += votabili.get(i) + "(" + preferenze.get(i) + ")";
         	if (i+1 < votabili.size()) this.data += ":";
@@ -320,7 +324,7 @@ public class CreaSchedaController extends Controller {
     }
     
     private void votoReferendumUI() {
-    	Label txt = new Label("Domanda referendum:");
+    	Label txt = new Label("Domanda referendum");
  		
  		TextField domanda = new TextField();
  		domanda.textProperty().addListener((obs, oldval, newval)->{
@@ -386,6 +390,17 @@ public class CreaSchedaController extends Controller {
 		if (data==null || data.isBlank())  {
 			textError.setText("Missing data");
 			return false;
+		}
+		
+		// controlla preferenze
+		if (tipoVoto.getValue().toString()
+				.equals("Voto categorico con preferenze")) {
+			for (int i = 0; i < preferenze.size(); i++) {
+				if (preferenze.get(i).equals("")) {
+					textError.setText("Inserire almeno una preferenza per gruppo");
+					return false;
+				}
+			}
 		}
 		
 		// cerca di creare scheda su DB
