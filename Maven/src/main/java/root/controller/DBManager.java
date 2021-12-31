@@ -372,4 +372,33 @@ public class DBManager {
 		}
 	}
 	
+	/**
+	 * Resituisce i voti della scheda
+	 * @param s la shceda
+	 * @return l'array composto dai voti che della scheda
+	 */
+	public String [] getVotiOfScheda(Scheda s) {
+		try {
+			PreparedStatement st = db.prepareStatement("SELECT COUNT(*) FROM votoScheda AS V WHERE V.scheda = ?");
+			st.setString(1, ""+s.getId());
+			ResultSet row = st.executeQuery();
+			
+			st = db.prepareStatement("SELECT * FROM votoScheda AS V WHERE V.scheda = ?");
+			st.setString(1, ""+s.getId());
+			ResultSet res = st.executeQuery();
+			
+			if (res == null || row == null) throw new NoSuchElementException("Scheda non trovata");
+			
+			String [] voti = new String[row.getInt(1)];
+			while (res.next()) {
+				voti[res.getRow()-1] = res.getString(1);
+			}
+			
+			return voti;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

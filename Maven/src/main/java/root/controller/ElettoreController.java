@@ -73,6 +73,9 @@ public class ElettoreController extends Controller {
 		else if (t > 0) {
 			if (s.getScrutinata()) {
 				b = new Button("Esito");
+				b.setOnAction((e)->{
+					App.navigate("EsitoView", s);
+				});
 			} else {
 				b = new Button("In scrutinio");
 				b.setDisable(true);

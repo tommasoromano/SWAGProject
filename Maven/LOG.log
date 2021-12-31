@@ -772,3 +772,81 @@ Dec 31, 2021 12:30:29 PM root.util.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
 Dec 31, 2021 12:33:31 PM root.util.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
+dic 31, 2021 2:05:04 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 2:05:49 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 2:11:13 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 2:54:03 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 2:54:31 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: luca
+dic 31, 2021 2:54:31 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: luca
+dic 31, 2021 2:54:35 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 31, 2021 2:54:35 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 31, 2021 2:54:35 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+dic 31, 2021 2:54:46 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 31, 2021 2:54:46 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 31, 2021 2:54:46 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 31, 2021 2:54:46 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 31, 2021 3:12:55 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 3:14:13 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 31, 2021 3:14:23 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: luca
+dic 31, 2021 3:14:23 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: luca
+dic 31, 2021 3:14:26 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 31, 2021 3:14:26 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 31, 2021 3:14:26 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log out
+dic 31, 2021 3:15:17 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 3:16:20 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+dic 31, 2021 3:17:42 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 3:19:11 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 3:19:52 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:24:12 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:26:30 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:27:34 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:29:19 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:30:00 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:30:28 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:31:26 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:32:37 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:34:17 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:35:22 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:37:13 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 4:41:44 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 5:41:10 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+dic 31, 2021 5:42:47 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
