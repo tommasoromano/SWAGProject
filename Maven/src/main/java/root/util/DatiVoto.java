@@ -14,13 +14,18 @@ public class DatiVoto {
 	 * - referendum domanda
 	 * 
 	 * Quando esprimo un voto lo scrivo come
-	 * - voto ordinale cx(n):cx+1(n+1) ... 
+	 * - voto ordinale cx(n):cy(m) ... 
 	 * - voto categorico cx
-	 * - voto categorico con preferenze cx(pn:pn+1)
-	 * - referendum si/no
+	 * - voto categorico con preferenze cx(pn)
+	 * - referendum Si/No
+	 * - scheda bianca = SB, scheda nulla = SN
 	 */
 	private String dati;
 	
+	/**
+	 * Devono essere nella forma sopra indicata
+	 * @param dati
+	 */
 	public DatiVoto(String dati) {
 		this.dati = dati;
 	}

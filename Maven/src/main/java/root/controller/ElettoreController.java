@@ -61,7 +61,7 @@ public class ElettoreController extends Controller {
 		}
 		else if (t == 0) {
 			if (DBManager.getInstance().hasElettoreVotoScheda(s)) {
-				b = new Button("Vota");
+				b = new Button("Hai votato");
 				b.setDisable(true);
 			} else {
 				b = new Button("Vota");
@@ -74,7 +74,7 @@ public class ElettoreController extends Controller {
 			if (s.getScrutinata()) {
 				b = new Button("Esito");
 			} else {
-				b = new Button("Esito");
+				b = new Button("In scrutinio");
 				b.setDisable(true);
 			}
 		}

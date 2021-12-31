@@ -18,7 +18,7 @@
          </font>
       </Label>
       <Button fx:id="buttonCrea" mnemonicParsing="false" onAction="#onActionCrea" text="Crea nuova" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
-      <VBox fx:id="parent" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+      <VBox fx:id="parent" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
             <GridPane alignment="CENTER" maxWidth="600.0">
               <columnConstraints>

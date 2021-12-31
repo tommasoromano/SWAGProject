@@ -50,7 +50,7 @@ public class ElettoreSchedaController extends Controller {
     @Override
     public void init(Object param) {
 
-    	setVotazioneCorretta(false, "Selezionare voto");
+    	setVotazioneCorretta(false, "", "Selezionare voto");
     	
     	boxes = new ArrayList<>();
 
@@ -238,28 +238,31 @@ public class ElettoreSchedaController extends Controller {
     	
     	for (int i=0; i<boxes.size(); i++) {
     		if ( (boxes.get(i) instanceof ChoiceBox<?>) && ( ((ChoiceBox<?>)boxes.get(i)).getValue() == null ) ) {
-    			setVotazioneCorretta(false, "Selezionare tutti i candidati");
+    			setVotazioneCorretta(false, "", "Selezionare tutti i candidati");
     			return;
     		}
     		
     		for (int j=0; j<boxes.size(); j++) {
     			if (i!=j &&  ((ChoiceBox<?>)boxes.get(i)).getValue().equals(((ChoiceBox<?>)boxes.get(j)).getValue()) ) {
-    				setVotazioneCorretta(false, "Ordinamento non valido");
+    				setVotazioneCorretta(false, "", "Ordinamento non valido");
     				return;
     			}
     		}
     	}
     	
     	this.voto="";
+    	String msg = "";
     	for (int i=0; i<candidati.length; i++) {
-    		this.voto+=candidati[i] + "-" + ((ChoiceBox<?>)boxes.get(i)).getValue().toString();
+    		this.voto+=candidati[i] + "(" + ((ChoiceBox<?>)boxes.get(i)).getValue().toString()+")";
     		if (i<candidati.length-1) this.voto+= ":";
+    		msg+=candidati[i] + " (" + ((ChoiceBox<?>)boxes.get(i)).getValue().toString()+")";
+    		if (i<candidati.length-1) msg+= ",";
     	}
-    	setVotazioneCorretta(true, this.voto);
+    	setVotazioneCorretta(true, this.voto, msg);
     }
     
     private void votoCategorico() {
-    	setVotazioneCorretta(true, this.voto);
+    	setVotazioneCorretta(true, this.voto, this.voto);
     }
         
     private void votoCategoricoPreferenze() {
@@ -276,47 +279,48 @@ public class ElettoreSchedaController extends Controller {
     	}
     	
     	if (gruppo == null || preferenze == null) {
-    		setVotazioneCorretta(false, "Selezionare un gruppo e una preferenza");
+    		setVotazioneCorretta(false, "", "Selezionare un gruppo e una preferenza");
     		return;
     	}
     	
     	if (!gruppo.getId().split(":")[1].equals(preferenze.getId().split(":")[1])) {
-    		setVotazioneCorretta(false, "Preferenza deve appartenere allo stesso gruppo selezionato");
+    		setVotazioneCorretta(false, "", "Preferenza deve appartenere allo stesso gruppo selezionato");
     		return;
     	}
-    	setVotazioneCorretta(true,"gruppo: " + gruppo.getText() + " con preferenza: " + preferenze.getText());
+    	setVotazioneCorretta(true, gruppo.getText() + "(" + preferenze.getText() + ")",
+    			"" + gruppo.getText() + " con preferenza: " + preferenze.getText());
     }
     
     private void referendum() {
     	buttonConferma.setDisable(false);
     	for (Node n : boxes) {
     		if ( (n instanceof CheckBox ) && ((CheckBox)n).isSelected()) {
-    			setVotazioneCorretta(true,((CheckBox)n).getText());
+    			setVotazioneCorretta(true, ((CheckBox)n).getText(), ((CheckBox)n).getText());
     			return;
     		}
     	}
-    	setVotazioneCorretta(false, "Inserire preferenze");
+    	setVotazioneCorretta(false, "", "Inserire preferenze");
     }
     
     private void onActionBianca() {
     	for (Node n : boxes) {
     		if ( (n instanceof CheckBox) ) ((CheckBox)n).setSelected(false);
     	}
-    	setVotazioneCorretta(true,"scheda bianca");
+    	setVotazioneCorretta(true, "SB", "scheda bianca");
     }
 
     private void onActionNulla() {
     	for (Node n : boxes) {
     		if ( (n instanceof CheckBox) ) ((CheckBox)n).setSelected(false);
     	}
-    	setVotazioneCorretta(true, "scheda nulla");
+    	setVotazioneCorretta(true, "SN", "scheda nulla");
     }
     
-    private void setVotazioneCorretta(boolean corretta, String msg) {
+    private void setVotazioneCorretta(boolean corretta, String nuovoVoto, String msg) {
     	this.votato = corretta;
     	buttonConferma.setDisable(!corretta);
     	if (corretta) {
-    		this.voto = msg;
+    		this.voto = nuovoVoto;
     		labelConferma.setText("Hai scelto di votare:\n" + msg);
     		textError.setText("");
     	} else {

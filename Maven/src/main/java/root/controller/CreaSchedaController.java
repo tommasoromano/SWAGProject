@@ -1,6 +1,7 @@
 package root.controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Button;
@@ -8,10 +9,16 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import root.App;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import root.util.LogManager;
 import root.util.Data;
 import root.util.DatiVoto;
@@ -45,11 +52,12 @@ public class CreaSchedaController extends Controller {
 	}
 	
 	private String data;
-	
-	private List<Node> removeNode;
+	private List<String> votabili;
+	private List<String> preferenze;
+	private ChoiceBox cb;
 	
 	@FXML
-	private FlowPane container;
+	private GridPane gridPane;
 	
     @FXML
     private Button buttonCrea;
@@ -85,216 +93,242 @@ public class CreaSchedaController extends Controller {
     	} 
     }
     
-    private boolean aggiungiNuovoVotabile(ComboBox<String> candidati, String tipo, String nome, String cognome, String partito) {
-    	String item;
-    	
-    	if (tipo.equals("Gruppo")) {
-    		if (nome == null || nome.isBlank()) {
-    			textError.setText("Inserire nome del gruppo");
-    			return false;
+    private void cambiaModalitaVoto(String mv) {
+    	modalitaVoto = new ModalitaVoto(mv);
+    	try { 
+    		while(gridPane.getChildren().size() > 10){
+    			gridPane.getChildren().remove(10);
     		}
-    		
-    		item = nome; 		
-    	} else if (tipo.equals("Candidato")) {
-    		if (nome == null || nome.isBlank()) {
-    			textError.setText("Compilare campo nome");
-    			return false;
-    		}
-    		
-    		if (cognome == null || cognome.isBlank()) {
-    			textError.setText("Compilare campo cognome");
-    			return false;
-    		}
-    		
-    		if (partito==null || partito.isBlank()) {
-    			textError.setText("Compilare campo partito");
-    			return false;
-    		}
-    		
-    		item = nome + " " + cognome + "; " + partito;
-    	} else {
-    		return false;
+    	} catch (Exception e) {
+    		System.err.println(e.toString());
     	}
-    	candidati.getItems().add(item);
-    	
-    	//formato dati per il DB TODO
-    	// data += item;
-    	
-    	return true;
-    }
-    
-    private void cambiaModalitaVoto(String n) {
-    	modalitaVoto = new ModalitaVoto(n);
-    	container.getChildren().clear();
+    	this.data = "";
     	switch(modalitaVoto.getTipo()) {
     	 	case VotoOrdinale:
-    	 		votoOrdinaleCategoricoUI();
+    	 		votoCategoricoUI();
     	 		break;
     	 	case VotoCategorico:
-    	 		votoOrdinaleCategoricoUI();
+    	 		votoCategoricoUI();
     	 		break;
     	 	case VotoCategoricoConPreferenze:
     	 		votoCategoricoPreferenzeUI();
     	 		break;
     	 	case Referendum:
-    	 		Label txt = new Label("Domanda: ");
-    	 		txt.setMinWidth(100);
-    	 		txt.setMaxWidth(100);
-    	 		
-    	 		TextField domanda = new TextField();
-    	 		domanda.setMinWidth(300);
-    	 		domanda.setMinWidth(300);
-    	 		domanda.textProperty().addListener((obs, oldval, newval)->{
-    	 			data = newval;
-    	 		});
-    	 		
-    	 		container.getChildren().add(txt);
-    	 		container.getChildren().add(domanda);
+    	 		votoReferendumUI();
+    	 		break;
     	}
     		
     }
     
-    /**
-     * Crea e gestisce la UI per il voto categorico con preferenze
-     */
-    private void votoCategoricoPreferenzeUI() {
-    	ComboBox<String> gruppi = new ComboBox<>();  
-    	gruppi.setPromptText("Elenco dei gruppi");
-    	gruppi.setMaxWidth(300);
- 		gruppi.setMinWidth(300);
- 		container.getChildren().add(gruppi);
- 		
- 		TextField nomegruppo = new TextField();
- 		nomegruppo.setPromptText("Nome gruppo: ");
- 		nomegruppo.setMinWidth(100);
- 		nomegruppo.setMaxWidth(100);
- 		container.getChildren().add(nomegruppo);
- 		
- 		ComboBox<String> preferenze = new ComboBox<>();
- 		preferenze.setPromptText("Elenco preferenze");
- 		preferenze.setMinWidth(200);
- 		preferenze.setMaxWidth(200);
- 		container.getChildren().add(preferenze);
- 		
- 		TextField nomepref = new TextField();
- 		nomepref.setPromptText("Nome:");
- 		nomepref.setMinWidth(300);
- 		nomepref.setMaxWidth(300);
- 		container.getChildren().add(nomepref);
- 		
- 		TextField cognomepref = new TextField();
- 		cognomepref.setPromptText("Cognome:");
- 		cognomepref.setMinWidth(300);
- 		cognomepref.setMaxWidth(300);
- 		container.getChildren().add(cognomepref);
- 		
- 		Button addpref = new Button("Aggiungi preferenza");
- 		addpref.setMinWidth(150);
- 		addpref.setMaxWidth(150);
- 		addpref.setOnAction((e)->{
- 			if (nomepref == null || nomepref.getText().isBlank()) {
- 				textError.setText("Inserire nome della preferenza");
- 				return;
- 			}
- 			
- 			if (cognomepref == null || cognomepref.getText().isBlank()) {
- 				textError.setText("Inserire cognome della prefereza");
- 				return;
- 			}
- 			preferenze.getItems().add(nomepref.getText() + " " + cognomepref.getText());
- 			nomepref.setText("");
- 			cognomepref.setText("");
- 		});
- 		container.getChildren().add(addpref);
- 		
- 		Button addgruppo = new Button("Aggiungi gruppo");
- 		addgruppo.setMinWidth(150);
- 		addgruppo.setMaxWidth(150);
- 		container.getChildren().add(addgruppo);
- 		addgruppo.setOnAction((e)->{
- 			if (nomegruppo == null || nomegruppo.getText().isBlank()) {
- 				textError.setText("Inserire nome del gruppo");
- 				return;
- 			}
- 			
- 			if (preferenze.getItems().size() == 0) {
- 				textError.setText("Inserire almeno una preferenza");
- 				return;
- 			}
- 			
- 			String str = nomegruppo.getText() + "(";
- 			
- 			for (int i=0; i< preferenze.getItems().size();i++) {
- 				str+= preferenze.getItems().get(i);
- 				if (i<preferenze.getItems().size()-1) str+=",";
- 			}
- 			
- 			str += ")";
- 			
- 			nomegruppo.setText("");
- 			gruppi.getItems().add(str);
- 			//formato dati per il db TODO
- 			//data += str; .....
- 		});
+    private void votoCategoricoUI() {
+    	
+    	Label l = new Label("Aggiungi votabili");
+    	TextField tf = new TextField();
+    	Button b = new Button("Aggiungi");
+    	b.setOnAction((event) -> {
+    		changeVotabili(tf.getText());
+    	});
+    	
+    	gridPane.add(l, 0, 3);
+    	gridPane.add(tf, 1, 3);
+    	gridPane.add(b, 2, 3);
+		
+		votabili = new ArrayList<>();
     }
     
-    private void votoOrdinaleCategoricoUI() {
-    	removeNode = new ArrayList<>();
-    	
-    	ComboBox<String> candidati = new ComboBox<>();  
-    	candidati.setPromptText("Elenco candidati");
-    	candidati.setMaxWidth(300);
- 		candidati.setMinWidth(300);
-    	
- 		ComboBox<String> addnew = new ComboBox<>();
- 		addnew.setPromptText("Tipo candidato");
- 		addnew.setOnAction((e) -> {
- 			for (Node m : removeNode) {
- 				container.getChildren().remove(m);
- 			}
- 			removeNode = new ArrayList<>();
- 			
- 			TextField nome = new TextField();
- 			nome.setPromptText("Nome: ");
- 			nome.setMaxWidth(300);
- 	 		nome.setMinWidth(300);
- 			
- 	 		TextField cognome = new TextField();
- 			cognome.setMaxWidth(300);
- 	 		cognome.setMinWidth(300);
- 			cognome.setPromptText("Cognome: ");
+	private void votoCategoricoPreferenzeUI() {
+	    	
+	    	Label l = new Label("Aggiungi gruppi");
+	    	TextField tf = new TextField();
+	    	Button b = new Button("Aggiungi");
+	    	b.setOnAction((event) -> {
+	    		changeVotabiliPreferenze(tf.getText(), "");
+	    	});
+	    	
+	    	gridPane.add(l, 0, 3);
+	    	gridPane.add(tf, 1, 3);
+	    	gridPane.add(b, 2, 3);
+	    	
+	    	Label lp = new Label("Aggiungi preferenze");
+	    	cb = new ChoiceBox();
+	    	for (int i = 0; i < votabili.size(); i++) {
+				cb.getItems().add(votabili.get(i));
+			}
+	    	TextField tfp = new TextField();
+	    	Button bp = new Button("Aggiungi");
+	    	bp.setOnAction((event) -> {
+	    		changeVotabiliPreferenze(cb.getValue().toString(), tfp.getText());
+	    	});
+	    	
+	    	gridPane.add(lp, 0, 4);
+	    	gridPane.add(cb, 1, 4);
+	    	gridPane.add(tfp, 2, 4);
+	    	gridPane.add(bp, 3, 4);
 			
- 			TextField partito = new TextField();
- 			partito.setMaxWidth(300);
- 	 		partito.setMinWidth(300);
-			partito.setPromptText("Partito: ");
-			
-			container.getChildren().add(nome);
-			removeNode.add(nome);
- 			if (addnew.getValue().equals("Candidato")) {
- 				container.getChildren().add(cognome);
- 				container.getChildren().add(partito);
- 				removeNode.add(cognome);
- 				removeNode.add(partito);
- 			}
- 			Button ok = new Button("Inserisci");
- 			ok.setId("b");
- 			ok.setOnAction((ev)-> {
- 				boolean res = aggiungiNuovoVotabile(candidati, addnew.getValue(), nome.getText(), cognome.getText(), partito.getText());
- 				if (res) {
-	 				nome.setText("");
-	 				cognome.setText("");
-	 				partito.setText("");
- 				}
- 			});
- 			container.getChildren().add(ok);
- 			removeNode.add(ok);
+			votabili = new ArrayList<>();
+			preferenze = new ArrayList<>();
+    }
+    
+    private void changeVotabili(String c) {
+    	
+    	// controllo nuovo votabile
+    	if (c == null || c == "") {
+    		return;
+    	}
+    	boolean exist = votabili.contains(c);
+    	if (!exist) {
+    		votabili.add(c);
+    	}
+    	else {
+    		votabili.remove(c);
+    	}
+    	
+    	// creo griglia
+    	try { 
+    		while(gridPane.getChildren().size() > 13){
+    			gridPane.getChildren().remove(13);
+    		}
+    	} catch (Exception e) {
+    		System.err.println(e.toString());
+    	}
+    	
+    	// creo bottone per ogni votabile
+    	this.data = String.join(":", votabili);
+    	for (int i = 0, j = 4; i < votabili.size(); i++) {
+    		
+    		if (i != 0 && i%4==0) j++;
+    		
+    		HBox hb = new HBox();
+    		hb.setAlignment(Pos.CENTER_LEFT);
+			hb.setSpacing(10);
+        	Label l = new Label(votabili.get(i));
+        	Button b = new Button("X");
+        	b.setOnAction((event) -> {
+        		changeVotabili(l.getText());
+        	});
+        	hb.getChildren().add(b);
+        	hb.getChildren().add(l);
+        	gridPane.add(hb, i%4, j);
+    	}
+    	
+    }
+    
+    /**
+     * Se p is null or empty, crea o rimuove votabile,
+     * altrimenti aggiunge o rimuove preferenza al gruppo 
+     * @param v
+     * @param p
+     */
+    private void changeVotabiliPreferenze(String v, String p) {
+    	
+    	// controllo nuovo votabile
+    	if (v == null || v.equals("")) {
+    		return;
+    	}
+    	int exist = votabili.indexOf(v);
+    	if (exist == -1) {
+    		votabili.add(v);
+    		preferenze.add("");
+    	} else {
+    		if (p == null || p.equals("")) {
+        		votabili.remove(exist);
+        		preferenze.remove(exist);
+    		} else {
+    			List<String> pref = new ArrayList<>();
+    			if (preferenze.get(exist).equals("")) {
+    				pref.add(p);
+    				preferenze.set(exist, p);
+    			} else {
+    				pref = new ArrayList<>(Arrays.asList(preferenze.get(exist).split(":")));
+    				int e = pref.indexOf(p);
+        			if (e == -1) {
+        				pref.add(p);
+        				preferenze.set(exist, String.join(":", pref));
+        			} else {
+        				pref.remove(e);
+        				preferenze.set(exist, String.join(":", pref));
+        			}
+    			}
+    			
+    		}
+    	}
+    	
+    	System.out.println(votabili.toString());
+    	System.out.println(preferenze.toString());
+    	
+    	// modify choiche box
+    	cb.getItems().clear();
+    	for (int i = 0; i < votabili.size(); i++) {
+			cb.getItems().add(votabili.get(i));
+		}
+    	
+    	// creo griglia
+    	try { 
+    		while(gridPane.getChildren().size() > 17){
+    			gridPane.getChildren().remove(17);
+    		}
+    	} catch (Exception e) {
+    		System.err.println(e.toString());
+    	}
+    	
+    	// creo bottone per ogni votabile
+    	this.data = "";
+    	for (int i = 0, j = 5; i < votabili.size(); i++) {
+    		
+    		if (i != 0 && i%2==0) j++;
+    		
+    		HBox hb = new HBox();
+    		hb.setAlignment(Pos.CENTER_LEFT);
+			hb.setSpacing(10);
+        	Label l = new Label(votabili.get(i));
+        	Button b = new Button("X");
+        	b.setOnAction((event) -> {
+        		changeVotabiliPreferenze(l.getText(), "");
+        	});
+        	hb.getChildren().add(b);
+        	hb.getChildren().add(l);
+        	
+        	// creo preferenze
+        	VBox vb = new VBox();
+        	vb.setAlignment(Pos.CENTER_LEFT);
+			vb.setSpacing(10);
+        	List<String> pref = new ArrayList<>
+				(Arrays.asList(preferenze.get(i).split(":")));
+        	for (int k = 0; k < pref.size(); k++) {
+        		if (!pref.get(k).equals("")) {
+        			HBox hbp = new HBox();
+            		hbp.setAlignment(Pos.CENTER_LEFT);
+        			hbp.setSpacing(10);
+	        		Label lp = new Label(pref.get(k));
+	            	Button bp = new Button("X");
+	            	bp.setOnAction((event) -> {
+	            		changeVotabiliPreferenze(l.getText(), lp.getText());
+	            	});
+	            	hbp.getChildren().add(bp);
+	            	hbp.getChildren().add(lp);
+	            	vb.getChildren().add(hbp);
+        		}
+        	}
+        	hb.getChildren().add(vb);
+        	
+        	gridPane.add(hb, i%2, j);
+        	
+        	this.data += votabili.get(i) + "(" + preferenze.get(i) + ")";
+        	if (i+1 < votabili.size()) this.data += ":";
+    	}
+    	
+    }
+    
+    private void votoReferendumUI() {
+    	Label txt = new Label("Domanda referendum:");
+ 		
+ 		TextField domanda = new TextField();
+ 		domanda.textProperty().addListener((obs, oldval, newval)->{
+ 			data = newval;
  		});
  		
- 		addnew.getItems().add("Gruppo");
- 		addnew.getItems().add("Candidato");
- 		container.getChildren().add(addnew);
- 		container.getChildren().add(0,candidati);
+ 		gridPane.add(txt, 0, 3);
+ 		gridPane.add(domanda, 1, 3);
     }
     
     private boolean checkVotoScrutinio() {
