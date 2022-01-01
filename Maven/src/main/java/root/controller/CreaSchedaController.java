@@ -368,7 +368,7 @@ public class CreaSchedaController extends Controller {
 		}
 		
 		//data fine
-    	if (dataInizio == null) {
+    	if (dataFine == null) {
     		textError.setText("Compila il campo Data di fine");
 			return false;
     	}

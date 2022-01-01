@@ -47,7 +47,7 @@ public class DBManager {
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scrutinatore (email TEXT, password TEXT, PRIMARY KEY (email))");
 				st.executeUpdate();
 				
-				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (id TEXT, nome TEXT, dataInizio TEXT, dataFine, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT, scrutinata TEXT, PRIMARY KEY (id))");
+				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS scheda (id TEXT, nome TEXT, dataInizio TEXT, dataFine TEXT, tipoVoto TEXT, datiVoto TEXT, tipoVincitore TEXT, scrutinata TEXT, PRIMARY KEY (id))");
 				st.executeUpdate();
 				
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoElettore (CF TEXT, scheda TEXT)");
@@ -55,7 +55,6 @@ public class DBManager {
 				
 				st = _instance.db.prepareStatement("CREATE TABLE IF NOT EXISTS votoScheda (voto TEXT, scheda TEXT)");
 				st.executeUpdate();
-		
 				
 				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				//res = _instance.insertScrutinatore("admin@test.it","123456");
