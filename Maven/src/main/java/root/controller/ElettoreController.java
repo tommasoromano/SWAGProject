@@ -78,10 +78,11 @@ public class ElettoreController extends Controller {
 				});
 			} else {
 				b = new Button("In scrutinio");
-				//b.setDisable(true);
-				b.setOnAction(e -> {
+				b.setDisable(true);
+				/*for debug
+				 * b.setOnAction(e -> {
 					App.navigate("ElettoreSchedaView", s);
-				});
+				});*/
 			}
 		}
 		

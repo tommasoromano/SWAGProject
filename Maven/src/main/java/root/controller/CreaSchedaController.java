@@ -382,6 +382,21 @@ public class CreaSchedaController extends Controller {
 			return false;
 		}
 		
+		//altre date non valide
+		if (df != null && di != null) {
+			//data finale precedente a data inizio
+			if (df.compareTo(di) <= 0) {
+				textError.setText("Data di inizio deve essere precedente di quella di fine");
+				return false;
+			}
+			
+			//se data inizio è prima di oggi
+			if (di.compareTo(Data.getTodayData()) < 0) {
+				textError.setText("Data di inizio deve essere oggi o successiva");
+				return false;
+			}
+		}
+		
 		//dati presenti
 		if (data==null || data.isBlank())  {
 			textError.setText("Missing data");

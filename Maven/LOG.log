@@ -1,0 +1,30 @@
+gen 01, 2022 4:21:21 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+gen 01, 2022 4:22:18 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: test
+gen 01, 2022 4:22:18 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: test
+gen 01, 2022 4:22:21 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 01, 2022 4:22:21 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 01, 2022 4:22:21 PM root.util.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 01, 2022 4:22:32 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 01, 2022 4:22:32 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 01, 2022 4:22:32 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 01, 2022 4:22:32 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
+gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
+gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
+gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
+gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
