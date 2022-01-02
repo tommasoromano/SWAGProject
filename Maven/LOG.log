@@ -28,3 +28,9 @@ gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
 INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
 gen 01, 2022 4:22:39 PM root.util.LogManager logElettore
 INFORMAZIONI: Elettore RMPLCU00S30E507G ha votato scheda: test
+gen 02, 2022 5:23:19 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 02, 2022 5:24:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 02, 2022 5:26:41 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPLCU00S30E507G log in

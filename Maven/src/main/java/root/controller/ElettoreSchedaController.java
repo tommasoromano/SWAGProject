@@ -12,7 +12,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.CheckBox;
 import javafx.scene.Node;
 import root.App;
-import root.util.LogManager;
+import root.DBManager;
+import root.LogManager;
 import root.util.Scheda;
 
 public class ElettoreSchedaController extends Controller {

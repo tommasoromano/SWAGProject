@@ -11,9 +11,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import root.util.Scheda;
-import root.util.LogManager;
 import root.App;
-import root.controller.DBManager;
+import root.DBManager;
+import root.LogManager;
 
 public class EsitoController extends Controller {
 	
@@ -250,8 +250,10 @@ public class EsitoController extends Controller {
 				return;
 			}
 			
-			//controllo che ci sia uno o più vincitori			
-			container.getChildren().add(new Label("Vincitore/i: "));
+			//controllo che ci sia uno o più vincitori		
+			Label win = new Label("Vincitore/i: ");
+			win.setFont(Font.font(25));
+			container.getChildren().add(win);
 			for (int i=candidati.size()-1; i>=0; i--) {
 				
 				//se voti attuali sono diversi dal massimo stop

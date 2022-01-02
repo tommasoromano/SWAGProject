@@ -15,11 +15,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import root.App;
+import root.DBManager;
+import root.LogManager;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import root.util.LogManager;
 import root.util.Data;
 import root.util.DatiVoto;
 import root.util.ModalitaConteggio;

@@ -8,8 +8,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import root.App;
+import root.DBManager;
+import root.LogManager;
 import root.util.Elettore;
-import root.util.LogManager;
 import root.util.Scheda;
 
 public class ElettoreController extends Controller {

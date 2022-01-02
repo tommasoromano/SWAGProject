@@ -6,7 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import root.App;
-import root.util.LogManager;
+import root.DBManager;
+import root.LogManager;
 
 public class ScrutinatoreLoginController extends Controller {
 

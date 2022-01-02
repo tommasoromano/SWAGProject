@@ -1,6 +1,5 @@
-package root.controller;
+package root;
 
-import root.App;
 import root.util.CodiceFiscale;
 import root.util.Data;
 import root.util.DatiVoto;

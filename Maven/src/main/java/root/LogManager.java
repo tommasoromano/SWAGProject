@@ -1,5 +1,6 @@
-package root.util;
+package root;
 
+import root.util.*;
 import java.util.logging.*;
 import java.io.IOException;
 import java.nio.file.FileSystems;
