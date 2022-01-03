@@ -63,7 +63,6 @@ public class DBManager {
 				//throw new Exception("Errore nella connessione con il db :\n" + e.getMessage());
 			}
 		}
-		
 		return _instance;
 	}
 	

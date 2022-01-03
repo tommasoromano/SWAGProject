@@ -34,3 +34,93 @@ gen 02, 2022 5:24:44 PM root.LogManager logElettore
 INFORMAZIONI: Elettore RMPLCU00S30E507G log in
 gen 02, 2022 5:26:41 PM root.LogManager logElettore
 INFORMAZIONI: Elettore RMPLCU00S30E507G log in
+gen 02, 2022 8:14:54 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q registrazione
+gen 02, 2022 8:16:09 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: test
+gen 02, 2022 8:16:09 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: test
+gen 02, 2022 8:16:17 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:16:17 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:16:17 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:17:13 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+gen 02, 2022 8:17:13 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+gen 02, 2022 8:17:13 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+gen 02, 2022 8:17:13 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+gen 02, 2022 8:25:39 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: Rompa
+gen 02, 2022 8:25:39 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: Rompa
+gen 02, 2022 8:25:39 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: Rompa
+gen 02, 2022 8:25:39 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: Rompa
+gen 02, 2022 8:25:39 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it crea nuova scheda: Rompa
+gen 02, 2022 8:25:50 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 02, 2022 8:25:50 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 02, 2022 8:25:50 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 02, 2022 8:25:50 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 02, 2022 8:25:50 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 02, 2022 8:25:50 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:26:08 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log in
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:44 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q ha votato scheda: Rompa
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+gen 02, 2022 8:27:48 PM root.LogManager logElettore
+INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
