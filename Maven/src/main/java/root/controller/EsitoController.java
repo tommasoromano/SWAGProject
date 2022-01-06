@@ -3,11 +3,7 @@ package root.controller;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
-
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,9 +12,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.control.Label;
-import root.util.DatiVoto;
 import root.util.ModalitaConteggio;
 import root.util.ModalitaVoto;
 import root.util.Scheda;
@@ -209,40 +203,5 @@ public class EsitoController extends Controller {
 		 } else if (App.getInstance().getScrutinatore() != null) {
 			 App.navigate("ScrutinatoreView");
 		 }
-	}
-	
-	/*
-	 * Classe di supporto per gestire i candidati come coppia nome-voto 
-	 */
-	private class Pair implements Comparable<Pair> {
-		private String nome;
-		private int voti;
-		
-		public Pair(String nome) {
-			this.nome = nome;
-			this.voti = 1;
-		}
-		
-		public Pair(String nome, int voti) {
-			this.nome = nome;
-			this.voti = voti;
-		}
-		
-		@Override
-		public int compareTo(Pair p) {
-			return Integer.compare(voti, p.voti);
-		}
-		
-		public void aggiungi(int n) {
-			voti += n;
-		}
-		
-		public String getNome() {
-			return nome;
-		}
-		
-		public int getVoti() {
-			return voti;
-		}
 	}
  }

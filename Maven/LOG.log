@@ -156,3 +156,11 @@ Jan 06, 2022 11:44:35 AM root.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
 Jan 06, 2022 12:07:44 PM root.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
+gen 06, 2022 12:58:04 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in
+gen 06, 2022 12:59:51 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 06, 2022 12:59:51 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log out
+gen 06, 2022 1:04:42 PM root.LogManager logScrutinatore
+INFORMAZIONI: Scrutinatore admin@test.it log in

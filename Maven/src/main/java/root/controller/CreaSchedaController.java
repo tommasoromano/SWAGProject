@@ -2,26 +2,20 @@ package root.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import root.App;
 import root.DBManager;
 import root.LogManager;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import root.util.Data;
 import root.util.DatiVoto;
 import root.util.ModalitaConteggio;
@@ -56,7 +50,7 @@ public class CreaSchedaController extends Controller {
 	private String data;
 	private List<String> votabili;
 	private List<String> preferenze;
-	private ChoiceBox cb;
+	private ChoiceBox<String> cb;
 	
 	@FXML
 	private GridPane gridPane;
@@ -152,7 +146,7 @@ public class CreaSchedaController extends Controller {
 	    	gridPane.add(b, 2, 3);
 	    	
 	    	Label lp = new Label("Aggiungi preferenze");
-	    	cb = new ChoiceBox();
+	    	cb = new ChoiceBox<>();
 	    	for (int i = 0; i < votabili.size(); i++) {
 				cb.getItems().add(votabili.get(i));
 			}
@@ -181,6 +175,16 @@ public class CreaSchedaController extends Controller {
     	if (c == null || c == "") {
     		return;
     	}
+    	
+    	if (c.contains(":")) {
+    		textError.setText("Carattere : non valido");
+    		return;
+    	}
+    	
+    	if (c.equals("SB") || c.equals("SN")) {
+    		c+=" ";
+    	}
+    	
     	boolean exist = votabili.contains(c);
     	if (!exist) {
     		votabili.add(c);
@@ -231,6 +235,16 @@ public class CreaSchedaController extends Controller {
     	if (v == null || v.equals("")) {
     		return;
     	}
+    	
+    	if (v.contains(":") || p.contains(":")) {
+    		textError.setText("Carattere : non valido");
+    		return;
+    	}
+    	
+    	if (v.equals("SN") || v.equals("SB")) {
+    		v+=" ";
+    	}
+    	
     	int exist = votabili.indexOf(v);
     	if (exist == -1) {
     		votabili.add(v);
@@ -413,6 +427,11 @@ public class CreaSchedaController extends Controller {
 					textError.setText("Inserire almeno una preferenza per gruppo");
 					return false;
 				}
+				
+				/*if (preferenze.get(i).contains(":") || preferenze.get(i).contains("*")) {
+					textError.setText("Carattere : o * non valido");
+					return false;
+				}*/
 			}
 		}
 		
