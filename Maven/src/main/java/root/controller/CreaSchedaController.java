@@ -245,6 +245,10 @@ public class CreaSchedaController extends Controller {
     		v+=" ";
     	}
     	
+    	if (p.equals("SN") || p.equals("SB")) {
+    		p+=" ";
+    	}
+    	
     	int exist = votabili.indexOf(v);
     	if (exist == -1) {
     		votabili.add(v);
