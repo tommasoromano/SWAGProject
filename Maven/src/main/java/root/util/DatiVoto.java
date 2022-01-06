@@ -6,19 +6,13 @@ import java.util.List;
 public class DatiVoto {
 
 	/**
+	 * Per creazione voto:
 	 * c = candidati/gruppi/partiti
 	 * p = preferenze (candidati di gruppi/partiti)
 	 * Formato dati voto in base a modalita:
 	 * - voto ordinale e categorico c1:c2:c3:c4 ...
 	 * - voto categorico con preferenze c1(p1:p2):c2(p3:p4) ...
 	 * - referendum domanda
-	 * 
-	 * Quando esprimo un voto lo scrivo come
-	 * - voto ordinale cx(n):cy(m) ... 
-	 * - voto categorico cx
-	 * - voto categorico con preferenze cx(pn)
-	 * - referendum Si/No
-	 * - scheda bianca = SB, scheda nulla = SN
 	 */
 	private String dati;
 	
@@ -30,6 +24,10 @@ public class DatiVoto {
 		this.dati = dati;
 	}
 	
+	/**
+	 * Ritorna l'elenco dei candidati, per creazione voto
+	 * @return
+	 */
 	public String [] getCandidati() {
 		if (this.dati.contains("(")) {
 			// con preferenze
@@ -49,6 +47,11 @@ public class DatiVoto {
 		}
 	}
 	
+	/**
+	 * Ritorna l'elenco delle preferenze, per creazione voto
+	 * @param candidato
+	 * @return
+	 */
 	public String [] getPreferenze(String candidato) {
 		if (this.dati.contains("(")) {
 			String[] all = this.dati.split(":");
@@ -84,7 +87,6 @@ public class DatiVoto {
 	public String getDomanda() {
 		return this.dati;
 	}
-	
 	
 	@Override
 	public String toString() { return this.dati; }

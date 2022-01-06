@@ -300,7 +300,7 @@ public class ElettoreSchedaController extends Controller {
     			return;
     		}
     	}
-    	setVotazioneCorretta(false, "", "Inserire preferenze");
+    	setVotazioneCorretta(false, "", "Inserire voto");
     }
     
     private void onActionBianca() {

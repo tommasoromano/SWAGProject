@@ -8,12 +8,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="root.controller.EsitoController">
    <children>
-      <Label alignment="TOP_CENTER" layoutY="32.0" mouseTransparent="true" prefHeight="58.0" prefWidth="600.0" text="Esito Scrutinio">
+      <Label alignment="TOP_CENTER" layoutY="32.0" mouseTransparent="true" text="Esito Scrutinio" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <Button fx:id="buttonIndietro" layoutX="53.0" layoutY="48.0" mnemonicParsing="false" onAction="#onActionIndietro" text="Indietro" />
-      <VBox fx:id="container" layoutX="51.0" layoutY="133.0" />
+      <Button fx:id="buttonIndietro" layoutX="53.0" layoutY="48.0" mnemonicParsing="false" onAction="#onActionIndietro" text="Indietro" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <VBox fx:id="container" alignment="CENTER" layoutX="51.0" layoutY="133.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
    </children>
 </AnchorPane>

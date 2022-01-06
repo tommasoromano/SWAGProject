@@ -124,3 +124,35 @@ gen 02, 2022 8:27:48 PM root.LogManager logElettore
 INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
 gen 02, 2022 8:27:48 PM root.LogManager logElettore
 INFORMAZIONI: Elettore RMPSVR67L17E507Q log out
+Jan 05, 2022 9:24:43 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 9:48:06 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 9:48:59 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 9:53:17 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 1:13:01 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 1:20:15 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 1:21:29 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 1:22:36 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 05, 2022 1:25:17 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 11:01:12 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 11:03:35 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 11:09:08 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 11:17:17 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 11:37:21 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 11:44:35 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 06, 2022 12:07:44 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
