@@ -377,6 +377,7 @@ public class CreaSchedaController extends Controller {
     		textError.setText("Compila il campo Data di inizio");
 			return false;
     	}
+    	
     	Data di =null;
 		try {
 			di = new Data(dataInizio.getValue().getDayOfMonth(),

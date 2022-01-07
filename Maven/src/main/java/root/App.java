@@ -7,13 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import root.controller.Controller;
 import root.util.*;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * JavaFX App
@@ -39,6 +34,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+    	
+    	DBManager db = DBManager.getInstance();
+    	LogManager log = LogManager.getInstance();
+    	
         scene = new Scene(loadView("HomeView", null), 900, 600);
         navigate("HomeView");
         stage.setScene(scene);
