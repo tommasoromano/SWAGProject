@@ -65,7 +65,7 @@ public class EsitoController extends Controller {
 	}
 	
 	private String creaHeader(Scheda s) {
-		String header = "";
+		String header = s.getNome()+" del "+s.getInizio().toString()+" - "+s.getFine().toString()+"\n";
 		
 		// modalita voto
 		switch (s.getTipoVoto().getTipo()) {
@@ -113,7 +113,7 @@ public class EsitoController extends Controller {
 				if (s.getTipoVoto().getTipo().equals(ModalitaVoto.Tipo.VotoCategoricoConPreferenze)) {
 	        		// creo dati preferenze
 					Map<String, Integer> pref = voti[i].getPreferenze();
-	        		preferenze += "\n- Preferenze per " + n + ":";
+	        		preferenze += "\n- Preferenze per " + n + " ("+v+"):";
 	        		for (String key: pref.keySet()) {
 	        			int vp = pref.get(key);
 	        			float pp = (float) (((float)(vp)/(float)(v))*100.0);
@@ -134,7 +134,6 @@ public class EsitoController extends Controller {
         container.getChildren().add(hbox);
         
         // calcola esito
-        String esito = "Errore";
         Collections.sort(votiSort);
         Collections.reverse(votiSort);
         if (s.getTipoVoto().getTipo().equals(ModalitaVoto.Tipo.Referendum)) {
@@ -187,13 +186,12 @@ public class EsitoController extends Controller {
     					return vincitori;
     				}
     			}
+    			return vincitori;
     		} else {			
     			return "Vincitore: " + votiSort.get(0).getVotabile();
     		}
         	
         }
-        
-		return esito;
 	}
 	
 	@FXML

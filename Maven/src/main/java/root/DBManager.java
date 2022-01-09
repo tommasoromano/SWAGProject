@@ -16,6 +16,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import com.google.common.hash.Hashing;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -57,6 +60,7 @@ public class DBManager {
 				
 				//boolean res = _instance.insertScrutinatore("rompa@bob.it","123456");
 				//res = _instance.insertScrutinatore("admin@test.it","123456");
+				//_instance.creaVotiCasuali();
 				
 			} catch (SQLException e) {
 				System.err.println("Errore nella connessione con il db :\n" + e.getMessage());
@@ -397,5 +401,119 @@ public class DBManager {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	/**
+	 * Usato per testing
+	 */
+	private void creaVotiCasuali() {
+		
+		// delete old
+		try {
+		PreparedStatement st = db.prepareStatement("DELETE FROM votoScheda WHERE scheda = ?");
+		st.setString(1, Integer.toString(888227));
+		st.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		// categorico
+		/*String[] n = "Obi-Wan Kenobi:Ahsoka Tano:Darth Maul:Kanan Jarrus:Ezra Bridger:Din Djarin:Anakin Skywalker:Darth Sidius:SB:SN".split(":");
+		Random r = new Random();
+		int v = r.nextInt(34)+16;
+		for (int i = 0; i < v; i++) {
+			r = new Random();
+			try {
+				PreparedStatement st = db.prepareStatement("INSERT INTO votoScheda VALUES (?, ?)");
+				st.setString(1, n[r.nextInt(n.length)]);
+				st.setString(2, Integer.toString(796777));
+				st.executeUpdate();
+				
+			} catch (SQLException e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		
+		// categorico referendum
+		n = "Si:No:SB:SN".split(":");
+		r = new Random();
+		v = r.nextInt(34)+16;
+		for (int i = 0; i < v; i++) {
+			r = new Random();
+			try {
+				PreparedStatement st = db.prepareStatement("INSERT INTO votoScheda VALUES (?, ?)");
+				st.setString(1, n[r.nextInt(n.length)]);
+				st.setString(2, Integer.toString(993116));
+				st.executeUpdate();
+				
+			} catch (SQLException e) {
+				System.err.println(e.getMessage());
+			}
+		}*/
+		
+		// categorico pref
+		
+		DatiVoto dv = new DatiVoto("Sith(Darth Sidius:Darth Maul:Darth Vader):Jedi(Yoda:Obi-Wan Kenobi:Mace Windu):Mandaloriani(Bo-Katan Kryze:Sabine Wren:Din Djarin):Bounty Hunters(Boba Fett:Han Solo:Cad Bane):SB:SN");
+		String[] n = dv.getCandidati();
+		Random r = new Random();
+		int v = r.nextInt(34)+26;
+		for (int i = 0; i < v; i++) {
+			
+			try {
+				r = new Random();
+				PreparedStatement st = db.prepareStatement("INSERT INTO votoScheda VALUES (?, ?)");
+				String c = n[r.nextInt(n.length)];
+				r = new Random();
+				if (r.nextInt(3) == 0 && !c.equals("SB") && !c.equals("SN")) {
+					String[] p = dv.getPreferenze(c);
+					c += "("+p[r.nextInt(p.length)]+")";
+				}
+				st.setString(1, c);
+				st.setString(2, Integer.toString(888227));
+				st.executeUpdate();
+				
+			} catch (SQLException e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		
+		// ordinale
+		/*n = "Obi-Wan Kenobi:Ahsoka Tano:Darth Maul:Ezra Bridger:Din Djarin:Anakin Skywalker:Yoda:Darth Sidius".split(":");
+		r = new Random();
+		v = r.nextInt(34)+16;
+		for (int i = 0; i < v; i++) {
+			
+			try {
+				PreparedStatement st = db.prepareStatement("INSERT INTO votoScheda VALUES (?, ?)");
+
+				List<String> votati = new ArrayList<>();
+				r = new Random();
+				String c = "SN";
+				if (r.nextInt(6) == 0) {
+					r = new Random();
+					c = (r.nextInt(2) == 0 ? "SN" : "SB");
+				} else {
+					c = "";
+					for (int j = 0; j < n.length; j++) {
+						r = new Random();
+						String o = n[r.nextInt(n.length)];
+						while(votati.contains(o)) {
+							r = new Random();
+							o = n[r.nextInt(n.length)];
+						}
+						votati.add(o);
+						c += o+"("+j+")";
+						if (j+1<n.length) c+= ":";
+					}
+				}
+				
+				st.setString(1, c);
+				st.setString(2, Integer.toString(648659));
+				st.executeUpdate();
+				
+			} catch (SQLException e) {
+				System.err.println(e.getMessage());
+			}
+		}*/
+	
 	}
 }

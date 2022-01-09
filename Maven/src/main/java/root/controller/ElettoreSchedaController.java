@@ -60,6 +60,11 @@ public class ElettoreSchedaController extends Controller {
     		this.scheda = ((Scheda) param);
     		
     		nomeScheda.setText(this.scheda.getNome());
+    		
+    		// crea header
+    		Label labelHeader = new Label(creaHeader(this.scheda));
+    		parent.getChildren().add(labelHeader);
+    		
     		HBox hbox = null;
     		
     		// crea la UI in base a ModalitaVoto della scheda
@@ -232,6 +237,30 @@ public class ElettoreSchedaController extends Controller {
     	}
     	
     }
+    
+    private String creaHeader(Scheda s) {
+		String header = s.getNome()+" del "+s.getInizio().toString()+" - "+s.getFine().toString()+"\n";
+		
+		// modalita voto
+		switch (s.getTipoVoto().getTipo()) {
+		case VotoOrdinale:
+			header += "Modalita di voto: voto ordinale";
+			break;
+		case VotoCategorico:
+			header += "Modalita di voto: voto categorico";
+			break;
+		case VotoCategoricoConPreferenze:
+			header += "Modalita di voto: voto categorico con preferenze";
+			break;
+		case Referendum:
+			header += "Domanda referendum: " + s.getDatiVoto().getDomanda();
+			break;
+		}
+		
+		// modalita conteggio
+		header += "\nModalita di conteggio: " + s.getTipoVincitore().toString();
+		return header;
+	}
    
     
     private void votoOrdinale() {
@@ -279,18 +308,25 @@ public class ElettoreSchedaController extends Controller {
     		}
     	}
     	
-    	if (gruppo == null || preferenze == null) {
+    	if (gruppo == null) {
     		setVotazioneCorretta(false, "", "Selezionare un gruppo e una preferenza");
     		return;
     	}
     	
-    	if (!gruppo.getId().split(":")[1].equals(preferenze.getId().split(":")[1])) {
-    		setVotazioneCorretta(false, "", "Preferenza deve appartenere allo stesso gruppo selezionato");
-    		return;
-    	}
+    	if (preferenze == null) {
+    		setVotazioneCorretta(true, gruppo.getText(),
+        			gruppo.getText() + " senza preferenza");
+    	} else {
+
+        	if (!gruppo.getId().split(":")[1].equals(preferenze.getId().split(":")[1])) {
+        		setVotazioneCorretta(false, "", "Preferenza deve appartenere allo stesso gruppo selezionato");
+        		return;
+        	}
+        	
     	setVotazioneCorretta(true, gruppo.getText() + "(" + preferenze.getText() + ")",
-    			"" + gruppo.getText() + " con preferenza: " + preferenze.getText());
-    }
+    			gruppo.getText() + " con preferenza: " + preferenze.getText());
+    	}
+	}
     
     private void referendum() {
     	buttonConferma.setDisable(false);

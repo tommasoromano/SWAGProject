@@ -27,7 +27,6 @@ public class Scheda {
 	 * @return
 	 */
 	public int timeState() {
-
 		if (fine.compareTo(Data.getTodayData()) < 0) {
 			// scheda conclusa
 			return 1;

@@ -164,3 +164,211 @@ gen 06, 2022 12:59:51 PM root.LogManager logScrutinatore
 INFORMAZIONI: Scrutinatore admin@test.it log out
 gen 06, 2022 1:04:42 PM root.LogManager logScrutinatore
 INFORMAZIONI: Scrutinatore admin@test.it log in
+Jan 07, 2022 12:26:25 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 07, 2022 12:38:12 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 07, 2022 12:43:33 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categoricoMagg
+Jan 07, 2022 12:43:33 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categoricoMagg
+Jan 07, 2022 1:00:12 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 08, 2022 12:56:19 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 08, 2022 1:16:00 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categMaggAss
+Jan 08, 2022 1:16:00 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categMaggAss
+Jan 08, 2022 1:23:19 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMagg
+Jan 08, 2022 1:23:19 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMagg
+Jan 08, 2022 1:23:19 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMagg
+Jan 08, 2022 1:30:32 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMaggAss
+Jan 08, 2022 1:30:32 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMaggAss
+Jan 08, 2022 1:30:32 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMaggAss
+Jan 08, 2022 1:30:32 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPrefMaggAss
+Jan 08, 2022 1:35:14 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 1:35:14 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 1:35:14 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 1:35:14 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 1:35:14 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 1:51:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 1:51:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 1:51:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 1:51:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 1:51:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 1:51:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 1:52:42 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendumQuorum
+Jan 08, 2022 10:40:39 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 08, 2022 10:43:47 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico
+Jan 08, 2022 10:43:47 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico
+Jan 08, 2022 10:48:04 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 10:48:04 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 10:48:04 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 11:02:41 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 08, 2022 11:20:46 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref
+Jan 08, 2022 11:20:46 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref
+Jan 08, 2022 11:24:33 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico
+Jan 08, 2022 11:24:33 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico
+Jan 08, 2022 11:24:33 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico
+Jan 08, 2022 11:27:29 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 11:27:29 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 11:27:29 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 11:27:29 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale
+Jan 08, 2022 11:28:20 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 11:28:20 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 11:28:20 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 11:28:20 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 11:28:20 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum
+Jan 08, 2022 12:10:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref-infinito
+Jan 08, 2022 12:10:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref-infinito
+Jan 08, 2022 12:10:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref-infinito
+Jan 08, 2022 12:10:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref-infinito
+Jan 08, 2022 12:10:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref-infinito
+Jan 08, 2022 12:10:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categPref-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:12:57 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: categorico-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:14:32 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: ordinale-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:15:09 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it crea nuova scheda: referendum-infinito
+Jan 08, 2022 12:18:45 PM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E registrazione
+Jan 09, 2022 2:10:15 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:14:19 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:14:58 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:15:56 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:16:44 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:16:51 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Jan 09, 2022 2:16:51 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Jan 09, 2022 2:17:01 PM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 09, 2022 2:17:01 PM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 09, 2022 2:17:01 PM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 09, 2022 2:23:27 PM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 09, 2022 2:25:02 PM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 09, 2022 2:32:22 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:36:33 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:37:13 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:43:12 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:49:48 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 2:52:30 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 09, 2022 3:15:46 PM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in

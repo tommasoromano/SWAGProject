@@ -37,7 +37,6 @@ public class VotoEspresso implements Comparable<VotoEspresso> {
 	 * - referendum Si/No
 	 * - scheda bianca = SB, scheda nulla = SN
 	 */
-	private String data;
 	private Scheda scheda;
 	
 	private String votabile;
@@ -45,36 +44,35 @@ public class VotoEspresso implements Comparable<VotoEspresso> {
 	private Map<String, Integer> preferenze;
 	
 	public VotoEspresso(Scheda scheda, String data) {
-		this.data = data;
 		this.scheda = scheda;
 		
 		switch(scheda.getTipoVoto().getTipo()) {
 		case VotoOrdinale:
-			creaOrdinale();
+			creaOrdinale(data);
 			break;
 		case VotoCategorico:
-			creaCategorico();
+			creaCategorico(data);
 			break;
 		case VotoCategoricoConPreferenze:
-			creaCategoricoPreferenze();
+			creaCategoricoPreferenze(data);
 			break;
 		case Referendum:
-			creaReferendum();
+			creaReferendum(data);
 			break;
 	}
 	}
 	
-	private void creaOrdinale() {
-		if (this.data.equals("SB")) {
-			this.votabile = this.data;
+	private void creaOrdinale(String data) {
+		if (data.equals("SB")) {
+			this.votabile = data;
 			this.conteggio = 1;
 			return;
-		} else if (this.data.equals("SN")) {
-			this.votabile = this.data;
+		} else if (data.equals("SN")) {
+			this.votabile = data;
 			this.conteggio = 1;
 			return;
 		}
-		String[] vs = this.data.split(":");
+		String[] vs = data.split(":");
 		for (int i = 0; i < vs.length; i++) {
 			if (vs[i].contains("1")) {
 				this.votabile = vs[i].split("\\(")[0];
@@ -83,32 +81,34 @@ public class VotoEspresso implements Comparable<VotoEspresso> {
 		}
 	}
 	
-	private void creaCategorico() {
-		this.votabile = this.data;
+	private void creaCategorico(String data) {
+		this.votabile = data;
 		this.conteggio = 1;
 	}
-	private void creaCategoricoPreferenze() {
-		if (this.data.equals("SB")) {
-			this.votabile = this.data;
+	private void creaCategoricoPreferenze(String data) {
+		if (data.equals("SB")) {
+			this.votabile = data;
 			this.conteggio = 1;
 			return;
-		} else if (this.data.equals("SN")) {
-			this.votabile = this.data;
+		} 
+		if (data.equals("SN")) {
+			this.votabile = data;
 			this.conteggio = 1;
 			return;
 		}
-		if (this.data.contains("(")) {
-			this.votabile = this.data.split("\\(")[0];
+		if (data.contains("(")) {
+			this.votabile = data.split("\\(")[0];
 			this.conteggio = 1;
-			preferenze = new HashMap<>();
-			preferenze.put(this.data.split("\\(")[1].split("\\)")[0], 1);
+			this.preferenze = new HashMap<>();
+			this.preferenze.put(data.split("\\(")[1].split("\\)")[0], 1);
 		} else {
-			this.votabile = this.data;
+			this.votabile = data;
 			this.conteggio = 1;
+			this.preferenze = new HashMap<>();
 		}
 	}
-	private void creaReferendum() {
-		this.votabile = this.data;
+	private void creaReferendum(String data) {
+		this.votabile = data;
 		this.conteggio = 1;
 	}
 	
@@ -159,7 +159,7 @@ public class VotoEspresso implements Comparable<VotoEspresso> {
 			this.conteggio++;
 			return true;
 		} else {
-			if (this.data.contains("(")) {
+			if (voto.contains("(")) {
 				if (this.votabile.equals(voto.split("\\(")[0])) {
 					this.conteggio++;
 					String pref = voto.split("\\(")[1].split("\\)")[0];
