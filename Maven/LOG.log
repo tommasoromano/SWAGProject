@@ -402,3 +402,45 @@ Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
 Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
+gen 13, 2022 10:45:31 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G registrazione
+gen 13, 2022 10:48:44 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G ha votato scheda: referendum-infinito
+gen 13, 2022 10:48:44 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G ha votato scheda: referendum-infinito
+gen 13, 2022 10:48:58 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G ha votato scheda: categorico-infinito
+gen 13, 2022 10:48:58 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G ha votato scheda: categorico-infinito
+gen 13, 2022 10:48:58 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G ha votato scheda: categorico-infinito
+gen 13, 2022 10:49:03 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G log out
+gen 13, 2022 10:49:03 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G log out
+gen 13, 2022 10:49:03 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G log out
+gen 13, 2022 10:49:03 AM root.LogManager logElettore
+INFO: Elettore RMPLCU00S30E507G log out
+gen 13, 2022 10:49:13 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+gen 13, 2022 10:49:13 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+gen 13, 2022 10:49:13 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+gen 13, 2022 10:49:13 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+gen 13, 2022 10:49:13 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+gen 13, 2022 10:49:24 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+gen 13, 2022 10:49:24 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+gen 13, 2022 10:49:24 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+gen 13, 2022 10:49:24 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+gen 13, 2022 10:49:24 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+gen 13, 2022 10:49:24 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
