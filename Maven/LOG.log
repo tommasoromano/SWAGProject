@@ -372,3 +372,33 @@ Jan 09, 2022 2:52:30 PM root.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
 Jan 09, 2022 3:15:46 PM root.LogManager logScrutinatore
 INFO: Scrutinatore admin@test.it log in
+Jan 12, 2022 9:53:59 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 12, 2022 9:56:44 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Jan 12, 2022 9:56:44 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log out
+Jan 12, 2022 9:57:25 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 12, 2022 9:57:25 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 12, 2022 9:57:25 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log in
+Jan 12, 2022 9:58:18 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out
+Jan 12, 2022 9:58:18 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out
+Jan 12, 2022 9:58:18 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out
+Jan 12, 2022 9:58:18 AM root.LogManager logElettore
+INFO: Elettore RMNTMS00R03F205E log out
+Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
+Jan 12, 2022 9:58:28 AM root.LogManager logScrutinatore
+INFO: Scrutinatore admin@test.it log in
